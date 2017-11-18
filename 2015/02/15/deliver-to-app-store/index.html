@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="ios,app store,app" />
+  <meta name="keywords" content="ios,app," />
 
 
 
@@ -115,22 +115,22 @@
 
 
 
-<meta name="description" content="记录如何发布应用到 app store">
-<meta name="keywords" content="ios,app store,app">
+<meta name="description" content="一 一些名词App ID：应用的标识 格式：上由2部分组成： &amp;lt;Bundle Seed ID&amp;gt;.&amp;lt;Bundle Identifier&amp;gt;，例如，ABCDE12345.com.foocompany.appname:  ABCDE12345 是 Bundle Seed ">
+<meta name="keywords" content="ios,app">
 <meta property="og:type" content="article">
 <meta property="og:title" content="发布到 App Store">
 <meta property="og:url" content="http://onthink.com/2015/02/15/deliver-to-app-store/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="记录如何发布应用到 app store">
+<meta property="og:description" content="一 一些名词App ID：应用的标识 格式：上由2部分组成： &amp;lt;Bundle Seed ID&amp;gt;.&amp;lt;Bundle Identifier&amp;gt;，例如，ABCDE12345.com.foocompany.appname:  ABCDE12345 是 Bundle Seed ID (苹果生成) com.foocompany.appname is the App ID’s Bundle">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://onthink.com/2015/02/15/deliver-to-app-store/!--￼0--%3E/itunes_connect/teamprovisioningprofile_2x.png">
-<meta property="og:image" content="http://onthink.com/2015/02/15/deliver-to-app-store/!--￼1--%3E/itunes_connect/certificates_2x.png">
-<meta property="og:image" content="http://onthink.com/2015/02/15/deliver-to-app-store/!--￼2--%3E/itunes_connect/itunes_connect.png">
-<meta property="og:updated_time" content="2017-11-16T15:57:36.000Z">
+<meta property="og:image" content="http://onthink.com/images/posts/itunes_connect/teamprovisioningprofile_2x.png">
+<meta property="og:image" content="http://onthink.com/images/posts/itunes_connect/certificates_2x.png">
+<meta property="og:image" content="http://onthink.com/images/posts/itunes_connect/itunes_connect.png">
+<meta property="og:updated_time" content="2017-11-18T03:01:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="发布到 App Store">
-<meta name="twitter:description" content="记录如何发布应用到 app store">
-<meta name="twitter:image" content="http://onthink.com/2015/02/15/deliver-to-app-store/!--￼0--%3E/itunes_connect/teamprovisioningprofile_2x.png">
+<meta name="twitter:description" content="一 一些名词App ID：应用的标识 格式：上由2部分组成： &amp;lt;Bundle Seed ID&amp;gt;.&amp;lt;Bundle Identifier&amp;gt;，例如，ABCDE12345.com.foocompany.appname:  ABCDE12345 是 Bundle Seed ID (苹果生成) com.foocompany.appname is the App ID’s Bundle">
+<meta name="twitter:image" content="http://onthink.com/images/posts/itunes_connect/teamprovisioningprofile_2x.png">
 
 
 
@@ -443,10 +443,6 @@
           
 
           
-              <div class="post-description">
-                  记录如何发布应用到 app store
-              </div>
-          
 
         </div>
       </header>
@@ -480,9 +476,9 @@
 <li><a href="https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppStoreDistributionTutorial/CreatingYourTeamProvisioningProfile/CreatingYourTeamProvisioningProfile.html#//apple_ref/doc/uid/TP40013839-CH33-SW1" target="_blank" rel="noopener">Provisioning profile</a>：配置文件</li>
 </ul>
 <p>开始 ios 开发时，最大的不适就是复杂的测试发布限制，你不能简单的编译个 app 放到任一设备中运行。比如符合 Provisioning profile 的设定。A picture worth a thousand words，先看下面的图：</p>
-<p><img src="!--￼0--&gt;/itunes_connect/teamprovisioningprofile_2x.png" alt=""></p>
+<p><img src="/images/posts/itunes_connect/teamprovisioningprofile_2x.png" alt=""></p>
 <p>一个 Provisioning profile 设置了 APP ID，证书和设备。当你使用某个 Provisioning profile 签名应用时，其实是使用它包含的证书来签名，并且签证对应的 APP ID，并只允许安装到被包含其中的设备中。</p>
-<h3 id="Certification：证书"><a href="#Certification：证书" class="headerlink" title="Certification：证书"></a>Certification：证书</h3><p><img src="!--￼1--&gt;/itunes_connect/certificates_2x.png" alt=""></p>
+<h3 id="Certification：证书"><a href="#Certification：证书" class="headerlink" title="Certification：证书"></a>Certification：证书</h3><p><img src="/images/posts/itunes_connect/certificates_2x.png" alt=""></p>
 <p>如上图所示，证书的公钥保存在苹果的用户中心，公私钥对保存到开发者 keychain 中。你必须有私钥才可以签名应用。</p>
 <ul>
 <li>Development certification：开发证书</li>
@@ -519,7 +515,7 @@
 </ul>
 </li>
 </ol>
-<p>填写完成后如下图所示：<br><img src="!--￼2--&gt;/itunes_connect/itunes_connect.png" alt=""></p>
+<p>填写完成后如下图所示：<br><img src="/images/posts/itunes_connect/itunes_connect.png" alt=""></p>
 <h3 id="上传安装包"><a href="#上传安装包" class="headerlink" title="上传安装包"></a>上传安装包</h3><h4 id="使用-xcode-直接上传："><a href="#使用-xcode-直接上传：" class="headerlink" title="使用 xcode 直接上传："></a>使用 xcode 直接上传：</h4><ol>
 <li>检查代码，去除 log，debug 等相关的信息</li>
 <li>清理项目（clean project）</li>

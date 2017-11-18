@@ -452,14 +452,42 @@
 
       
         
-          关于证书类型
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/12/20/about-cert-type/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="证书的编码（encoding）分类"><a href="#证书的编码（encoding）分类" class="headerlink" title="证书的编码（encoding）分类"></a>证书的编码（encoding）分类</h3><p>首先，ASN.1 定义了几个编码格式，成为了 <a href="https://en.wikipedia.org/wiki/X.690#DER_encoding" target="_blank" rel="noopener">X.690</a> 标准，它们是：</p>
+<ul>
+<li>Basic Encoding Rules (BER)</li>
+<li>Canonical Encoding Rules (CER)</li>
+<li>Distinguished Encoding Rules (DER)</li>
+</ul>
+<p>然后证书采用了 DER 作为 <strong>二进制</strong> 编码格式；但是为了便于阅读和传送，也可以将二进制转换为 base64 形式，又引入了 PEM 格式，如下所示：</p>
+<ul>
+<li>Privacy-enhanced Electronic Mail (PEM) ：将 DER 的做 base64 编码，并在开头和结尾加入标识：<code>&quot;-----BEGIN CERTIFICATE-----&quot;</code> 和 <code>&quot;-----END CERTIFICATE-----&quot;</code></li>
+</ul>
+<h3 id="证书的存储格式"><a href="#证书的存储格式" class="headerlink" title="证书的存储格式"></a>证书的存储格式</h3><ul>
+<li>.pem</li>
+<li>.cer, .crt, .der</li>
+<li>.p7b, .p7c</li>
+<li>.p12</li>
+<li>.pfx</li>
+<li>.key</li>
+</ul>
+<h4 id="pem"><a href="#pem" class="headerlink" title=".pem"></a>.pem</h4><p>存储的是 base64 格式，也就是 PEM 格式</p>
+<h4 id="cer-crt-der"><a href="#cer-crt-der" class="headerlink" title=".cer, .crt, .der"></a>.cer, .crt, .der</h4><p>通常存储的是 DER 编码的二进制格式</p>
+<h4 id="p7b-p7c"><a href="#p7b-p7c" class="headerlink" title=".p7b, .p7c"></a>.p7b, .p7c</h4><p>不包含数据的 PKCS#7 签名格式, 只包含证书或CRL<br>开头和结尾是：<code>&quot;-----BEGIN PKCS7-----&quot;</code> 和 <code>&quot;-----END PKCS7-----&quot;</code></p>
+<h4 id="pfx"><a href="#pfx" class="headerlink" title=".pfx"></a>.pfx</h4><p>personal information exchange (PFX) 也是 PKCS#12 格式，这是微软提出的格式</p>
+<h4 id="p12"><a href="#p12" class="headerlink" title=".p12"></a>.p12</h4><p>PKCS#12 格式，包含了证书和私钥，私钥有密码保护，Netscape 提出的格式</p>
+<h4 id="key"><a href="#key" class="headerlink" title=".key"></a>.key</h4><p>用于 PKCS#8 的公钥或私钥，编码支持 DER 或 PEM 2种格式</p>
+<h3 id="查看证书"><a href="#查看证书" class="headerlink" title="查看证书"></a>查看证书</h3><h4 id="查看-DER-证书"><a href="#查看-DER-证书" class="headerlink" title="查看 DER 证书"></a>查看 DER 证书</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -in certificate.der -inform der -text -noout</span><br></pre></td></tr></table></figure>
+<h4 id="查看-PEM-证书"><a href="#查看-PEM-证书" class="headerlink" title="查看 PEM 证书"></a>查看 PEM 证书</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -in cert.pem -text -noout</span><br><span class="line">openssl x509 -in cert.cer -text -noout</span><br><span class="line">openssl x509 -in cert.crt -text -noout</span><br></pre></td></tr></table></figure>
+<h3 id="编码转换"><a href="#编码转换" class="headerlink" title="编码转换"></a>编码转换</h3><h4 id="DER-gt-PEM"><a href="#DER-gt-PEM" class="headerlink" title="DER -&gt; PEM"></a>DER -&gt; PEM</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -in cert.crt -inform der -outform pem -out cert.pem</span><br></pre></td></tr></table></figure>
+<h4 id="PEM-gt-DER"><a href="#PEM-gt-DER" class="headerlink" title="PEM -&gt; DER"></a>PEM -&gt; DER</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -in cert.crt -outform der -out cert.der</span><br></pre></td></tr></table></figure>
+<h4 id="PEM-gt-P7B"><a href="#PEM-gt-P7B" class="headerlink" title="PEM -&gt; P7B"></a>PEM -&gt; P7B</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl crl2pkcs7 -nocrl -certfile certificate.cer -out certificate.p7b -certfile CACert.cer</span><br></pre></td></tr></table></figure>
+<h4 id="PEM-gt-PFX"><a href="#PEM-gt-PFX" class="headerlink" title="PEM -&gt; PFX"></a>PEM -&gt; PFX</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt</span><br></pre></td></tr></table></figure>
+<h4 id="PFX-gt-PEM"><a href="#PFX-gt-PEM" class="headerlink" title="PFX -&gt; PEM"></a>PFX -&gt; PEM</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -in certificate.pfx -out certificate.cer -nodes</span><br></pre></td></tr></table></figure>
+<h4 id="P7B-gt-PEM"><a href="#P7B-gt-PEM" class="headerlink" title="P7B -&gt; PEM"></a>P7B -&gt; PEM</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs7 -print_certs -in certificate.p7b -out certificate.cer</span><br></pre></td></tr></table></figure>
+<h4 id="P7B-gt-PFX"><a href="#P7B-gt-PFX" class="headerlink" title="P7B -&gt; PFX"></a>P7B -&gt; PFX</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs7 -print_certs -in certificate.p7b -out certificate.cer</span><br><span class="line"></span><br><span class="line">openssl pkcs12 -export -in certificate.cer -inkey privateKey.key -out certificate.pfx -certfile CACert.cer</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -620,14 +648,12 @@
 
       
         
-          CentOS6 安装 nginx, MySQL, PHP
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/08/28/install-nmp-on-centos6/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><blockquote>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-centos-6" target="_blank" rel="noopener">How To Install Linux, nginx, MySQL, PHP (LEMP) stack on CentOS 6</a></p>
+</blockquote>
+
+          
         
       
     </div>
@@ -788,14 +814,20 @@
 
       
         
-          MySQL升级到5.7
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/08/28/upgrade-mysql/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>Step 1: Uninstall MySQL Packages<br>First uninstall all the MySQL packages installed on your server</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> yum remove mysql mysql-server</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> yum list installed | grep mysql</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> yum remove mysql-client mysql-server mysql-common mysql-devel</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> rm -rf /var/lib/mysql/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> rm -rf /etc/my.cnf</span></span><br></pre></td></tr></table></figure>
+<p>Step 2: Romove MySQL Directory<br>Now we need to remove MySQL data directory from system which by default exists at /var/lib/mysql. If you didn’t find this, It may be changed to some other place, which you can find in my.cnf file with variable datadir. Delete the /var/lib/mysql directory from system but we prefer to rename it to keep a backup of existing files.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> mv /var/lib/mysql /var/lib/mysql_old_backup</span></span><br></pre></td></tr></table></figure>
+<p>Step 3: Install MySQL Packages Again<br>After removing MySQL completely, install it again using yum package manager, It will re create mysql directory under /var/lib/.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> yum install mysql mysql-server</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> mysql_upgrade -uroot -p</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> grep <span class="string">'temporary password'</span> /var/<span class="built_in">log</span>/mysqld.log</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mysql_secure_installation</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> we can <span class="built_in">set</span> it <span class="keyword">in</span> my.cnf file</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> [mysqld]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> validate_password_policy=LOW</span></span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><blockquote>
+<p><a href="http://www.tecmint.com/install-latest-mysql-on-rhel-centos-and-fedora/" target="_blank" rel="noopener">How to Install Latest MySQL 5.7.9 on RHEL/CentOS 7/6/5 and Fedora</a></p>
+</blockquote>
+
+          
         
       
     </div>
@@ -956,14 +988,12 @@
 
       
         
-          Linux 查看磁盘空间使用
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/08/18/view-disk-usage/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="df"><a href="#df" class="headerlink" title="df"></a>df</h3><h3 id="du"><a href="#du" class="headerlink" title="du"></a>du</h3><h3 id="fdisk"><a href="#fdisk" class="headerlink" title="fdisk"></a>fdisk</h3><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><blockquote>
+<p><a href="http://os.51cto.com/art/201012/240726_all.htm" target="_blank" rel="noopener">df、du、fdisk：Linux磁盘管理三板斧的使用心得</a></p>
+</blockquote>
+
+          
         
       
     </div>
@@ -1124,14 +1154,12 @@
 
       
         
-          IntelliJ，Tomcat，Maven，Spring 使用小结
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/08/16/intellij-tomcat/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><h4 id="1）IntelliJ-部署目录是不是-Tomcat-webapps-目录？"><a href="#1）IntelliJ-部署目录是不是-Tomcat-webapps-目录？" class="headerlink" title="1）IntelliJ 部署目录是不是 Tomcat webapps 目录？"></a>1）IntelliJ 部署目录是不是 Tomcat webapps 目录？</h4><p>IntelliJ 默认发布到 <code>${dir.to.idea.project}\YourWebApp\out\artifacts</code>，而不是 Tomcat webapps 目录。但是可以通过配置，将配置文件发现到 Tomcat 目录：</p>
+<p><img src="http://i.stack.imgur.com/yGOph.png" alt="配置发布tomcat"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -1292,14 +1320,37 @@
 
       
         
-          Supervisor 使用小结
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/06/03/supervisor-usage/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>通过 pip 来安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> pip install supervisor</span></span><br></pre></td></tr></table></figure>
+<p>如果还没有 pip，运行下面的命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> curl -O http://python-distribute.org/distribute_setup.py</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> python distribute_setup.py</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> sudo easy_install pip</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> sudo pip install supervisor</span></span><br></pre></td></tr></table></figure>
+<p>在 Mac OS 下，还可能通过 homebrew 安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> brew install distribute</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> sudo easy_install pip</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> sudo pip install supervisor</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## 创建配置文件</span></span></span><br><span class="line"></span><br><span class="line">一旦安装完成，运行 `echo_supervisord_conf` 将打印一个标准的配置模板，可将其保存到下列配置路径中：</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">/usr/local/share/etc/supervisord.conf</span><br><span class="line">/usr/local/share/supervisord.conf</span><br><span class="line">./supervisord.conf</span><br><span class="line">./etc/supervisord.conf</span><br><span class="line">/etc/supervisord.conf</span><br></pre></td></tr></table></figure>
+<p>将标准配置输出到某个路径下的命令是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> echo_supervisord_conf &gt; /etc/supervisord.conf</span></span><br></pre></td></tr></table></figure>
+<h3 id="运行-supervisor"><a href="#运行-supervisor" class="headerlink" title="运行 supervisor"></a>运行 supervisor</h3><p>supervisor 提供了2个运行程序：守护程序 <code>supervisord</code> 和客户端程序 <code>supervisorctl</code>。守护程序在后台运行，管理其它进程；客户端程序用于操作supervisor。</p>
+<p>启动守护进程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> supervisord </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> supervisord -c /path/to/supervisord.conf    <span class="comment"># 或指定配置文件</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="Mac-OS-配置-launchd"><a href="#Mac-OS-配置-launchd" class="headerlink" title="Mac OS 配置 launchd"></a>Mac OS 配置 <code>launchd</code></h4><p>添加文件 <code>/Library/LaunchDaemons/com.agendaless.supervisord.plist</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=\<span class="string">"1.0\" encoding=\"UTF-8\"?&gt;</span></span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">\</span>"<span class="attr">1.0</span>\"&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>KeepAlive<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">key</span>&gt;</span>SuccessfulExit<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">false</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>Label<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>com.agendaless.supervisord<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>ProgramArguments<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/local/share/python/supervisord<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">string</span>&gt;</span>-n<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">string</span>&gt;</span>-c<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/local/share/supervisor/supervisord.conf<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>RunAtLoad<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注册 plist<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> launchctl load /Library/LaunchDaemons/com.agendaless.supervisord.plist</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="使用-supervisorctl"><a href="#使用-supervisorctl" class="headerlink" title="使用 supervisorctl"></a>使用 supervisorctl</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> supervisorctl -c /etc/supervisord.conf</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> status    <span class="comment"># 查看程序状态</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> stop foo   <span class="comment"># 关闭 foo 程序</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> start foo  <span class="comment"># 启动 foo 程序</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> restart foo    <span class="comment"># 重启 foo 程序</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> reread    ＃ 读取有更新（增加）的配置文件，不会启动新添加的程序</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> update    ＃ 重启配置文件修改过的程序</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> tail foo stdout</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> tail -f foo</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> tail -f foo stderr</span></span><br></pre></td></tr></table></figure>
+<p>通过命令行直接运行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> sudo supervisorctl start foo</span></span><br></pre></td></tr></table></figure>
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[unix_http_server]</span><br><span class="line">file=/tmp/supervisor.sock   ; UNIX socket 文件，supervisorctl 会使用</span><br><span class="line">;chmod=0700                 ; socket 文件的 mode，默认是 0700</span><br><span class="line">;chown=nobody:nogroup       ; socket 文件的 owner，格式： uid:gid</span><br><span class="line"></span><br><span class="line">[inet_http_server]         ; HTTP 服务器，提供 web 管理界面</span><br><span class="line">port=127.0.0.1:9001        ; Web 管理后台运行的 IP 和端口，如果开放到公网，需要注意安全性</span><br><span class="line">;username=user              ; 登录管理后台的用户名</span><br><span class="line">;password=123               ; 登录管理后台的密码</span><br><span class="line"></span><br><span class="line">[supervisord]</span><br><span class="line">logfile=/tmp/supervisord.log ; 日志文件，默认是 $CWD/supervisord.log</span><br><span class="line">logfile_maxbytes=50MB        ; 日志文件大小，超出会 rotate，默认 50MB</span><br><span class="line">logfile_backups=10           ; 日志文件保留备份数量默认 10</span><br><span class="line">loglevel=info                ; 日志级别，默认 info，其它: debug,warn,trace</span><br><span class="line">pidfile=/tmp/supervisord.pid ; pid 文件</span><br><span class="line">nodaemon=false               ; 是否在前台启动，默认是 false，即以 daemon 的方式启动</span><br><span class="line">minfds=1024                  ; 可以打开的文件描述符的最小值，默认 1024</span><br><span class="line">minprocs=200                 ; 可以打开的进程数的最小值，默认 200</span><br><span class="line"></span><br><span class="line">; the below section must remain in the config file for RPC</span><br><span class="line">; (supervisorctl/web interface) to work, additional interfaces may be</span><br><span class="line">; added by defining them in separate rpcinterface: sections</span><br><span class="line">[rpcinterface:supervisor]</span><br><span class="line">supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface</span><br><span class="line"></span><br><span class="line">[supervisorctl]</span><br><span class="line">serverurl=unix:///tmp/supervisor.sock ; 通过 UNIX socket 连接 supervisord，路径与 unix_http_server 部分的 file 一致</span><br><span class="line">;serverurl=http://127.0.0.1:9001 ; 通过 HTTP 的方式连接 supervisord</span><br><span class="line"></span><br><span class="line">; 包含其他的配置文件</span><br><span class="line">[include]</span><br><span class="line">files = relative/directory/*.ini    ; 可以是 *.conf 或 *.ini</span><br></pre></td></tr></table></figure>
+<p>当更新配置文件后，重新启动守护进程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisord -c /etc/supervisord.conf</span><br></pre></td></tr></table></figure>
+<h3 id="常用程序"><a href="#常用程序" class="headerlink" title="常用程序"></a>常用程序</h3><h4 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[program:nginx]</span><br><span class="line">command=sudo /usr/local/sbin/nginx</span><br><span class="line">autostart=false</span><br><span class="line">autorestart=true</span><br></pre></td></tr></table></figure>
+<h4 id="laravel-queue"><a href="#laravel-queue" class="headerlink" title="laravel queue"></a>laravel queue</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[program:laravel-worker]</span><br><span class="line">process_name=%(program_name)s_%(process_num)02d</span><br><span class="line">command=php /home/forge/app.com/artisan queue:work sqs --sleep=3 --tries=3 --daemon</span><br><span class="line">autostart=true</span><br><span class="line">autorestart=true</span><br><span class="line">user=forge</span><br><span class="line">numprocs=8</span><br><span class="line">redirect_stderr=true</span><br><span class="line">stdout_logfile=/home/forge/app.com/worker.log</span><br></pre></td></tr></table></figure>
+<h3 id="可能遇到的问题："><a href="#可能遇到的问题：" class="headerlink" title="可能遇到的问题："></a>可能遇到的问题：</h3><h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><pre><code class="shell">* Starting Supervisor daemon manager...
+Error: Another program is already listening on a port that one of our HTTP servers is configured to use.  Shut this program down first before starting supervisord.
+For help, use /usr/bin/supervisord -h
+   ...fail!
+</code></pre>
+<p>解决办法：<br>删除 supervisor.sock</p>
+
+          
         
       
     </div>
@@ -1629,14 +1680,20 @@
 
       
         
-          记录AddRef/Release的使用细节
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/05/24/com-addref-release-usage/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p><code>AddRef/Release</code> 是 COM 组件的垃圾回收机制。当请求一个接口时，调用<code>AddRef</code>增加引用计数；当使用完该接口时，调用<code>Release</code>减少计数，计数为0时，释放接口（释放接口对应的对象，内存如何操作？）。</p>
+<h3 id="IUnknown"><a href="#IUnknown" class="headerlink" title="IUnknown"></a>IUnknown</h3><h3 id="QueryInterface-VS-QueryControl"><a href="#QueryInterface-VS-QueryControl" class="headerlink" title="QueryInterface VS QueryControl"></a>QueryInterface VS QueryControl</h3><h3 id="CoCreateInstance"><a href="#CoCreateInstance" class="headerlink" title="CoCreateInstance"></a>CoCreateInstance</h3><h3 id="CComQIPtr-VS-CComPtr"><a href="#CComQIPtr-VS-CComPtr" class="headerlink" title="CComQIPtr VS CComPtr"></a>CComQIPtr VS CComPtr</h3><p><em>附录</em>：</p>
+<ul>
+<li><a href="http://blog.csdn.net/yangshuangtao/article/details/51220110" target="_blank" rel="noopener">COM组件的AddRef和Release()方法使用</a>  </li>
+<li><a href="https://support.microsoft.com/en-us/kb/104138" target="_blank" rel="noopener">Reference Counting Rules</a></li>
+<li><a href="http://www.cnblogs.com/hibernate6/archive/2009/11/12/2522119.html" target="_blank" rel="noopener">COM :IUnknown接口QueryInterface函数介绍</a></li>
+<li><a href="http://www.jellythink.com/archives/232" target="_blank" rel="noopener">COM编程——引用计数（1）</a></li>
+<li><a href="http://www.jellythink.com/archives/242" target="_blank" rel="noopener">COM编程——引用计数（2）</a></li>
+<li><a href="http://www.jellythink.com/archives/188" target="_blank" rel="noopener">COM编程——QueryInterface函数（1）</a></li>
+<li><a href="http://www.jellythink.com/archives/198" target="_blank" rel="noopener">COM编程——QueryInterface函数（2）</a></li>
+</ul>
+
+          
         
       
     </div>

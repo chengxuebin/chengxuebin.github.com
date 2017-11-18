@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="NPAPI,extension,chrome,扩展,插件" />
+  <meta name="keywords" content="chrome,c/c++,js," />
 
 
 
@@ -115,20 +115,20 @@
 
 
 
-<meta name="description" content="实现chrome扩展和NPAPI插件">
-<meta name="keywords" content="NPAPI,extension,chrome,扩展,插件">
+<meta name="description" content="扩展“Chrome扩展”虽然基于强大的Javascript和Chrome扩展接口 （Extension API）所实现的扩展简单且强大，但是，如果你已经有一些实现的很不错的本地程序（Native Program）要通过浏览器复用怎么办？或者，浏览器的API不满足需求，你需要使用某些更强大的本地接口（Native API">
+<meta name="keywords" content="chrome,c&#x2F;c++,js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Chrome扩展+NPPlugin">
 <meta property="og:url" content="http://onthink.com/2014/04/24/chrome-extension-plugin/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="实现chrome扩展和NPAPI插件">
+<meta property="og:description" content="扩展“Chrome扩展”虽然基于强大的Javascript和Chrome扩展接口 （Extension API）所实现的扩展简单且强大，但是，如果你已经有一些实现的很不错的本地程序（Native Program）要通过浏览器复用怎么办？或者，浏览器的API不满足需求，你需要使用某些更强大的本地接口（Native API）时呢？ 你可以配合Chrome扩展，实现NPAPI插件，通过Javascrip">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://onthink.com/2014/04/24/chrome-extension-plugin/!--￼13--%3E/extension_npp_result.jpg">
-<meta property="og:updated_time" content="2017-11-16T16:00:43.000Z">
+<meta property="og:image" content="http://onthink.com/images/posts/extension_npp_result.jpg">
+<meta property="og:updated_time" content="2017-11-18T03:01:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chrome扩展+NPPlugin">
-<meta name="twitter:description" content="实现chrome扩展和NPAPI插件">
-<meta name="twitter:image" content="http://onthink.com/2014/04/24/chrome-extension-plugin/!--￼13--%3E/extension_npp_result.jpg">
+<meta name="twitter:description" content="扩展“Chrome扩展”虽然基于强大的Javascript和Chrome扩展接口 （Extension API）所实现的扩展简单且强大，但是，如果你已经有一些实现的很不错的本地程序（Native Program）要通过浏览器复用怎么办？或者，浏览器的API不满足需求，你需要使用某些更强大的本地接口（Native API）时呢？ 你可以配合Chrome扩展，实现NPAPI插件，通过Javascrip">
+<meta name="twitter:image" content="http://onthink.com/images/posts/extension_npp_result.jpg">
 
 
 
@@ -441,10 +441,6 @@
           
 
           
-              <div class="post-description">
-                  实现chrome扩展和NPAPI插件
-              </div>
-          
 
         </div>
       </header>
@@ -538,7 +534,7 @@ PluginObject.h
 <h3 id="popup-html"><a href="#popup-html" class="headerlink" title="popup.html"></a>popup.html</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">embed</span> <span class="attr">id</span>=<span class="string">"pluginObj"</span> <span class="attr">type</span>=<span class="string">"application/x-hello"</span> <span class="attr">style</span>=<span class="string">"width:0;height:0;"</span>&gt;</span><span class="tag">&lt;/<span class="name">embed</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/popup.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="popup-js"><a href="#popup-js" class="headerlink" title="popup.js"></a>popup.js</h3><p>先设置回调函数，再去调用插件的方法。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">  result = <span class="built_in">JSON</span>.parse(result);</span><br><span class="line">  print(<span class="string">'&lt;p class="npp"&gt; [ NPP ]: '</span>+ result[<span class="string">'msg'</span>]+<span class="string">'&lt;/p&gt;'</span>) </span><br><span class="line">  clearInterval(timer);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  pluginObj = <span class="built_in">document</span>.getElementById(<span class="string">"pluginObj"</span>);</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> pluginObj == <span class="string">"object"</span>) &#123;</span><br><span class="line">    pluginObj.callback = callback;</span><br><span class="line">    print(<span class="string">'&lt;p class="js"&gt; [ JS ]: I\'m calling Plugin function!&lt;/p&gt;'</span>) </span><br><span class="line">    <span class="keyword">var</span> msg = pluginObj.function();</span><br><span class="line">    print(<span class="string">'&lt;p class="npp"&gt; [ NPP ]: '</span>+ msg+<span class="string">'&lt;/p&gt;'</span>) </span><br><span class="line">  &#125; </span><br><span class="line">  timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;count++; print(<span class="string">'&lt;p class="js"&gt; [ JS ]: Hey, I\'ve been waiting '</span>+<span class="number">500</span>*count+<span class="string">' ms...'</span>)&#125;, <span class="number">500</span>);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="!--￼13--&gt;/extension_npp_result.jpg" alt=""></p>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/images/posts/extension_npp_result.jpg" alt=""></p>
 <p>&nbsp;<br>&nbsp;<br>&nbsp;</p>
 <p>附：<a href="https://github.com/chengxuebin/chrome_extension_npplugin" target="_blank" rel="noopener">chrome extension+npplugin</a></p>
 <p>扩展阅读：<a href="https://developer.mozilla.org/en/docs/Compiling_The_npruntime_Sample_Plugin_in_Visual_Studio" target="_blank" rel="noopener">使用 VS 编译 NPAPI 插件</a></p>

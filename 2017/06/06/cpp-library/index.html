@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="c++,library" />
+  <meta name="keywords" content="c++," />
 
 
 
@@ -115,18 +115,18 @@
 
 
 
-<meta name="description" content="C++ 常用方法收集">
-<meta name="keywords" content="c++,library">
+<meta name="description" content="字符操作wstring 和 string 互转1234567891011121314std::wstring s2ws(const std::string&amp;amp; str) &amp;#123;    using convert_typeX = std::codecvt_utf8&amp;lt;wchar_t">
+<meta name="keywords" content="c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ 常用方法收集">
 <meta property="og:url" content="http://onthink.com/2017/06/06/cpp-library/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="C++ 常用方法收集">
+<meta property="og:description" content="字符操作wstring 和 string 互转1234567891011121314std::wstring s2ws(const std::string&amp;amp; str) &amp;#123;    using convert_typeX = std::codecvt_utf8&amp;lt;wchar_t&amp;gt;;    std::wstring_convert&amp;lt;convert_typeX, wcha">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-16T15:57:36.000Z">
+<meta property="og:updated_time" content="2017-11-18T02:52:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ 常用方法收集">
-<meta name="twitter:description" content="C++ 常用方法收集">
+<meta name="twitter:description" content="字符操作wstring 和 string 互转1234567891011121314std::wstring s2ws(const std::string&amp;amp; str) &amp;#123;    using convert_typeX = std::codecvt_utf8&amp;lt;wchar_t&amp;gt;;    std::wstring_convert&amp;lt;convert_typeX, wcha">
 
 
 
@@ -439,10 +439,6 @@
           
 
           
-              <div class="post-description">
-                  C++ 常用方法收集
-              </div>
-          
 
         </div>
       </header>
@@ -459,6 +455,7 @@
       
         <h2 id="字符操作"><a href="#字符操作" class="headerlink" title="字符操作"></a>字符操作</h2><h3 id="wstring-和-string-互转"><a href="#wstring-和-string-互转" class="headerlink" title="wstring 和 string 互转"></a>wstring 和 string 互转</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="function">wstring <span class="title">s2ws</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">using</span> convert_typeX = <span class="built_in">std</span>::codecvt_utf8&lt;<span class="keyword">wchar_t</span>&gt;;</span><br><span class="line">    <span class="built_in">std</span>::wstring_convert&lt;convert_typeX, <span class="keyword">wchar_t</span>&gt; converterX;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> converterX.from_bytes(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">ws2s</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::wstring&amp; wstr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> convert_typeX = <span class="built_in">std</span>::codecvt_utf8&lt;<span class="keyword">wchar_t</span>&gt;;</span><br><span class="line">    <span class="built_in">std</span>::wstring_convert&lt;convert_typeX, <span class="keyword">wchar_t</span>&gt; converterX;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> converterX.to_bytes(wstr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="https://stackoverflow.com/questions/4804298/how-to-convert-wstring-into-string" target="_blank" rel="noopener">进一步阅读</a></p>
+<a id="more"></a>
 <h2 id="Windows-相关"><a href="#Windows-相关" class="headerlink" title="Windows 相关"></a>Windows 相关</h2><h3 id="获取当前进程目录"><a href="#获取当前进程目录" class="headerlink" title="获取当前进程目录"></a>获取当前进程目录</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="function">wstring <span class="title">getExePath</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">wchar_t</span> buffer[MAX_PATH];</span><br><span class="line">    GetModuleFileName(<span class="literal">NULL</span>, buffer, MAX_PATH);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span>::size_type pos = <span class="built_in">std</span>::wstring(buffer).find_last_of(<span class="string">L"\\/"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::wstring(buffer).substr(<span class="number">0</span>, pos);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       

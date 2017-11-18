@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="java,intellij,SpringMVC" />
+  <meta name="keywords" content="java," />
 
 
 
@@ -115,18 +115,18 @@
 
 
 
-<meta name="description" content="SpringMVC 静态资源缓存">
-<meta name="keywords" content="java,intellij,SpringMVC">
+<meta name="description" content="ResourceHttpRequestHandlerResourceHttpRequestHandler 可以使用 ResourceResolvers 和 ResourceTransformers 来优化处理静态资源。处理过程如下： 123456789101112131415Request for Resource  ">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC 静态资源缓存">
 <meta property="og:url" content="http://onthink.com/2017/10/13/spring-mvc-static-resource/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="SpringMVC 静态资源缓存">
+<meta property="og:description" content="ResourceHttpRequestHandlerResourceHttpRequestHandler 可以使用 ResourceResolvers 和 ResourceTransformers 来优化处理静态资源。处理过程如下： 123456789101112131415Request for Resource     |     | HTTP request     v Resolvers">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-16T15:54:44.000Z">
+<meta property="og:updated_time" content="2017-11-18T02:49:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC 静态资源缓存">
-<meta name="twitter:description" content="SpringMVC 静态资源缓存">
+<meta name="twitter:description" content="ResourceHttpRequestHandlerResourceHttpRequestHandler 可以使用 ResourceResolvers 和 ResourceTransformers 来优化处理静态资源。处理过程如下： 123456789101112131415Request for Resource     |     | HTTP request     v Resolvers">
 
 
 
@@ -439,10 +439,6 @@
           
 
           
-              <div class="post-description">
-                  SpringMVC 静态资源缓存
-              </div>
-          
 
         </div>
       </header>
@@ -459,6 +455,7 @@
       
         <h2 id="ResourceHttpRequestHandler"><a href="#ResourceHttpRequestHandler" class="headerlink" title="ResourceHttpRequestHandler"></a>ResourceHttpRequestHandler</h2><p><code>ResourceHttpRequestHandler</code> 可以使用 <code>ResourceResolvers</code> 和 <code>ResourceTransformers</code> 来优化处理静态资源。处理过程如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Request for Resource</span><br><span class="line">     |</span><br><span class="line">     | HTTP request</span><br><span class="line">     v</span><br><span class="line"> Resolvers chain: FirstResolver, SecondResolver, ThirdResolver</span><br><span class="line"> (each resolver can return the resource or delegate to the next one)</span><br><span class="line">     |</span><br><span class="line">     | Resolved Resource</span><br><span class="line">     v</span><br><span class="line"> Transformers chain: FirstTransformer, SecondTransformer</span><br><span class="line"> (each transformer can transform the resource or just pass it along without modification)</span><br><span class="line">     |</span><br><span class="line">     | Transformed Resource</span><br><span class="line">     v</span><br><span class="line"> HTTP Response with Resource content</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="ResourceHttpRequestHandler-的配置"><a href="#ResourceHttpRequestHandler-的配置" class="headerlink" title="ResourceHttpRequestHandler 的配置"></a><code>ResourceHttpRequestHandler</code> 的配置</h3><p>配置方法一：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</span><br><span class="line">    registry.addResourceHandler(<span class="string">"/resources/**"</span>)</span><br><span class="line">            .addResourceLocations(<span class="string">"/public-resources/"</span>)</span><br><span class="line">            .setCacheControl(CacheControl.maxAge(<span class="number">1</span>, TimeUnit.HOURS).cachePublic());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>配置方法二：</p>

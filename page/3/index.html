@@ -452,14 +452,17 @@
 
       
         
-          socket 常用数据结构
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/16/socket-data-struct/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="编译步骤"><a href="#编译步骤" class="headerlink" title="编译步骤"></a>编译步骤</h3><h4 id="1-sockaddr"><a href="#1-sockaddr" class="headerlink" title="1. sockaddr"></a>1. sockaddr</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struct sockaddr &#123;</span><br><span class="line">    unsigned short    sa_family;    // address family, AF_xxx</span><br><span class="line">    char              sa_data[14];  // 14 bytes of protocol address</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="2-inet-相关"><a href="#2-inet-相关" class="headerlink" title="2. inet 相关"></a>2. inet 相关</h4><p>sockaddr_in 继承 sockaddr 并添加了一些 INET 的数据属性。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// IPv4 AF_INET sockets:</span><br><span class="line">struct in_addr &#123;</span><br><span class="line">    unsigned long s_addr;          // load with inet_pton()</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct sockaddr_in &#123;</span><br><span class="line">    short            sin_family;   // e.g. AF_INET, AF_INET6</span><br><span class="line">    unsigned short   sin_port;     // e.g. htons(3490)</span><br><span class="line">    struct in_addr   sin_addr;     // see struct in_addr, below</span><br><span class="line">    char             sin_zero[8];  // zero this if you want to</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// IPv6 AF_INET6 sockets:</span><br><span class="line">struct in6_addr &#123;</span><br><span class="line">    unsigned char   s6_addr[16];   // load with inet_pton()</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct sockaddr_in6 &#123;</span><br><span class="line">    u_int16_t       sin6_family;   // address family, AF_INET6</span><br><span class="line">    u_int16_t       sin6_port;     // port number, Network Byte Order</span><br><span class="line">    u_int32_t       sin6_flowinfo; // IPv6 flow information</span><br><span class="line">    struct in6_addr sin6_addr;     // IPv6 address</span><br><span class="line">    u_int32_t       sin6_scope_id; // Scope ID</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>sockaddr 转换为 sockaddr_in：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sockaddr from;</span><br><span class="line">sockaddr_in to = (sockaddr_in)from;</span><br></pre></td></tr></table></figure>
+<h4 id="3-sockaddr-storage"><a href="#3-sockaddr-storage" class="headerlink" title="3. sockaddr_storage"></a>3. sockaddr_storage</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// General socket address holding structure, big enough to hold either</span><br><span class="line">// struct sockaddr_in or struct sockaddr_in6 data:</span><br><span class="line"></span><br><span class="line">struct sockaddr_storage &#123;</span><br><span class="line">    sa_family_t  ss_family;     // address family</span><br><span class="line"></span><br><span class="line">    // all this is padding, implementation specific, ignore it:</span><br><span class="line">    char      __ss_pad1[_SS_PAD1SIZE];</span><br><span class="line">    int64_t   __ss_align;</span><br><span class="line">    char      __ss_pad2[_SS_PAD2SIZE];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="4-addrinfo"><a href="#4-addrinfo" class="headerlink" title="4. addrinfo"></a>4. addrinfo</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">struct addrinfo &#123;</span><br><span class="line">  int     ai_flags;          // AI_PASSIVE, AI_CANONNAME, ...</span><br><span class="line">  int     ai_family;         // AF_xxx</span><br><span class="line">  int     ai_socktype;       // SOCK_xxx</span><br><span class="line">  int     ai_protocol;       // 0 (auto) or IPPROTO_TCP, IPPROTO_UDP </span><br><span class="line"></span><br><span class="line">  socklen_t  ai_addrlen;     // length of ai_addr</span><br><span class="line">  char   *ai_canonname;      // canonical name for nodename</span><br><span class="line">  struct sockaddr  *ai_addr; // binary address</span><br><span class="line">  struct addrinfo  *ai_next; // next structure in linked list</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="http://beej.us/guide/bgnet/output/html/multipage/sockaddr_inman.html" target="_blank" rel="noopener">struct sockaddr and pals</a></p>
+
+          
         
       
     </div>
@@ -620,14 +623,29 @@
 
       
         
-          使用 VS2015 编译 cpp-netlib
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/15/build-cpp-netlib-with-vs2015/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p><a href="http://cpp-netlib.org/0.11.0/getting_started.html#building-on-windows" target="_blank" rel="noopener">cpp-netlib 官方文档</a></p>
+<p>cpp-netlib 旨在用最新的 C++ 标准，提供易用的网络接口库。</p>
+<ul>
+<li><a href="http://cpp-netlib.org/" target="_blank" rel="noopener">官方网站</a>：官网提供最新的代码和库下载</li>
+<li><a href="https://github.com/cpp-netlib/cpp-netlib" target="_blank" rel="noopener">GitHub</a>：提供较早版本的下载</li>
+</ul>
+<h2 id="编译步骤"><a href="#编译步骤" class="headerlink" title="编译步骤"></a>编译步骤</h2><h4 id="1-编译-boost"><a href="#1-编译-boost" class="headerlink" title="1. 编译 boost"></a>1. 编译 boost</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bootstrap.bat</span><br><span class="line">.\b2 install --prefix=C:\Users\jon\Desktop\builds\boost --toolset=msvc --without-python link=static runtime-link=shared debug release</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>runtime-link=shared</code> 是使用动态库方式编译，对应 VS 设置值 <code>runtime = MD</code></li>
+<li><code>runtime-link=static</code> 是使用静态库方式编译，对应 VS 设置值 <code>runtime = MT</code></li>
+</ul>
+<h4 id="2-生成-cpp-netlib-配置文件"><a href="#2-生成-cpp-netlib-配置文件" class="headerlink" title="2. 生成 cpp-netlib 配置文件"></a>2. 生成 cpp-netlib 配置文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir cpp-netlib-build</span><br><span class="line"></span><br><span class="line">cd cpp-netlib-build</span><br><span class="line"></span><br><span class="line">cmake -G "Visual Studio 14" -DCMAKE_BUILD_TYPE=Debug -DBOOST_ROOT=C:/Users/jon/Desktop/builds/boost ..\cpp-netlib-0.12.0-final</span><br></pre></td></tr></table></figure>
+<p>其它的设置选项还有：</p>
+<ul>
+<li>-DCMAKE_BUILD_TYPE=Debug </li>
+<li>-DCMAKE_C_COMPILER=clang</li>
+<li>-DCMAKE_CXX_COMPILER=clang++ </li>
+</ul>
+<h4 id="3-打开-cpp-netlib-build-CPP-NETLIB-sln-编译"><a href="#3-打开-cpp-netlib-build-CPP-NETLIB-sln-编译" class="headerlink" title="3. 打开 cpp-netlib-build/CPP-NETLIB.sln 编译"></a>3. 打开 <code>cpp-netlib-build/CPP-NETLIB.sln</code> 编译</h4><p>可以全部编译，也可以根据需要单独编译某个模块。比如，单独编译 <code>cppnetlib-uri</code> 项目。编译好的文件输出在 <code>cpp-netlib-build/libs/network/src/Release</code></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="1-Invalid-escape-sequence-U"><a href="#1-Invalid-escape-sequence-U" class="headerlink" title="1. Invalid escape sequence \U"></a>1. Invalid escape sequence \U</h3><p>检查 <code>-DBOOST_ROOT=</code> 后面的路径分隔符是不是反斜扛。</p>
+
+          
         
       
     </div>
@@ -788,14 +806,18 @@
 
       
         
-          使用 VS2015 编译 boost
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/14/build-boost-with-vs2015/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p><a href="http://www.boost.org/doc/libs/1_63_0/more/getting_started/windows.html" target="_blank" rel="noopener">boost 官方文档</a></p>
+<h3 id="最简单的编译方法"><a href="#最简单的编译方法" class="headerlink" title="最简单的编译方法"></a>最简单的编译方法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bootstrap.bat</span><br><span class="line">.\b2.exe</span><br></pre></td></tr></table></figure>
+<p>当编译成功，会得到提示</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">The Boost C++ Libraries were successfully built!</span><br><span class="line"></span><br><span class="line">The following directory should be added to compiler include paths:</span><br><span class="line"></span><br><span class="line">    C:\Users\jon\Desktop\boost_1_63_0</span><br><span class="line"></span><br><span class="line">The following directory should be added to linker library paths:</span><br><span class="line"></span><br><span class="line">    C:\Users\jon\Desktop\boost_1_63_0\stage\lib</span><br></pre></td></tr></table></figure>
+<h3 id="编译并指定目录"><a href="#编译并指定目录" class="headerlink" title="编译并指定目录"></a>编译并指定目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./b2 install --prefix=PREFIX</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.boost.org/doc/libs/1_55_0/doc/html/bbv2/installation.html" target="_blank" rel="noopener">参考</a></p>
+<h3 id="编译参数示例"><a href="#编译参数示例" class="headerlink" title="编译参数示例"></a>编译参数示例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\b2 install --prefix=C:\Users\jon\Desktop\builds\boost --toolset=msvc --without-python link=static runtime-link=shared debug release</span><br></pre></td></tr></table></figure>
+<h3 id="使用-boost-头文件库（Header-Only）"><a href="#使用-boost-头文件库（Header-Only）" class="headerlink" title="使用 boost 头文件库（Header Only）"></a>使用 boost 头文件库（Header Only）</h3><p>将下载的 boost 目录添加到项目的 include 路径即可</p>
+<h3 id="使用-boost-编译库（Header-CPP）"><a href="#使用-boost-编译库（Header-CPP）" class="headerlink" title="使用 boost 编译库（Header+CPP）"></a>使用 boost 编译库（Header+CPP）</h3><p>除了将 boost 目录添加到 include，还要将上面编译出来的 <code>stage/lib</code> 目录添加到 library 路径</p>
+
+          
         
       
     </div>
@@ -956,14 +978,13 @@
 
       
         
-          PHPStorm 设置 watcher
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/19/phpstorm-file-watcher/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p><img src="/images/posts/phpstorm_watch/pic-1.png" alt=""></p>
+<p><img src="/images/posts/phpstorm_watch/pic-2.png" alt=""></p>
+<h4 id="Arguments"><a href="#Arguments" class="headerlink" title="Arguments:"></a>Arguments:</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--no-cache --update $FileName$:$ProjectFileDir$/dist/css/$FileNameWithoutExtension$.css</span><br></pre></td></tr></table></figure>
+<h4 id="Outputs-path-to-refresh"><a href="#Outputs-path-to-refresh" class="headerlink" title="Outputs path to refresh:"></a>Outputs path to refresh:</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">ProjectFileDir$/dist/css/<span class="variable">$FileNameWithoutExtension</span>$.css:<span class="variable">$ProjectFileDir</span>$/dist/css/<span class="variable">$FileNameWithoutExtension</span>$.css.map</span></span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -1124,14 +1145,15 @@
 
       
         
-          记录和总结一些 chromium 的用法
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/19/chrome-tips/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h4 id="记录-SSL-的-Session-Key"><a href="#记录-SSL-的-Session-Key" class="headerlink" title="记录 SSL 的 Session Key"></a>记录 SSL 的 Session Key</h4><p>在环境变量中添加一个变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SSLKEYLOGFILE  C:\Users\Jonathan\Documents\SSLKEYLOGFILE.txt</span><br></pre></td></tr></table></figure>
+<h4 id="可用的命令行参数"><a href="#可用的命令行参数" class="headerlink" title="可用的命令行参数"></a>可用的命令行参数</h4><p><a href="http://peter.sh/experiments/chromium-command-line-switches/" target="_blank" rel="noopener">参考</a></p>
+<h4 id="Chrome-发布日历"><a href="#Chrome-发布日历" class="headerlink" title="Chrome 发布日历"></a>Chrome 发布日历</h4><p><a href="https://www.chromium.org/developers/calendar" target="_blank" rel="noopener">Chromium Development Calendar and Release Info</a></p>
+<h4 id="chromium-browser-official"><a href="#chromium-browser-official" class="headerlink" title="chromium-browser-official"></a>chromium-browser-official</h4><p><a href="https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-49.0.2623.11.tar.xz.hashe%40" target="_blank" rel="noopener">chromium-browser-official</a></p>
+<p><a href="https://chromium.googlesource.com/chromium/src.git" target="_blank" rel="noopener">chromium src</a></p>
+
+          
         
       
     </div>
@@ -1292,14 +1314,12 @@
 
       
         
-          SourceTree 在 windows 操作系统中，操作被挂起
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/17/source-tree-hungs/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h4 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">The server's host key is not cached in the registry. You</span><br><span class="line">have no guarantee that the server is the computer you</span><br><span class="line">think it is.</span><br><span class="line">The server's rsa2 key fingerprint is:</span><br><span class="line">ssh-rsa 2048 59:ca:22:af:f9:8e:6f:f7:87:b3:ea:da:1b:2b:aa:f2</span><br><span class="line">If you trust this host, enter "y" to add the key to</span><br><span class="line">PuTTY's cache and carry on connecting.</span><br><span class="line">If you want to carry on connecting just once, without</span><br><span class="line">adding the key to the cache, enter "n".</span><br><span class="line">If you do not trust this host, press Return to abandon the</span><br><span class="line">connection.</span><br></pre></td></tr></table></figure>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>手动连接一次 git 服务器，比如 GitLab，<a href="http://stackoverflow.com/questions/32437659/cannot-pull-git-remote-repository-from-sourcetree" target="_blank" rel="noopener">StackOverflow</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"C:\Program Files (x86)\Atlassian\SourceTree\tools\putty\plink.exe" gitlab.com</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -1460,14 +1480,12 @@
 
       
         
-          编译 Chromium 常见问题
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/17/build-chromium-issues/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="gclient-sync-错误"><a href="#gclient-sync-错误" class="headerlink" title="gclient sync 错误"></a>gclient sync 错误</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">fatal: Needed a single revision</span><br><span class="line">Does not point to a valid commit: 4ce7fef091e1d63a3bfc2ed225619893b0eb1782</span><br><span class="line"><span class="meta">32&gt;</span><span class="bash"> Unrecognized error, please merge or rebase manually.  </span></span><br><span class="line"><span class="meta">32&gt;</span><span class="bash"> <span class="built_in">cd</span> src\third_party\libjingle\<span class="built_in">source</span>\talk &amp;&amp; git rebase --onto 4ce7fef091e1d63a3bfc2ed225619893b0eb1782 refs/remotes/origin/master</span></span><br></pre></td></tr></table></figure>
+<p>解决办法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gclient sync --with_branch_heads</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -1628,14 +1646,14 @@
 
       
         
-          WebBrowser 运行 ActiveX 异常
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/17/webbrowser-nxcompat-issue/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>前段时间使用 VS2015 编译 WebBrowser 的程序，然后运行包含 ActiveX 的页面时，出现了一些奇怪的问题（呃…问题记不清了）。但是，换成 VS2008 或其它低版本编译器时，又不会出现该问题了。</p>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>经过一翻查找，发现是编译参数 <code>/NXCOMPAT</code> 引起的，早期的 VS，该参数默认为 <code>NO</code>，新版本默认为 <code>YES</code>。可修改默认值为 <code>NO</code> 解决此问题。</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
+<p><a href="http://blog.csdn.net/charlessimonyi/article/details/30479131" target="_blank" rel="noopener">WebBrowser无法显示招商银行密码输入控件的问题</a></p>
+</blockquote>
+
+          
         
       
     </div>
@@ -1796,14 +1814,12 @@
 
       
         
-          Windows Batch 用法
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/17/batch-usage/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h4 id="当前脚本目录"><a href="#当前脚本目录" class="headerlink" title="当前脚本目录"></a>当前脚本目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">%</span><span class="bash">~dp0</span></span><br></pre></td></tr></table></figure>
+<h4 id="当前目录"><a href="#当前目录" class="headerlink" title="当前目录"></a>当前目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for %%* in (.) do set CurrentDirName=%%~nx*</span><br></pre></td></tr></table></figure>
+<h4 id="当前目录（不带斜线-）"><a href="#当前目录（不带斜线-）" class="headerlink" title="当前目录（不带斜线 ）"></a>当前目录（不带斜线 ）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SET mypath=%~dp0</span><br><span class="line">echo %mypath:~0,-1%</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -1964,14 +1980,28 @@
 
       
         
-          使用 vs2015 编译 OpenSSL
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/16/build-openssl-with-vs2015/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="OpenSSL-版本"><a href="#OpenSSL-版本" class="headerlink" title="OpenSSL 版本"></a>OpenSSL 版本</h3><p>openssl-1.0.2j</p>
+<h3 id="必需的工具"><a href="#必需的工具" class="headerlink" title="必需的工具"></a>必需的工具</h3><ul>
+<li>Visual Studio 2015</li>
+<li>ActivePerl</li>
+<li>Nasm (The Netwide Assembler)</li>
+</ul>
+<p>nasm 需要根据需要下载32位或64位版本：</p>
+<ul>
+<li><a href="http://www.nasm.us/pub/nasm/releasebuilds/2.12.02/win32/" target="_blank" rel="noopener">32位</a></li>
+<li><a href="http://www.nasm.us/pub/nasm/releasebuilds/2.12.02/win64/" target="_blank" rel="noopener">64位</a></li>
+</ul>
+<h3 id="编译32位版本"><a href="#编译32位版本" class="headerlink" title="编译32位版本"></a>编译32位版本</h3><h4 id="1-初始化命令行环境"><a href="#1-初始化命令行环境" class="headerlink" title="1. 初始化命令行环境"></a>1. 初始化命令行环境</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cd C:\build\src\openssl-1.0.2j</span><br><span class="line"></span><br><span class="line">set PATH=%PATH%;C:\nasm</span><br><span class="line"></span><br><span class="line">"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"</span><br></pre></td></tr></table></figure>
+<h4 id="2-初始化编译配置"><a href="#2-初始化编译配置" class="headerlink" title="2. 初始化编译配置"></a>2. 初始化编译配置</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">perl Configure VC-WIN32 no-asm</span><br><span class="line"></span><br><span class="line">ms\do_nasm</span><br></pre></td></tr></table></figure>
+<h4 id="3-编译"><a href="#3-编译" class="headerlink" title="3. 编译"></a>3. 编译</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 静态库</span><br><span class="line">nmake /f ms\nt.mak</span><br><span class="line">nmake /f ms\nt.mak test</span><br><span class="line">nmake /f ms\nt.mak install</span><br><span class="line"></span><br><span class="line">// 动态库</span><br><span class="line">nmake -f ms\ntdll.mak</span><br><span class="line">nmake -f ms\ntdll.mak install</span><br></pre></td></tr></table></figure>
+<h3 id="编译64位版本"><a href="#编译64位版本" class="headerlink" title="编译64位版本"></a>编译64位版本</h3><h4 id="1-初始化命令行环境-1"><a href="#1-初始化命令行环境-1" class="headerlink" title="1. 初始化命令行环境"></a>1. 初始化命令行环境</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cd C:\build\src\openssl-1.0.2j</span><br><span class="line"></span><br><span class="line">set PATH=%PATH%;C:\nasm</span><br><span class="line"></span><br><span class="line">"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64</span><br></pre></td></tr></table></figure>
+<h4 id="2-初始化编译配置-1"><a href="#2-初始化编译配置-1" class="headerlink" title="2. 初始化编译配置"></a>2. 初始化编译配置</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">perl Configure VC-WIN64A no-asm</span><br><span class="line"></span><br><span class="line">ms\do_win64a</span><br></pre></td></tr></table></figure>
+<h4 id="3-编译-1"><a href="#3-编译-1" class="headerlink" title="3. 编译"></a>3. 编译</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 静态库</span><br><span class="line">nmake /f ms\nt.mak</span><br><span class="line">nmake /f ms\nt.mak test</span><br><span class="line">nmake /f ms\nt.mak install</span><br><span class="line"></span><br><span class="line">// 动态库</span><br><span class="line">nmake -f ms\ntdll.mak</span><br><span class="line">nmake -f ms\ntdll.mak install</span><br></pre></td></tr></table></figure>
+<h3 id="遇到的错误"><a href="#遇到的错误" class="headerlink" title="遇到的错误"></a>遇到的错误</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Assembling: tmp32\sha1-586.asm</span><br><span class="line">tmp32\sha1-586.asm(1427) : error A2070: invalid instruction operands</span><br><span class="line">tmp32\sha1-586.asm(1571) : error A2070: invalid instruction operands</span><br><span class="line">NMAKE : fatal error U1077: 'ml' : return code '0x1'</span><br><span class="line">Stop.</span><br></pre></td></tr></table></figure>
+<p>解决： <code>perl Configure VC-WIN32 no-asm</code> 加上 no-asm</p>
+
+          
         
       
     </div>

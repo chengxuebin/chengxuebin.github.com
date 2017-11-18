@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="ios,陷阱,面试" />
+  <meta name="keywords" content="ios," />
 
 
 
@@ -115,20 +115,20 @@
 
 
 
-<meta name="description" content="总结IOS开发中的难点、陷阱">
-<meta name="keywords" content="ios,陷阱,面试">
+<meta name="description" content="总结ios开发遇到的易混知识点、陷阱 Frame VS BoundsA picture worth thousand words! 见下图。  Frame： 视图的frame是相对父坐标系的原点和矩形，默认从左上点开始。  Bounds： 视图的bounds是相对自身坐标系的原点和区域。  Center： 中点是相对父">
+<meta name="keywords" content="ios">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IOS要点总结">
 <meta property="og:url" content="http://onthink.com/2014/06/16/ios-bullet/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="总结IOS开发中的难点、陷阱">
+<meta property="og:description" content="总结ios开发遇到的易混知识点、陷阱 Frame VS BoundsA picture worth thousand words! 见下图。  Frame： 视图的frame是相对父坐标系的原点和矩形，默认从左上点开始。  Bounds： 视图的bounds是相对自身坐标系的原点和区域。  Center： 中点是相对父坐标系的中心点。 注意middle是相对自身坐标系的中心点   注意，当view">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://i.stack.imgur.com/3jcne.jpg">
-<meta property="og:image" content="http://onthink.com/2014/06/16/ios-bullet/!--￼2--%3E/view-init.png">
-<meta property="og:updated_time" content="2017-11-16T15:57:36.000Z">
+<meta property="og:image" content="http://onthink.com/images/posts/view-init.png">
+<meta property="og:updated_time" content="2017-11-18T03:01:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IOS要点总结">
-<meta name="twitter:description" content="总结IOS开发中的难点、陷阱">
+<meta name="twitter:description" content="总结ios开发遇到的易混知识点、陷阱 Frame VS BoundsA picture worth thousand words! 见下图。  Frame： 视图的frame是相对父坐标系的原点和矩形，默认从左上点开始。  Bounds： 视图的bounds是相对自身坐标系的原点和区域。  Center： 中点是相对父坐标系的中心点。 注意middle是相对自身坐标系的中心点   注意，当view">
 <meta name="twitter:image" content="http://i.stack.imgur.com/3jcne.jpg">
 
 
@@ -442,10 +442,6 @@
           
 
           
-              <div class="post-description">
-                  总结IOS开发中的难点、陷阱
-              </div>
-          
 
         </div>
       </header>
@@ -479,7 +475,7 @@
 <li>awakeFromNib 是被触发的。当UIView与xib内组件建立好连接（connection）后被触发。</li>
 </ul>
 <p>注：initWithNibName:boundle是发送到UIViewController的消息，与上面的方法对象不同。</p>
-<p><img src="!--￼2--&gt;/view-init.png" alt=""></p>
+<p><img src="/images/posts/view-init.png" alt=""></p>
 <h2 id="extension-VS-category"><a href="#extension-VS-category" class="headerlink" title="extension VS category"></a>extension VS category</h2><ul>
 <li><p>category是一种扩展已经存在的Class的方法。当你不能接触到Class的源码时，这是一种很有用的方式. 它常把文件取名为 “Class+CategoryName.h”, 比如 “NSView+CustomAdditions.h”， 包括.m的命名.</p>
 </li>

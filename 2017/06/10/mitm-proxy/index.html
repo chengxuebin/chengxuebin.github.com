@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="openssl,proxy" />
+  <meta name="keywords" content="openssl,proxy," />
 
 
 
@@ -115,20 +115,20 @@
 
 
 
-<meta name="description" content="中间人劫持代理">
+<meta name="description" content="中间人劫持代理 注：图片来源于 mitmproxy 本代理基于 TCP，是一个不关心协议的代理？是的 HTTP 代理 VS Socks 代理问题与挑战获取远端主机名（Host）当应用设置了代理后，在 TLS 协商前，应用首先会发一条 CONNECT 请求，期待通过代理和远端服务器建立 TLS 隧道（tunnel）。 1">
 <meta name="keywords" content="openssl,proxy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="中间人劫持代理">
 <meta property="og:url" content="http://onthink.com/2017/06/10/mitm-proxy/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="中间人劫持代理">
+<meta property="og:description" content="中间人劫持代理 注：图片来源于 mitmproxy 本代理基于 TCP，是一个不关心协议的代理？是的 HTTP 代理 VS Socks 代理问题与挑战获取远端主机名（Host）当应用设置了代理后，在 TLS 协商前，应用首先会发一条 CONNECT 请求，期待通过代理和远端服务器建立 TLS 隧道（tunnel）。 1CONNECT 10.1.1.1:443 HTTP/1.1 作为中间人代理，并不">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://onthink.com/2017/06/10/images/mitm_proxy/how-mitmproxy-works-explicit-https.png">
-<meta property="og:updated_time" content="2017-11-16T15:57:36.000Z">
+<meta property="og:image" content="http://onthink.com/images/posts/mitm_proxy/how-mitmproxy-works-explicit-https.png">
+<meta property="og:updated_time" content="2017-11-18T03:00:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中间人劫持代理">
-<meta name="twitter:description" content="中间人劫持代理">
-<meta name="twitter:image" content="http://onthink.com/2017/06/10/images/mitm_proxy/how-mitmproxy-works-explicit-https.png">
+<meta name="twitter:description" content="中间人劫持代理 注：图片来源于 mitmproxy 本代理基于 TCP，是一个不关心协议的代理？是的 HTTP 代理 VS Socks 代理问题与挑战获取远端主机名（Host）当应用设置了代理后，在 TLS 协商前，应用首先会发一条 CONNECT 请求，期待通过代理和远端服务器建立 TLS 隧道（tunnel）。 1CONNECT 10.1.1.1:443 HTTP/1.1 作为中间人代理，并不">
+<meta name="twitter:image" content="http://onthink.com/images/posts/mitm_proxy/how-mitmproxy-works-explicit-https.png">
 
 
 
@@ -441,10 +441,6 @@
           
 
           
-              <div class="post-description">
-                  中间人劫持代理
-              </div>
-          
 
         </div>
       </header>
@@ -459,13 +455,14 @@
       
 
       
-        <h2 id="中间人劫持代理"><a href="#中间人劫持代理" class="headerlink" title="中间人劫持代理"></a>中间人劫持代理</h2><p><img src="../images/mitm_proxy/how-mitmproxy-works-explicit-https.png" alt=""></p>
+        <h2 id="中间人劫持代理"><a href="#中间人劫持代理" class="headerlink" title="中间人劫持代理"></a>中间人劫持代理</h2><p><img src="/images/posts/mitm_proxy/how-mitmproxy-works-explicit-https.png" alt=""></p>
 <p>注：图片来源于 mitmproxy</p>
 <h4 id="本代理基于-TCP，是一个不关心协议的代理？"><a href="#本代理基于-TCP，是一个不关心协议的代理？" class="headerlink" title="本代理基于 TCP，是一个不关心协议的代理？"></a>本代理基于 TCP，是一个不关心协议的代理？</h4><p>是的</p>
 <h4 id="HTTP-代理-VS-Socks-代理"><a href="#HTTP-代理-VS-Socks-代理" class="headerlink" title="HTTP 代理 VS Socks 代理"></a>HTTP 代理 VS Socks 代理</h4><h2 id="问题与挑战"><a href="#问题与挑战" class="headerlink" title="问题与挑战"></a>问题与挑战</h2><h3 id="获取远端主机名（Host）"><a href="#获取远端主机名（Host）" class="headerlink" title="获取远端主机名（Host）"></a>获取远端主机名（Host）</h3><p>当应用设置了代理后，在 TLS 协商前，应用首先会发一条 CONNECT 请求，期待通过代理和远端服务器建立 TLS 隧道（tunnel）。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONNECT 10.1.1.1:443 HTTP/1.1</span><br></pre></td></tr></table></figure>
 <p>作为中间人代理，并不帮助建立隧道，而是需要解析 CONNECT 请求，并从中获得远端服务器主机名。同时返回给被代理程序隧道建立成功的回复：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 根据请求指定版本号</span><br><span class="line">HTTP/1.0 200 Connection established\r\n\r\n</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="Subject-Alternative-Name"><a href="#Subject-Alternative-Name" class="headerlink" title="Subject Alternative Name"></a>Subject Alternative Name</h3><p>这是服务器证书包含的一个字段，用于标识证书签发的域名。</p>
 <p>通常服务器的域名保存在 <code>Common name</code> 字段，只保存一个域名，而 <code>Subject Alternative Name</code> 可保存多个域名，并支持通配符。也就是，有的时候访问的服务器主机并不和 <code>Common name</code> 匹配，但匹配 <code>SAN</code>，这样的证书也是合法的。</p>
 <h3 id="服务器名称指示（SNI）"><a href="#服务器名称指示（SNI）" class="headerlink" title="服务器名称指示（SNI）"></a>服务器名称指示（SNI）</h3><p>这是识别同一 IP 部署的多个带证书虚拟主机（Virtual Host）的技术。</p>

@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="android,9.png,nine patch,9-Patch" />
+  <meta name="keywords" content="android,9-Patch," />
 
 
 
@@ -115,23 +115,23 @@
 
 
 
-<meta name="description" content="总结制作9.png图片时遇到的问题">
-<meta name="keywords" content="android,9.png,nine patch,9-Patch">
+<meta name="description" content="9-Patch是Android设备上处理可扩展图片的方式。众所周知，Android设备的屏幕尺寸和分辨率众多，为了图片能完美的适配各种屏幕，Android采用了支持可扩展的图片的方案。 9-Patch的使用非常简便。围绕在图片周围的黑线便是定义之处。关于此格式需要注意的地方：  png图片的一周有 1px的边框，用于定">
+<meta name="keywords" content="android,9-Patch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 9-Patch">
 <meta property="og:url" content="http://onthink.com/2014/08/09/android-nine-patch/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="总结制作9.png图片时遇到的问题">
+<meta property="og:description" content="9-Patch是Android设备上处理可扩展图片的方式。众所周知，Android设备的屏幕尺寸和分辨率众多，为了图片能完美的适配各种屏幕，Android采用了支持可扩展的图片的方案。 9-Patch的使用非常简便。围绕在图片周围的黑线便是定义之处。关于此格式需要注意的地方：  png图片的一周有 1px的边框，用于定义可扩展区域和静态区域（黑线） 图片一周，黑线标识可扩展区域，黑线必须是 纯黑">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://onthink.com/2014/08/09/android-nine-patch/!--￼0--%3E/ninepatch_raw.png">
-<meta property="og:image" content="http://onthink.com/2014/08/09/android-nine-patch/!--￼1--%3E/greater-than-1px.jpg">
-<meta property="og:image" content="http://onthink.com/2014/08/09/android-nine-patch/!--￼2--%3E/multi-scretch-lines.jpg">
-<meta property="og:image" content="http://onthink.com/2014/08/09/android-nine-patch/!--￼3--%3E/9-patch-content-area.jpg">
-<meta property="og:updated_time" content="2017-11-16T15:57:36.000Z">
+<meta property="og:image" content="http://onthink.com/images/posts/ninepatch_raw.png">
+<meta property="og:image" content="http://onthink.com/images/posts/greater-than-1px.jpg">
+<meta property="og:image" content="http://onthink.com/images/posts/multi-scretch-lines.jpg">
+<meta property="og:image" content="http://onthink.com/images/posts/9-patch-content-area.jpg">
+<meta property="og:updated_time" content="2017-11-18T03:01:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 9-Patch">
-<meta name="twitter:description" content="总结制作9.png图片时遇到的问题">
-<meta name="twitter:image" content="http://onthink.com/2014/08/09/android-nine-patch/!--￼0--%3E/ninepatch_raw.png">
+<meta name="twitter:description" content="9-Patch是Android设备上处理可扩展图片的方式。众所周知，Android设备的屏幕尺寸和分辨率众多，为了图片能完美的适配各种屏幕，Android采用了支持可扩展的图片的方案。 9-Patch的使用非常简便。围绕在图片周围的黑线便是定义之处。关于此格式需要注意的地方：  png图片的一周有 1px的边框，用于定义可扩展区域和静态区域（黑线） 图片一周，黑线标识可扩展区域，黑线必须是 纯黑">
+<meta name="twitter:image" content="http://onthink.com/images/posts/ninepatch_raw.png">
 
 
 
@@ -444,10 +444,6 @@
           
 
           
-              <div class="post-description">
-                  总结制作9.png图片时遇到的问题
-              </div>
-          
 
         </div>
       </header>
@@ -471,16 +467,16 @@
 <li>保存时使用扩展名 <strong>.9.png</strong></li>
 </ul>
 <p>下面说明黑线的作用。</p>
-<p><img src="!--￼0--&gt;/ninepatch_raw.png" alt=""></p>
+<p><img src="/images/posts/ninepatch_raw.png" alt=""></p>
 <h3 id="Top和Left"><a href="#Top和Left" class="headerlink" title="Top和Left"></a>Top和Left</h3><p>Top和Left定义了将要被拉伸的部分。要注意的点：</p>
 <ul>
-<li><p>9-Patch图 <strong>只能拉伸</strong>，不是整块复制，不能收缩<br>  <img src="!--￼1--&gt;/greater-than-1px.jpg" alt=""></p>
+<li><p>9-Patch图 <strong>只能拉伸</strong>，不是整块复制，不能收缩<br>  <img src="/images/posts/greater-than-1px.jpg" alt=""></p>
 </li>
-<li><p>同一边可以定义多个区域，使用时将按照区域的宽度等比例拉伸<br>  <img src="!--￼2--&gt;/multi-scretch-lines.jpg" alt=""></p>
+<li><p>同一边可以定义多个区域，使用时将按照区域的宽度等比例拉伸<br>  <img src="/images/posts/multi-scretch-lines.jpg" alt=""></p>
 </li>
 </ul>
 <h3 id="Right和Bottom"><a href="#Right和Bottom" class="headerlink" title="Right和Bottom"></a>Right和Bottom</h3><p>Right和Bottom定义了内容的区域。</p>
-<p><img src="!--￼3--&gt;/9-patch-content-area.jpg" alt=""></p>
+<p><img src="/images/posts/9-patch-content-area.jpg" alt=""></p>
 
       
     </div>

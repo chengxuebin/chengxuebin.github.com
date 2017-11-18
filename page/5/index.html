@@ -1200,14 +1200,60 @@
 
       
         
-          记录如何创建配置 xdebug
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/06/04/osx-config-xdebug/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="一、xdebug-工作原理"><a href="#一、xdebug-工作原理" class="headerlink" title="一、xdebug 工作原理"></a>一、xdebug 工作原理</h2><p>引用 xdebug 的文档：<a href="http://xdebug.org/docs/remote" target="_blank" rel="noopener">Communication Set-up</a> </p>
+<p>当远程调试时，xdebug 充当着客户端的角色，而 IDE 像是服务器，它会侦听调试端口，就是默认的9000，等待 xdebug 建立远程调试的连接。如下图所求：</p>
+<p><img src="/images/posts/xdebug/dbgp-setup.gif" alt=""></p>
+<ul>
+<li>The IP of the server is 10.0.1.2 with HTTP on port 80</li>
+<li>The IDE is on IP 10.0.1.42, so xdebug.remote_host is set to 10.0.1.42</li>
+<li>The IDE listens on port 9000, so xdebug.remote_port is set to 9000</li>
+<li>The HTTP request is started on the machine running the IDE</li>
+<li>Xdebug connects to 10.0.1.42:9000</li>
+<li>Debugging runs, HTTP Response provided</li>
+</ul>
+<p>当使用匿名IP时，是通过配置 xdebug.remote_connect_back，工作流程像下图所求：</p>
+<p><img src="/images/posts/xdebug/dbgp-setup2.gif" alt=""></p>
+<ul>
+<li>The IP of the server is 10.0.1.2 with HTTP on port 80</li>
+<li>The IDE is on an unknown IP, so xdebug.remote_connect_back is set to 1</li>
+<li>The IDE listens on port 9000, so xdebug.remote_port is set to 9000</li>
+<li>The HTTP request is made, Xdebug detects the IP addres from the HTTP headers</li>
+<li>Xdebug connects to the detected IP (10.0.1.42) on port 9000</li>
+<li>Debugging runs, HTTP Response provided</li>
+</ul>
+<p>当有了侦听端口的机制，那他们是如何配合起来工作的呢？</p>
+<p>HTTP Debug Sessions</p>
+<p>Xdebug 是依靠 cookies 来跟踪来自浏览器的请求. 工作流程是这样:</p>
+<ol>
+<li>使用GET或POST的请求参数：<code>XDEBUG_SESSION_START=name</code>， 当有请求参数时会忽略 <code>XDEBUG_SESSION</code> cookies 的值。</li>
+<li>设置请求的cookies值 <code>XDEBUG_SESSION</code></li>
+</ol>
+<p>当xdebug检测到 <code>XDEBUG_SESSION_START</code> 或 <code>XDEBUG_SESSION</code>时，会尝试连接调用的客户端</p>
+<p>当xdebug检测到 <code>XDEBUG_SESSION_STOP</code> 时，会终止调试。</p>
+<h2 id="二、配置-xdebug"><a href="#二、配置-xdebug" class="headerlink" title="二、配置 xdebug"></a>二、配置 xdebug</h2><p>首先安装 xdebug 模块</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pecl install xdebug</span><br></pre></td></tr></table></figure>
+<p>配置 <code>php.ini</code>:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[xdebug]</span></span><br><span class="line"><span class="attr">zend_extension</span>=/usr/local/Cellar/php56/<span class="number">5.6</span>.<span class="number">8</span>/lib/php/extensions/<span class="literal">no</span>-debug-non-zts-<span class="number">20131226</span>/xdebug.so</span><br><span class="line">xdebug.remote_enable=1</span><br><span class="line">xdebug.remote_autostart=1 </span><br><span class="line">xdebug.remote_host=127.0.0.1</span><br><span class="line">xdebug.remote_port=9001</span><br><span class="line">xdebug.idekey = "PHPSTORM"</span><br></pre></td></tr></table></figure>
+<p><em>如何知道配置成功了？</em></p>
+<p>通过 <code>phpinfo()</code>，如何看到启动的模块中包含 xdebug 信息，且配置如上面所示，则表示成功了。</p>
+<h2 id="四、配置IDE"><a href="#四、配置IDE" class="headerlink" title="四、配置IDE"></a>四、配置IDE</h2><p>这里使用 phpstrom。</p>
+<ol>
+<li><p>配置 phpstorm 的侦听端口：</p>
+<p>  <img src="/images/posts/xdebug/phpstorm-debug-settings.png" alt=""></p>
+</li>
+<li><p>启动侦听端口</p>
+<p> <img src="/images/posts/xdebug/phpstorm-bug-phone.png" alt=""></p>
+</li>
+<li><p>（可选）安装浏览器插件，设置idekey<br>如果你使用不同的IDE调试，每个IDE的key是不一样的，你可以通过安装浏览器插件，让它配置key并插入cookies，比如chrome插件xdebug helper</p>
+<p> <img src="/images/posts/xdebug/xdebug-browser-extension.png" alt=""></p>
+</li>
+</ol>
+<p><em>如何知道IDE配置成功了？</em></p>
+<p>通过 terminal，执行 <code>sudo lsof -n -i4TCP:9001 | grep LISTEN</code>，如果看到IDE在侦听该端口，则表示成功了。</p>
+<h2 id="五、开始调试"><a href="#五、开始调试" class="headerlink" title="五、开始调试"></a>五、开始调试</h2><p>设置断点，然后浏览器打开要调试的url。</p>
+
+          
         
       
     </div>
@@ -1368,14 +1414,15 @@
 
       
         
-          记录如何创建 Chromium 扩展事件
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/06/03/osx-install-php-extension/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="一、安装xcdoe命令行"><a href="#一、安装xcdoe命令行" class="headerlink" title="一、安装xcdoe命令行"></a>一、安装xcdoe命令行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install</span><br></pre></td></tr></table></figure>
+<h2 id="二、通过PECL来安装PHP扩展"><a href="#二、通过PECL来安装PHP扩展" class="headerlink" title="二、通过PECL来安装PHP扩展"></a>二、通过PECL来安装PHP扩展</h2><p>在 <code>/usr/lib/php</code> 目录下有个 <code>install-pear-nozlib.phar</code> 文件（怎么来的？），通过它首先安装 PECL 管理器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo php install-pear-nozlib.phar</span><br></pre></td></tr></table></figure>
+<h2 id="三、获取所需的扩展"><a href="#三、获取所需的扩展" class="headerlink" title="三、获取所需的扩展"></a>三、获取所需的扩展</h2><p>比如，我们安装 xdebug</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pecl install xdebug</span><br></pre></td></tr></table></figure>
+<h2 id="四、更新-php-配置文件"><a href="#四、更新-php-配置文件" class="headerlink" title="四、更新 php 配置文件"></a>四、更新 php 配置文件</h2><p>打开 <code>php.ini</code>，配置新获取的扩展（略）</p>
+
+          
         
       
     </div>
@@ -1536,14 +1583,42 @@
 
       
         
-          osx 系统的好用的命令
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/06/02/osx-commans/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="一、网络"><a href="#一、网络" class="headerlink" title="一、网络"></a>一、网络</h2><h3 id="查看谁在侦听端口"><a href="#查看谁在侦听端口" class="headerlink" title="查看谁在侦听端口"></a>查看谁在侦听端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo lsof -n -i4TCP:<span class="variable">$PORT</span> | grep LISTEN</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="http://en.wikipedia.org/wiki/Lsof" target="_blank" rel="noopener">lsof</a> is a command meaning “list open files”, which is used in many Unix-like systems to report a list of all open files and the processes that opened them.</p>
+</blockquote>
+<h3 id="修改-Host"><a href="#修改-Host" class="headerlink" title="修改 Host"></a>修改 Host</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/hosts</span><br></pre></td></tr></table></figure>
+<p>注意 <code>::1</code> 的写法：</p>
+<blockquote>
+<p>如果地址中出现连续的0，则可以用“::”号来压缩(称为零压缩)，进一步简化IP v6地址表示。例如，地址FE80:0:0:0:2AA:FF:FE9A:4CA2 可以压缩成FE80::2AA:FF:FE9A:4CA2；FF02:0:0:0:0:0:0:2 可以压缩成 FF02::2。零压缩只能用于压缩冒号十六进制地址中一个连续的16位块，不能压缩部分16位信息块，例如，不能将FF02:30:0:0:0:0:0:5 表示成 FF02:3::5。用 :: 表示0位的数量用(8-n)×16公式来计算，其中n为地址中的16位块的数量。例如，在地址FF02::2中，被压缩了96=(8-2)×16个0。零压缩只能在给定地址中使用一次，否则，就无法确定每个双冒号 (::)实例所表示的 0位数量。</p>
+<p>特殊地址。IP v6中有两个特殊地址：</p>
+<ul>
+<li>未指定地址(0:0:0:0:0:0:0:0 或::)：仅用于指出某个地址不存在，它等价于 IP v4 未指定地址0.0.0.0。未指定地址通常作为源地址来验证暂定地址的惟一性，但不会用作目的地址。</li>
+<li>环回地址(0:0:0:0:0:0:0:1或::1)：用来标识环回接口，允许节点自发自收，它等价于IP v4环回地址 127.0.0.1。</li>
+</ul>
+</blockquote>
+<h3 id="统计代码行数"><a href="#统计代码行数" class="headerlink" title="统计代码行数"></a>统计代码行数</h3><ul>
+<li>列出每个文件的行数</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">"*.m"</span> -or -name <span class="string">"*.h"</span> -or -name <span class="string">"*.xib"</span> -or -name <span class="string">"*.c"</span> |xargs wc -l</span><br></pre></td></tr></table></figure>
+<ul>
+<li>列出代码行数总和 </li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">"*.m"</span> -or -name <span class="string">"*.h"</span> -or -name <span class="string">"*.xib"</span> -or -name <span class="string">"*.c"</span> |xargs grep -v <span class="string">"^$"</span>|wc -l</span><br></pre></td></tr></table></figure>
+<h3 id="查看正在运行的进程"><a href="#查看正在运行的进程" class="headerlink" title="查看正在运行的进程"></a>查看正在运行的进程</h3><ul>
+<li>通过进程名查看</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux|grep <span class="string">"Application Name"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>按 CPU 排序</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -o cpu</span><br></pre></td></tr></table></figure>
+<ul>
+<li>按内存使用排序</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -o rsize</span><br></pre></td></tr></table></figure>
+          
         
       
     </div>
@@ -1704,14 +1779,51 @@
 
       
         
-          记录如何创建 Chromium 扩展事件
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/05/23/chromium-create-extension-event/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="一、创建事件名"><a href="#一、创建事件名" class="headerlink" title="一、创建事件名"></a>一、创建事件名</h2><ul>
+<li>打开 <code>chrome/browser/extensions/event_names.h</code></li>
+</ul>
+<p>添加</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> event_names &#123;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">+ <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">char</span> kOnLoginByCertComplete[];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>打开 <code>chrome/browser/extensions/event_names.cc</code></li>
+</ul>
+<p>添加</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> event_names &#123;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">+ <span class="keyword">const</span> <span class="keyword">char</span> kOnLoginByCertComplete[] = <span class="string">"wintrust.onLoginByCertComplete"</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二、添加事件的描述"><a href="#二、添加事件的描述" class="headerlink" title="二、添加事件的描述"></a>二、添加事件的描述</h2><ul>
+<li>打开 <code>chrome\common\extensions\api\wintrust.json</code></li>
+</ul>
+<p>添加</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">    <span class="string">"namespace"</span>: <span class="string">"wintrust"</span>,</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">+    <span class="string">"events"</span>: [&#123;</span><br><span class="line">+      <span class="string">"name"</span>: <span class="string">"onLoginByCertComplete"</span>,</span><br><span class="line">+      <span class="string">"description"</span>: <span class="string">"Fired when login vpn by cert."</span>,</span><br><span class="line">+      <span class="string">"type"</span>: <span class="string">"function"</span>,</span><br><span class="line">+      <span class="string">"parameters"</span>: [&#123;<span class="string">"name"</span>: <span class="string">"success"</span>, <span class="string">"type"</span>:<span class="string">"boolean"</span>&#125;]</span><br><span class="line">+    &#125;]</span><br><span class="line"></span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+<h2 id="三、添加触发扩展事件的事件"><a href="#三、添加触发扩展事件的事件" class="headerlink" title="三、添加触发扩展事件的事件"></a>三、添加触发扩展事件的事件</h2><ul>
+<li>打开 <code>content\public\browser\notification_types.h</code></li>
+</ul>
+<p>添加</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> NotificationType &#123;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">+<span class="comment">// 证书登录的结果</span></span><br><span class="line">+NOTIFICATION_LOGIN_BY_CERT_COMPLETE,</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="四、绑定第三步事件的回调"><a href="#四、绑定第三步事件的回调" class="headerlink" title="四、绑定第三步事件的回调"></a>四、绑定<strong>第三步</strong>事件的回调</h2><ul>
+<li>打开 <code>chrome/browser/extensions/browser_event_router.cc</code></li>
+</ul>
+<p>添加绑定</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">BrowserEventRouter::BrowserEventRouter(Profile* profile)</span><br><span class="line">    : profile_(profile) &#123;</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  registrar_.Add(<span class="keyword">this</span>,</span><br><span class="line">                 content::NOTIFICATION_LOGIN_BY_CERT_COMPLETE,</span><br><span class="line">                 content::Source&lt;Profile&gt;(profile_));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现回调</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> BrowserEventRouter::Observe(<span class="keyword">int</span> type,</span><br><span class="line">                                 <span class="keyword">const</span> content::NotificationSource&amp; source,</span><br><span class="line">                                 <span class="keyword">const</span> content::NotificationDetails&amp; details) &#123;</span><br><span class="line">  ...</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type == content::NOTIFICATION_LOGIN_BY_CERT_COMPLETE) &#123;</span><br><span class="line">    scoped_ptr&lt;ListValue&gt; args(<span class="keyword">new</span> ListValue());</span><br><span class="line">    <span class="keyword">bool</span> value = *(content::Details&lt;<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&gt;(details).ptr()) == <span class="string">"true"</span>;</span><br><span class="line">    args-&gt;Append(Value::CreateBooleanValue(value));</span><br><span class="line">    DispatchEvent(profile_, events::kOnLoginByCertComplete, args.Pass(), EventRouter::USER_GESTURE_UNKNOWN);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    NOTREACHED();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="五、实现触发消息"><a href="#五、实现触发消息" class="headerlink" title="五、实现触发消息"></a>五、实现触发消息</h2><p>在某个合适和需要的位置以下列的代码触发 <code>NOTIFICATION_LOGIN_BY_CERT_COMPLETE</code> 事件</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+  <span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">detail</span><span class="params">(<span class="string">"false"</span>)</span></span>;</span><br><span class="line">+  content::NotificationService::current()-&gt;Notify(</span><br><span class="line">+      content::NOTIFICATION_LOGIN_BY_CERT_COMPLETE,</span><br><span class="line">+      content::Source&lt;Profile&gt;(browser_-&gt;profile()),</span><br><span class="line">+      content::Details&lt;<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&gt;(&amp;detail));</span><br></pre></td></tr></table></figure>
+<h2 id="六、测试新事件"><a href="#六、测试新事件" class="headerlink" title="六、测试新事件"></a>六、测试新事件</h2><ol>
+<li><p>在扩展的 <code>manifest</code> 里首先声明对 <code>wintrust</code> 命名空间的权限</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   <span class="string">"permissions"</span>: [</span><br><span class="line">    <span class="string">"*://*/*"</span>,</span><br><span class="line">    <span class="string">"wintrust"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>绑定事件回调函数</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chrome.wintrust.onLoginByCertComplete.addListener(<span class="function"><span class="keyword">function</span>(<span class="params">success</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Login result is: '</span>, success);  </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>触发<strong>第五步</strong>定义的条件，使事件发生。</li>
+</ol>
+
+          
         
       
     </div>
@@ -1872,14 +1984,73 @@
 
       
         
-          记录如何创建 Chromium 扩展接口
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/05/22/chromium-create-extension-api/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="一、添加新接口描述文件"><a href="#一、添加新接口描述文件" class="headerlink" title="一、添加新接口描述文件"></a>一、添加新接口描述文件</h2><ol>
+<li><p>新建描述文件</p>
+<p> 创建 <code>chrome\common\extensions\api\wintrust.json</code></p>
+<p> 添加接口描述代码：</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">      <span class="comment">// 获取浏览器模块目录</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"versionDirectory"</span>,</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"function"</span>,</span><br><span class="line">        <span class="string">"parameters"</span>: [&#123;</span><br><span class="line">            <span class="string">"type"</span>: <span class="string">"function"</span>,</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"callback"</span>,</span><br><span class="line">            <span class="string">"parameters"</span>: [&#123;</span><br><span class="line">              <span class="string">"type"</span>: <span class="string">"string"</span>,</span><br><span class="line">              <span class="string">"name"</span>: <span class="string">"path"</span></span><br><span class="line">            &#125;]</span><br><span class="line">         &#125;]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加新文件到 <code>GYP</code></p>
+<p> 打开 <code>src\chrome\common\extensions\api\api.gyp</code>, 添加：</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="string">'schema_files'</span>: [</span><br><span class="line">  ...</span><br><span class="line">+  # 新接口	  </span><br><span class="line">+  <span class="string">'wintrust.json'</span>,</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加新文件到 <code>grd</code> </p>
+<p> 打开 <code>src\chrome\common\extensions_api_resources.grd</code>，添加</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">grit</span> <span class="attr">latest_public_release</span>=<span class="string">"0"</span> <span class="attr">current_release</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">outputs</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"grit/extensions_api_resources.h"</span> <span class="attr">type</span>=<span class="string">"rc_header"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">emit</span> <span class="attr">emit_type</span>=<span class="string">'prepend'</span>&gt;</span><span class="tag">&lt;/<span class="name">emit</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">output</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"extensions_api_resources.pak"</span> <span class="attr">type</span>=<span class="string">"data_package"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"extensions_api_resources.rc"</span> <span class="attr">type</span>=<span class="string">"rc_all"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">outputs</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">release</span> <span class="attr">seq</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">	  ...</span><br><span class="line">      <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"IDR_EXTENSION_API_JSON_WINTRUST"</span> <span class="attr">file</span>=<span class="string">"extensions\api\wintrust.json"</span> <span class="attr">type</span>=<span class="string">"BINDATA"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">release</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">grit</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="二、添加新接口头文件和实现"><a href="#二、添加新接口头文件和实现" class="headerlink" title="二、添加新接口头文件和实现"></a>二、添加新接口头文件和实现</h2><ol>
+<li><p>新建头文件和实现文件</p>
+<p> 创建 <code>src\chrome\browser\extensions\api\wintrust\wintrust_api.h</code> 和 <code>src\chrome\browser\extensions\api\wintrust\wintrust_api.cc</code></p>
+</li>
+<li><p>添加新文件到 <code>GYP</code></p>
+<p> 打开 <code>src\chrome\chrome_browser_extensions.gypi</code>, 添加：</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'sources'</span>: [</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">   +   # win-trust 添加的插件接口</span><br><span class="line">   +    <span class="string">'browser/extensions/api/wintrust/wintrust_api.h'</span>,</span><br><span class="line">   +    <span class="string">'browser/extensions/api/wintrust/wintrust_api.cc'</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现 <code>wintrust_api.h</code></p>
+</li>
+</ol>
+<pre><code><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"chrome/browser/extensions/extension_function.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> extensions &#123;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">WintrustVersionDirectoryFunction</span> :</span> <span class="keyword">public</span> SyncExtensionFunction &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    WintrustVersionDirectoryFunction();</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">bool</span> <span class="title">RunImpl</span><span class="params">()</span> OVERRIDE</span>;</span><br><span class="line">  <span class="keyword">protected</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~WintrustVersionDirectoryFunction()&#123;&#125;;</span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    DECLARE_EXTENSION_FUNCTION(<span class="string">"wintrust.versionDirectory"</span>, WINTRUST_VERSIONDIRECTORY);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><ol>
+<li>实现 <code>wintrust_api.cc</code></li>
+</ol>
+<pre><code><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"chrome/browser/extensions/api/wintrust/wintrust_api.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"base/file_util.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"base/path_service.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"chrome/browser/profiles/profile.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> extensions&#123;</span><br><span class="line">  </span><br><span class="line">  WintrustVersionDirectoryFunction::WintrustVersionDirectoryFunction()&#123;&#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">bool</span> WintrustVersionDirectoryFunction::RunImpl() &#123;</span><br><span class="line">    base::FilePath path;</span><br><span class="line">    PathService::Get(base::DIR_MODULE, &amp;path);</span><br><span class="line"></span><br><span class="line">    scoped_ptr&lt;base::StringValue&gt; value (base::Value::CreateStringValue(path.value().c_str()));</span><br><span class="line">    </span><br><span class="line">    SetResult(value.release());</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h2 id="三、重新生成项目（sln）"><a href="#三、重新生成项目（sln）" class="headerlink" title="三、重新生成项目（sln）"></a>三、重新生成项目（sln）</h2><p>执行 <code>python build\gyp_chromium</code></p>
+<h2 id="四、为新接口定义C-常量"><a href="#四、为新接口定义C-常量" class="headerlink" title="四、为新接口定义C++常量"></a>四、为新接口定义C++常量</h2><ul>
+<li>打开 <code>src\chrome\browser\extensions\extension_function_histogram_value.h</code></li>
+</ul>
+<p>添加下面代码, 转换示例： <code>Example: &quot;tabs.create&quot; -&gt; TABS_CREATE</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> HistogramValue &#123;</span><br><span class="line">  UNKNOWN = <span class="number">0</span>,</span><br><span class="line">  ...</span><br><span class="line">  </span><br><span class="line">+  <span class="comment">// 赢达信客户端添加的接口</span></span><br><span class="line">+  WINTRUST_VERSIONDIRECTORY,</span><br><span class="line"></span><br><span class="line">  ENUM_BOUNDARY <span class="comment">// Last entry: Add new entries above.</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="五、注册新接口类（class）"><a href="#五、注册新接口类（class）" class="headerlink" title="五、注册新接口类（class）"></a>五、注册新接口类（class）</h2><ul>
+<li>打开 <code>src\chrome\browser\extensions\extension_function_registry.cc</code></li>
+</ul>
+<p>添加下面代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 赢达信客户端接口</span><br><span class="line">#include &quot;chrome/browser/extensions/api/wintrust/wintrust_api.h&quot;</span><br><span class="line"></span><br><span class="line">void ExtensionFunctionRegistry::ResetFunctions() &#123;</span><br><span class="line">#if defined(ENABLE_EXTENSIONS)</span><br><span class="line"></span><br><span class="line">  // Register all functions here.</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  // 赢达信客户端定义的接口</span><br><span class="line">  RegisterFunction&lt;extensions::WintrustVersionDirectoryFunction&gt;();</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  // Generated APIs</span><br><span class="line">  extensions::api::GeneratedFunctionRegistry::RegisterAll(this);</span><br><span class="line">  </span><br><span class="line">#endif  // defined(ENABLE_EXTENSIONS)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="六、定义新接口的访问权限"><a href="#六、定义新接口的访问权限" class="headerlink" title="六、定义新接口的访问权限"></a>六、定义新接口的访问权限</h2><ol>
+<li><p>定义该接口可用于的扩展程序类型：</p>
+<p> 打开 <code>src\chrome\common\extensions\api\_permission_features.json</code></p>
+<p> 添加下面代码， <code>extension_types</code> 定义了哪些类型的扩展可以使用新接口。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Copyright (c) 2012 The Chromium Authors. All rights reserved.</span></span><br><span class="line"><span class="comment">// Use of this source code is governed by a BSD-style license that can be</span></span><br><span class="line"><span class="comment">// found in the LICENSE file.</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">+  <span class="comment">// 赢达信的接口</span></span><br><span class="line">+   <span class="string">"wintrust"</span>: &#123;</span><br><span class="line">+    <span class="string">"channel"</span>: <span class="string">"stable"</span>,</span><br><span class="line">+    <span class="string">"extension_types"</span>: [<span class="string">"extension"</span>, <span class="string">"packaged_app"</span>,<span class="string">"platform_app"</span>,<span class="string">"hosted_app"</span>]</span><br><span class="line">+  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义权限的键名，该常量也显示到 <code>manifest permission</code> 中</p>
+<p> 打开 <code>src\chrome\common\extensions\permissions\api_permission.h</code>，添加</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> ID &#123;</span><br><span class="line">	<span class="comment">// Error codes.</span></span><br><span class="line">	kInvalid = <span class="number">-2</span>,</span><br><span class="line">	kUnknown = <span class="number">-1</span>,</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Real permissions.</span></span><br><span class="line">	...</span><br><span class="line">+	kWintrust,</span><br><span class="line">	kEnumBoundary</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现该键名</p>
+<p> 打开 <code>src\chrome\common\extensions\permissions\chrome_api_permissions.cc</code>，添加</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;APIPermissionInfo*&gt; ChromeAPIPermissions::GetAllPermissions()</span><br><span class="line"><span class="keyword">const</span> &#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">PermissionRegistration</span> &#123;</span></span><br><span class="line">	APIPermission::ID id;</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span>* name;</span><br><span class="line">	<span class="keyword">int</span> flags;</span><br><span class="line">	<span class="keyword">int</span> l10n_message_id;</span><br><span class="line">	PermissionMessage::ID message_id;</span><br><span class="line">	APIPermissionInfo::APIPermissionConstructor constructor;</span><br><span class="line">	&#125; PermissionsToRegister[] = &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Register extension permissions.</span></span><br><span class="line">	...</span><br><span class="line">	&#123; APIPermission::kWintrust, <span class="string">"wintrust"</span> &#125;,</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="七、测试新接口"><a href="#七、测试新接口" class="headerlink" title="七、测试新接口"></a>七、测试新接口</h2><ol>
+<li><p>创建扩展  <code>manifest</code> 文件</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"WinTrust API"</span>,</span><br><span class="line">  <span class="string">"manifest_version"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.1"</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"Test new extenslion api"</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="string">"browser_action"</span>: &#123;</span><br><span class="line">    <span class="string">"default_icon"</span>: &#123;                    </span><br><span class="line">      <span class="string">"19"</span>: <span class="string">"img/icon19.png"</span>,           </span><br><span class="line">      <span class="string">"38"</span>: <span class="string">"img/icon38.png"</span>            </span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"default_title"</span>: <span class="string">"VPN"</span>, </span><br><span class="line">    <span class="string">"default_popup"</span>: <span class="string">"popup.html"</span>        </span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="string">"background"</span>: &#123;</span><br><span class="line">    <span class="string">"page"</span>: <span class="string">"background.html"</span></span><br><span class="line">  &#125;,  </span><br><span class="line">  </span><br><span class="line">  <span class="string">"permissions"</span>: [</span><br><span class="line">    <span class="string">"*://*/*"</span>,</span><br><span class="line">    <span class="string">"wintrust"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建扩展  <code>manifest</code> 文件</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chrome.wintrust.versionDirectory(<span class="function"><span class="keyword">function</span>(<span class="params">path</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'Test reust:'</span>, path);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+          
         
       
     </div>
@@ -2040,14 +2211,80 @@
 
       
         
-          记录如何在 Mac os 安装 nginx, php, mysql
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/05/07/mac-install-nginx-php-mysql/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="常用位置："><a href="#常用位置：" class="headerlink" title="常用位置："></a>常用位置：</h2><ol>
+<li><p>nginx: </p>
+<ul>
+<li>安装位置：<code>/usr/local/Cellar/nginx</code></li>
+<li>log: <code>/usr/local/var/log/nginx/error.log</code></li>
+<li>配置位置：<code>/usr/local/etc/nginx</code></li>
+<li>document root: <code>/var/www</code></li>
+</ul>
+</li>
+<li><p>php</p>
+<ul>
+<li>安装位置：<code>/usr/local/Cellar/php56/5.6.8/</code></li>
+<li>配置位置：<code>/usr/local/etc/php/5.6/php.ini</code></li>
+</ul>
+</li>
+<li><p>mysql</p>
+<ul>
+<li>查看server信息：<code>mysqld --help --verbose</code></li>
+<li>安装位置：<code>/usr/local/Cellar/mysql</code> </li>
+</ul>
+</li>
+</ol>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>引用一篇非常详细的博客：<a href="http://blog.frd.mn/install-nginx-php-fpm-mysql-and-phpmyadmin-on-os-x-mavericks-using-homebrew/" target="_blank" rel="noopener">Install Nginx, PHP-FPM, MySQL and phpMyAdmin on OS X Mavericks or Yosemite</a></p>
+<h3 id="Xcode"><a href="#Xcode" class="headerlink" title="Xcode"></a>Xcode</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install</span><br></pre></td></tr></table></figure>
+<h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+<p>Check for any conflicts or problems (If you have confilcts, sort them out before you continue with this guide):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew doctor</span><br></pre></td></tr></table></figure>
+<p>Update and upgrade its formulas in case you already had Homebrew installed before:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew update &amp;&amp; brew upgrade</span><br></pre></td></tr></table></figure>
+<h3 id="PHP-FPM"><a href="#PHP-FPM" class="headerlink" title="PHP-FPM"></a>PHP-FPM</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap homebrew/dupes</span><br><span class="line">brew tap homebrew/php</span><br></pre></td></tr></table></figure>
+<p>Now install it with the following arguments:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --without-apache --with-fpm --with-mysql php56</span><br></pre></td></tr></table></figure>
+<p>Setup PHP CLI binary</p>
+<p>If you want to use the PHP command line binary, you need to update the $PATH environment variable of your shell profile:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># If you use Bash    </span><br><span class="line">echo &apos;export PATH=&quot;/usr/local/sbin:$PATH&quot;&apos; &gt;&gt; ~/.bash_profile</span><br><span class="line">. ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># If you use ZSH</span><br><span class="line">echo &apos;export PATH=&quot;/usr/local/sbin:$PATH&quot;&apos; &gt;&gt; ~/.zshrc</span><br><span class="line">. ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>Setup auto start</p>
+<p>Create a folder for our LaunchAgents and symlink the start/stop service:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/Library/LaunchAgents</span><br><span class="line">ln -sfv /usr/local/opt/php56/homebrew.mxcl.php56.plist ~/Library/LaunchAgents/</span><br></pre></td></tr></table></figure>
+<p>And start PHP-FPM:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.php56.plist</span><br></pre></td></tr></table></figure>
+<p>Make sure PHP-FPM is listening on port 9000:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -Pni4 | grep LISTEN | grep php</span><br></pre></td></tr></table></figure>
+<p>The output should look something like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">php-fpm   69659  frdmn    6u  IPv4 0x8d8ebe505a1ae01      0t0  TCP 127.0.0.1:9000 (LISTEN)</span><br><span class="line">php-fpm   69660  frdmn    0u  IPv4 0x8d8ebe505a1ae01      0t0  TCP 127.0.0.1:9000 (LISTEN)</span><br><span class="line">php-fpm   69661  frdmn    0u  IPv4 0x8d8ebe505a1ae01      0t0  TCP 127.0.0.1:9000 (LISTEN)</span><br><span class="line">php-fpm   69662  frdmn    0u  IPv4 0x8d8ebe505a1ae01      0t0  TCP 127.0.0.1:9000 (LISTEN)</span><br></pre></td></tr></table></figure>
+<h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><p>Next step is to install MySQL:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mysql</span><br></pre></td></tr></table></figure>
+<p>Setup auto start</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents</span><br></pre></td></tr></table></figure>
+<p>And start the database server:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>Test connection</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
+<h3 id="phpMyAdmin"><a href="#phpMyAdmin" class="headerlink" title="phpMyAdmin"></a>phpMyAdmin</h3><p>Install autoconf, which is needed for the installation of phpMyAdmin:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install autoconf</span><br></pre></td></tr></table></figure>
+<p>Set $PHP_AUTOCONF:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># If you use Bash</span><br><span class="line">echo &apos;PHP_AUTOCONF=&quot;&apos;$(which autoconf)&apos;&quot;&apos; &gt;&gt; ~/.bash_profile &amp;&amp; . ~/.bash_profile</span><br><span class="line"># If you use ZSH</span><br><span class="line">echo &apos;PHP_AUTOCONF=&quot;&apos;$(which autoconf)&apos;&quot;&apos; &gt;&gt; ~/.zshrc &amp;&amp; . ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>Let’s start with the installation of phpMyAdmin:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install phpmyadmin</span><br></pre></td></tr></table></figure>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p>Install the default Nginx with:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
+<p>Setup auto start</p>
+<p>Since we want to use port 80 have to start the Nginx process as root:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp -v /usr/local/opt/nginx/*.plist /Library/LaunchDaemons/</span><br><span class="line">sudo chown root:wheel /Library/LaunchDaemons/homebrew.mxcl.nginx.plist</span><br></pre></td></tr></table></figure>
+<p>Test web server</p>
+<p>Start Nginx for the first with:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.nginx.plist</span><br></pre></td></tr></table></figure>
+<p>Stop Nginx again:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo launchctl unload /Library/LaunchDaemons/homebrew.mxcl.nginx.plist</span><br></pre></td></tr></table></figure>
+<p>Make alias:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">alias nginx.start=&apos;sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.nginx.plist&apos;</span><br><span class="line">alias nginx.stop=&apos;sudo launchctl unload /Library/LaunchDaemons/homebrew.mxcl.nginx.plist&apos;</span><br><span class="line">alias nginx.restart=&apos;nginx.stop &amp;&amp; nginx.start&apos;</span><br><span class="line">alias php-fpm.start=&quot;launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.php56.plist&quot;</span><br><span class="line">alias php-fpm.stop=&quot;launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.php56.plist&quot;</span><br><span class="line">alias php-fpm.restart=&apos;php-fpm.stop &amp;&amp; php-fpm.start&apos;</span><br><span class="line">alias mysql.start=&quot;launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist&quot;</span><br><span class="line">alias mysql.stop=&quot;launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist&quot;</span><br><span class="line">alias mysql.restart=&apos;mysql.stop &amp;&amp; mysql.start&apos;</span><br><span class="line">alias nginx.logs.error=&apos;tail -250f /usr/local/etc/nginx/logs/error.log&apos;</span><br><span class="line">alias nginx.logs.access=&apos;tail -250f /usr/local/etc/nginx/logs/access.log&apos;</span><br><span class="line">alias nginx.logs.default.access=&apos;tail -250f /usr/local/etc/nginx/logs/default.access.log&apos;</span><br><span class="line">alias nginx.logs.default-ssl.access=&apos;tail -250f /usr/local/etc/nginx/logs/default-ssl.access.log&apos;</span><br><span class="line">alias nginx.logs.phpmyadmin.error=&apos;tail -250f /usr/local/etc/nginx/logs/phpmyadmin.error.log&apos;</span><br><span class="line">alias nginx.logs.phpmyadmin.access=&apos;tail -250f /usr/local/etc/nginx/logs/phpmyadmin.access.log&apos;</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>

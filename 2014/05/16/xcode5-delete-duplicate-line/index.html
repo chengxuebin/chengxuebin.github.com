@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="xcode,快捷键" />
+  <meta name="keywords" content="ios,xcode," />
 
 
 
@@ -115,22 +115,22 @@
 
 
 
-<meta name="description" content="设置xcode快捷键：复制行和删除行">
-<meta name="keywords" content="xcode,快捷键">
+<meta name="description" content="习惯了某些编辑器的复制一行和删除一行快捷方式后，使用xcode时没有相应快捷键有些不适应，下面是一种为其添加快捷键的方式。 修改快捷键配置文件的权限123sudo chmod 666 /Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Resourc">
+<meta name="keywords" content="ios,xcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XCode 5 添加复制&#x2F;删除行快捷键">
 <meta property="og:url" content="http://onthink.com/2014/05/16/xcode5-delete-duplicate-line/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="设置xcode快捷键：复制行和删除行">
+<meta property="og:description" content="习惯了某些编辑器的复制一行和删除一行快捷方式后，使用xcode时没有相应快捷键有些不适应，下面是一种为其添加快捷键的方式。 修改快捷键配置文件的权限123sudo chmod 666 /Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Resources/IDETextKeyBindingSet.plistsudo chmod">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://onthink.com/2014/05/16/xcode5-delete-duplicate-line/!--￼3--%3E/duplicate_delete_line_2.png">
-<meta property="og:image" content="http://onthink.com/2014/05/16/xcode5-delete-duplicate-line/!--￼4--%3E/duplicate_delete_line_1.png">
-<meta property="og:image" content="http://onthink.com/2014/05/16/xcode5-delete-duplicate-line/!--￼5--%3E/duplicate_delete_line_3.png">
-<meta property="og:updated_time" content="2017-11-16T15:57:36.000Z">
+<meta property="og:image" content="http://onthink.com/images/posts/duplicate_delete_line_2.png">
+<meta property="og:image" content="http://onthink.com/images/posts/duplicate_delete_line_1.png">
+<meta property="og:image" content="http://onthink.com/images/posts/duplicate_delete_line_3.png">
+<meta property="og:updated_time" content="2017-11-18T03:01:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XCode 5 添加复制&#x2F;删除行快捷键">
-<meta name="twitter:description" content="设置xcode快捷键：复制行和删除行">
-<meta name="twitter:image" content="http://onthink.com/2014/05/16/xcode5-delete-duplicate-line/!--￼3--%3E/duplicate_delete_line_2.png">
+<meta name="twitter:description" content="习惯了某些编辑器的复制一行和删除一行快捷方式后，使用xcode时没有相应快捷键有些不适应，下面是一种为其添加快捷键的方式。 修改快捷键配置文件的权限123sudo chmod 666 /Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Resources/IDETextKeyBindingSet.plistsudo chmod">
+<meta name="twitter:image" content="http://onthink.com/images/posts/duplicate_delete_line_2.png">
 
 
 
@@ -443,10 +443,6 @@
           
 
           
-              <div class="post-description">
-                  设置xcode快捷键：复制行和删除行
-              </div>
-          
 
         </div>
       </header>
@@ -463,7 +459,7 @@
       
         <p>习惯了某些编辑器的复制一行和删除一行快捷方式后，使用xcode时没有相应快捷键有些不适应，下面是一种为其添加快捷键的方式。</p>
 <h3 id="修改快捷键配置文件的权限"><a href="#修改快捷键配置文件的权限" class="headerlink" title="修改快捷键配置文件的权限"></a>修改快捷键配置文件的权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 666 /Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Resources/IDETextKeyBindingSet.plist</span><br><span class="line"></span><br><span class="line">sudo chmod 777 /Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Resources/</span><br></pre></td></tr></table></figure>
-<p><img src="!--￼3--&gt;/duplicate_delete_line_2.png" alt=""></p>
+<p><img src="/images/posts/duplicate_delete_line_2.png" alt=""></p>
 <h3 id="修改快捷键配置文件"><a href="#修改快捷键配置文件" class="headerlink" title="修改快捷键配置文件"></a>修改快捷键配置文件</h3><ol>
 <li>添加Customized类别</li>
 <li><p>添加Delete Current Line宏（macro）  </p>
@@ -473,9 +469,9 @@
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selectLine:, copy:, moveToEndOfLine:, insertNewline:, paste:, deleteBackward:</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>&nbsp;<br><img src="!--￼4--&gt;/duplicate_delete_line_1.png" alt=""></p>
+<p>&nbsp;<br><img src="/images/posts/duplicate_delete_line_1.png" alt=""></p>
 <h3 id="绑定快捷键"><a href="#绑定快捷键" class="headerlink" title="绑定快捷键"></a>绑定快捷键</h3><p>重启 Xcode，打开菜单 <code>Xcode &gt; Preferences &gt; KeyBindings</code>。 找到上面定义的宏，为其定义快捷键。</p>
-<p><img src="!--￼5--&gt;/duplicate_delete_line_3.png" alt=""></p>
+<p><img src="/images/posts/duplicate_delete_line_3.png" alt=""></p>
 
       
     </div>

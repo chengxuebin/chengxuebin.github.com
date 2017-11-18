@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="openssl,fiddler,tls,https,wireshark" />
+  <meta name="keywords" content="openssl," />
 
 
 
@@ -115,26 +115,26 @@
 
 
 
-<meta name="description" content="配置 Fiddler 和 WireShark 解密 HTTPS 流量">
-<meta name="keywords" content="openssl,fiddler,tls,https,wireshark">
+<meta name="description" content="首先，推荐一篇非常好的文章：三种解密 HTTPS 流量的方法介绍。下面记录一下这次使用和配置的步骤： 配置 Fiddler1. 打开 HTTPS 设置打开菜单： Tools - Telerik Fiddler Options... - Https  2. 导入根证书在 Https 设置标签页，打开右上角菜单 Actio">
+<meta name="keywords" content="openssl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="配置 Fiddler 和 WireShark 解密 HTTPS 流量">
 <meta property="og:url" content="http://onthink.com/2017/06/11/decrypt-https-tools/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="配置 Fiddler 和 WireShark 解密 HTTPS 流量">
+<meta property="og:description" content="首先，推荐一篇非常好的文章：三种解密 HTTPS 流量的方法介绍。下面记录一下这次使用和配置的步骤： 配置 Fiddler1. 打开 HTTPS 设置打开菜单： Tools - Telerik Fiddler Options... - Https  2. 导入根证书在 Https 设置标签页，打开右上角菜单 Actions - Trust Root Certificate  3. 同意系统警告">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://onthink.com/2017/06/11/images/decrypt_https/fiddler_https.png">
-<meta property="og:image" content="http://onthink.com/2017/06/11/images/decrypt_https/fiddler_ca.png">
-<meta property="og:image" content="http://onthink.com/2017/06/11/images/decrypt_https/fiddler_ca2.png">
-<meta property="og:image" content="http://onthink.com/2017/06/11/images/decrypt_https/wireshark_log.jpg">
-<meta property="og:image" content="http://onthink.com/2017/06/11/images/decrypt_https/wireshark_ssl.jpg">
-<meta property="og:image" content="http://onthink.com/2017/06/11/images/decrypt_https/wireshark_ssl.jpg">
-<meta property="og:image" content="http://onthink.com/2017/06/11/images/decrypt_https/wireshark_key.jpg">
-<meta property="og:updated_time" content="2017-11-16T15:57:36.000Z">
+<meta property="og:image" content="http://onthink.com/images/posts/decrypt_https/fiddler_https.png">
+<meta property="og:image" content="http://onthink.com/images/posts/decrypt_https/fiddler_ca.png">
+<meta property="og:image" content="http://onthink.com/images/posts/decrypt_https/fiddler_ca2.png">
+<meta property="og:image" content="http://onthink.com/images/posts/decrypt_https/wireshark_log.jpg">
+<meta property="og:image" content="http://onthink.com/images/posts/decrypt_https/wireshark_ssl.jpg">
+<meta property="og:image" content="http://onthink.com/images/posts/decrypt_https/wireshark_ssl.jpg">
+<meta property="og:image" content="http://onthink.com/images/posts/decrypt_https/wireshark_key.jpg">
+<meta property="og:updated_time" content="2017-11-18T03:00:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="配置 Fiddler 和 WireShark 解密 HTTPS 流量">
-<meta name="twitter:description" content="配置 Fiddler 和 WireShark 解密 HTTPS 流量">
-<meta name="twitter:image" content="http://onthink.com/2017/06/11/images/decrypt_https/fiddler_https.png">
+<meta name="twitter:description" content="首先，推荐一篇非常好的文章：三种解密 HTTPS 流量的方法介绍。下面记录一下这次使用和配置的步骤： 配置 Fiddler1. 打开 HTTPS 设置打开菜单： Tools - Telerik Fiddler Options... - Https  2. 导入根证书在 Https 设置标签页，打开右上角菜单 Actions - Trust Root Certificate  3. 同意系统警告">
+<meta name="twitter:image" content="http://onthink.com/images/posts/decrypt_https/fiddler_https.png">
 
 
 
@@ -447,10 +447,6 @@
           
 
           
-              <div class="post-description">
-                  配置 Fiddler 和 WireShark 解密 HTTPS 流量
-              </div>
-          
 
         </div>
       </header>
@@ -467,23 +463,24 @@
       
         <p>首先，推荐一篇非常好的文章：<a href="https://imququ.com/post/how-to-decrypt-https.html" target="_blank" rel="noopener">三种解密 HTTPS 流量的方法介绍</a>。下面记录一下这次使用和配置的步骤：</p>
 <h2 id="配置-Fiddler"><a href="#配置-Fiddler" class="headerlink" title="配置 Fiddler"></a>配置 Fiddler</h2><h4 id="1-打开-HTTPS-设置"><a href="#1-打开-HTTPS-设置" class="headerlink" title="1. 打开 HTTPS 设置"></a>1. 打开 HTTPS 设置</h4><p>打开菜单： <code>Tools</code> - <code>Telerik Fiddler Options...</code> - <code>Https</code></p>
-<p><img src="../images/decrypt_https/fiddler_https.png" alt=""></p>
+<p><img src="/images/posts/decrypt_https/fiddler_https.png" alt=""></p>
 <h4 id="2-导入根证书"><a href="#2-导入根证书" class="headerlink" title="2. 导入根证书"></a>2. 导入根证书</h4><p>在 <code>Https</code> 设置标签页，打开右上角菜单 <code>Actions</code> - <code>Trust Root Certificate</code></p>
-<p><img src="../images/decrypt_https/fiddler_ca.png" alt=""></p>
-<h4 id="3-同意系统警告"><a href="#3-同意系统警告" class="headerlink" title="3. 同意系统警告"></a>3. 同意系统警告</h4><p><img src="../images/decrypt_https/fiddler_ca2.png" alt=""></p>
+<p><img src="/images/posts/decrypt_https/fiddler_ca.png" alt=""></p>
+<h4 id="3-同意系统警告"><a href="#3-同意系统警告" class="headerlink" title="3. 同意系统警告"></a>3. 同意系统警告</h4><p><img src="/images/posts/decrypt_https/fiddler_ca2.png" alt=""></p>
+<a id="more"></a>
 <h2 id="配置-WireShark-一：配合程序日志"><a href="#配置-WireShark-一：配合程序日志" class="headerlink" title="配置 WireShark 一：配合程序日志"></a>配置 WireShark 一：配合程序日志</h2><h4 id="1-设置环境变量"><a href="#1-设置环境变量" class="headerlink" title="1. 设置环境变量"></a>1. 设置环境变量</h4><p>添加系统环境变量 <code>SSLKEYLOGFILE</code></p>
-<p><img src="../images/decrypt_https/wireshark_log.jpg" alt=""></p>
+<p><img src="/images/posts/decrypt_https/wireshark_log.jpg" alt=""></p>
 <h4 id="2-配置-WireShark"><a href="#2-配置-WireShark" class="headerlink" title="2. 配置 WireShark"></a>2. 配置 WireShark</h4><p>打开菜单 <code>Edit</code> - <code>Preference...</code> - <code>Protocols</code> - <code>SSL</code></p>
-<p><img src="../images/decrypt_https/wireshark_ssl.jpg" alt=""></p>
+<p><img src="/images/posts/decrypt_https/wireshark_ssl.jpg" alt=""></p>
 <p>在 <code>(Pre)-Master-Secret log filename</code> 一栏，配置上一步产生的日志文件</p>
 <h2 id="配置-WireShark-二：配合网站私钥"><a href="#配置-WireShark-二：配合网站私钥" class="headerlink" title="配置 WireShark 二：配合网站私钥"></a>配置 WireShark 二：配合网站私钥</h2><p>私钥的方式需要配合使用网站的证书私钥，这对通常是做不到的，所以仅能用于监测自己搭建的 TLS 网站。</p>
 <h4 id="1-配置-WireShark"><a href="#1-配置-WireShark" class="headerlink" title="1. 配置 WireShark"></a>1. 配置 WireShark</h4><p>打开菜单 <code>Edit</code> - <code>Preference...</code> - <code>Protocols</code> - <code>SSL</code></p>
-<p><img src="../images/decrypt_https/wireshark_ssl.jpg" alt=""></p>
+<p><img src="/images/posts/decrypt_https/wireshark_ssl.jpg" alt=""></p>
 <h4 id="2-配置域名和私钥"><a href="#2-配置域名和私钥" class="headerlink" title="2. 配置域名和私钥"></a>2. 配置域名和私钥</h4><p>打开 <code>RSA keys list</code> 配置窗口</p>
 <blockquote>
 <p>为什么是 <code>RSA keys</code> 配置呢？<br>私钥方式只能用于解析采用 <code>RSA</code> 的 TLS 连接。</p>
 </blockquote>
-<p><img src="../images/decrypt_https/wireshark_key.jpg" alt=""></p>
+<p><img src="/images/posts/decrypt_https/wireshark_key.jpg" alt=""></p>
 <ul>
 <li>IP Address： 连接的域名或 IP 地址</li>
 <li>Port： 连接的端口号</li>

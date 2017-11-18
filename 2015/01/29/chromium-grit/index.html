@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="grit,chromium,i18n,l10n" />
+  <meta name="keywords" content="chromium,grit,i18n,l10n," />
 
 
 
@@ -115,20 +115,20 @@
 
 
 
-<meta name="description" content="解析 chromium 对多语言的支持，添加自定义的多语言的内容">
-<meta name="keywords" content="grit,chromium,i18n,l10n">
+<meta name="description" content="整体流程chrome_string 是关于国际化的项目（Project）， 这是一个只包含 build step 定义的空项目， build step 中定义了该项目编译时执行的程序或命令。在VS2010下编辑build step 可以用文本编辑软件直接打开 chrome_strings.vcxproj。 chrome">
+<meta name="keywords" content="chromium,grit,i18n,l10n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Grit - Chromium 国际化（1）">
 <meta property="og:url" content="http://onthink.com/2015/01/29/chromium-grit/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="解析 chromium 对多语言的支持，添加自定义的多语言的内容">
+<meta property="og:description" content="整体流程chrome_string 是关于国际化的项目（Project）， 这是一个只包含 build step 定义的空项目， build step 中定义了该项目编译时执行的程序或命令。在VS2010下编辑build step 可以用文本编辑软件直接打开 chrome_strings.vcxproj。 chrome_string 会在 chrome 编译之前编译，它将国际化定义的文件转换成资源">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://onthink.com/2015/01/29/chromium-grit/!--￼3--%3E/grit/grit.jpg">
-<meta property="og:updated_time" content="2017-11-16T15:57:36.000Z">
+<meta property="og:image" content="http://onthink.com/images/posts/grit/grit.jpg">
+<meta property="og:updated_time" content="2017-11-18T03:01:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Grit - Chromium 国际化（1）">
-<meta name="twitter:description" content="解析 chromium 对多语言的支持，添加自定义的多语言的内容">
-<meta name="twitter:image" content="http://onthink.com/2015/01/29/chromium-grit/!--￼3--%3E/grit/grit.jpg">
+<meta name="twitter:description" content="整体流程chrome_string 是关于国际化的项目（Project）， 这是一个只包含 build step 定义的空项目， build step 中定义了该项目编译时执行的程序或命令。在VS2010下编辑build step 可以用文本编辑软件直接打开 chrome_strings.vcxproj。 chrome_string 会在 chrome 编译之前编译，它将国际化定义的文件转换成资源">
+<meta name="twitter:image" content="http://onthink.com/images/posts/grit/grit.jpg">
 
 
 
@@ -441,10 +441,6 @@
           
 
           
-              <div class="post-description">
-                  解析 chromium 对多语言的支持，添加自定义的多语言的内容
-              </div>
-          
 
         </div>
       </header>
@@ -462,7 +458,7 @@
         <h2 id="整体流程"><a href="#整体流程" class="headerlink" title="整体流程"></a>整体流程</h2><p>chrome_string 是关于国际化的项目（Project）， 这是一个只包含 <code>build step</code> 定义的空项目， <code>build step</code> 中定义了该项目编译时执行的程序或命令。在VS2010下编辑build step 可以用文本编辑软件直接打开 <code>chrome_strings.vcxproj</code>。</p>
 <p>chrome_string 会在 chrome 编译之前编译，它将国际化定义的文件转换成资源文件（.pak）和 C++ 头文件，C++ 头文件将作为源代码在编译 chrome 时一起被编译。</p>
 <p>语言包编译过程</p>
-<p><img src="!--￼3--&gt;/grit/grit.jpg" alt=""></p>
+<p><img src="/images/posts/grit/grit.jpg" alt=""></p>
 <h2 id="Grit-工具"><a href="#Grit-工具" class="headerlink" title="Grit 工具"></a>Grit 工具</h2><p>grit（Google Resource and Internationalization Tool）是一个python开源工具，用于支持多国际化，位于 <code>src/tools/grit</code> 目录下。<code>chrome_string</code> 编译时会执行 <code>grit.py</code> 可以，然后由grit工具将grd和xtb文件编译成pak资源文件。</p>
 <h2 id="国际化文件分类"><a href="#国际化文件分类" class="headerlink" title="国际化文件分类"></a>国际化文件分类</h2><ul>
 <li><code>generated_resources.grd</code>：该文件定义了大部分国际化字符串定义，包括按钮的文字，窗口的标题等。</li>

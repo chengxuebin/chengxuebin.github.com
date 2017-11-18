@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="java,intellij" />
+  <meta name="keywords" content="java," />
 
 
 
@@ -115,22 +115,22 @@
 
 
 
-<meta name="description" content="指定 IntelliJ 使用的 server.xml">
-<meta name="keywords" content="java,intellij">
+<meta name="description" content="打开 IntelliJ 的配置进入 Startup/Connection 标签页  编辑 Startup Script取消选择 Use Default，点击编辑按钮，进入参数编辑窗口  添加 Program Arguments在 run 后添加配置文件的地址： 1run -config /usr/local/apach">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="指定 IntelliJ 使用的 server.xml">
 <meta property="og:url" content="http://onthink.com/2017/08/17/intellij-config-server-xml/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="指定 IntelliJ 使用的 server.xml">
+<meta property="og:description" content="打开 IntelliJ 的配置进入 Startup/Connection 标签页  编辑 Startup Script取消选择 Use Default，点击编辑按钮，进入参数编辑窗口  添加 Program Arguments在 run 后添加配置文件的地址： 1run -config /usr/local/apache-tomcat-8.0.26/conf/server.xml">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://onthink.com/2017/08/17/images/intellij_config/config-1.png">
-<meta property="og:image" content="http://onthink.com/2017/08/17/images/intellij_config/config-2.png">
-<meta property="og:image" content="http://onthink.com/2017/08/17/images/intellij_config/config-3.png">
-<meta property="og:updated_time" content="2017-11-16T15:57:36.000Z">
+<meta property="og:image" content="http://onthink.com/images/posts/intellij_config/config-1.png">
+<meta property="og:image" content="http://onthink.com/images/posts/intellij_config/config-2.png">
+<meta property="og:image" content="http://onthink.com/images/posts/intellij_config/config-3.png">
+<meta property="og:updated_time" content="2017-11-18T03:00:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指定 IntelliJ 使用的 server.xml">
-<meta name="twitter:description" content="指定 IntelliJ 使用的 server.xml">
-<meta name="twitter:image" content="http://onthink.com/2017/08/17/images/intellij_config/config-1.png">
+<meta name="twitter:description" content="打开 IntelliJ 的配置进入 Startup/Connection 标签页  编辑 Startup Script取消选择 Use Default，点击编辑按钮，进入参数编辑窗口  添加 Program Arguments在 run 后添加配置文件的地址： 1run -config /usr/local/apache-tomcat-8.0.26/conf/server.xml">
+<meta name="twitter:image" content="http://onthink.com/images/posts/intellij_config/config-1.png">
 
 
 
@@ -443,10 +443,6 @@
           
 
           
-              <div class="post-description">
-                  指定 IntelliJ 使用的 server.xml
-              </div>
-          
 
         </div>
       </header>
@@ -462,14 +458,15 @@
 
       
         <h3 id="打开-IntelliJ-的配置"><a href="#打开-IntelliJ-的配置" class="headerlink" title="打开 IntelliJ 的配置"></a>打开 IntelliJ 的配置</h3><p>进入 <code>Startup/Connection</code> 标签页</p>
-<p><img src="../images/intellij_config/config-1.png" alt=""></p>
+<p><img src="/images/posts/intellij_config/config-1.png" alt=""></p>
 <h3 id="编辑-Startup-Script"><a href="#编辑-Startup-Script" class="headerlink" title="编辑 Startup Script"></a>编辑 <code>Startup Script</code></h3><p>取消选择 <code>Use Default</code>，点击编辑按钮，进入参数编辑窗口</p>
-<p><img src="../images/intellij_config/config-2.png" alt=""></p>
+<p><img src="/images/posts/intellij_config/config-2.png" alt=""></p>
 <h3 id="添加-Program-Arguments"><a href="#添加-Program-Arguments" class="headerlink" title="添加 Program Arguments"></a>添加 <code>Program Arguments</code></h3><p>在 <code>run</code> 后添加配置文件的地址：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run -config /usr/local/apache-tomcat-8.0.26/conf/server.xml</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="添加-VM-Options"><a href="#添加-VM-Options" class="headerlink" title="添加 VM Options"></a>添加 <code>VM Options</code></h3><p>在 <code>VM Options</code> 后添加配置文件的地址：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-Dcom.sun.management.jmxremote.port=1099</span><br><span class="line">-Dcom.sun.management.jmxremote=</span><br><span class="line">-Dcom.sun.management.jmxremote.ssl=false</span><br><span class="line">-Dcom.sun.management.jmxremote.authenticate=false</span><br><span class="line">-Djava.rmi.server.hostname=127.0.0.1</span><br></pre></td></tr></table></figure>
-<p><img src="../images/intellij_config/config-3.png" alt=""></p>
+<p><img src="/images/posts/intellij_config/config-3.png" alt=""></p>
 
       
     </div>

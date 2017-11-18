@@ -452,10 +452,11 @@
 
       
         
-          SpringMVC 静态资源缓存
+          <h2 id="ResourceHttpRequestHandler"><a href="#ResourceHttpRequestHandler" class="headerlink" title="ResourceHttpRequestHandler"></a>ResourceHttpRequestHandler</h2><p><code>ResourceHttpRequestHandler</code> 可以使用 <code>ResourceResolvers</code> 和 <code>ResourceTransformers</code> 来优化处理静态资源。处理过程如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Request for Resource</span><br><span class="line">     |</span><br><span class="line">     | HTTP request</span><br><span class="line">     v</span><br><span class="line"> Resolvers chain: FirstResolver, SecondResolver, ThirdResolver</span><br><span class="line"> (each resolver can return the resource or delegate to the next one)</span><br><span class="line">     |</span><br><span class="line">     | Resolved Resource</span><br><span class="line">     v</span><br><span class="line"> Transformers chain: FirstTransformer, SecondTransformer</span><br><span class="line"> (each transformer can transform the resource or just pass it along without modification)</span><br><span class="line">     |</span><br><span class="line">     | Transformed Resource</span><br><span class="line">     v</span><br><span class="line"> HTTP Response with Resource content</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/13/spring-mvc-static-resource/">
+            <a class="btn" href="/2017/10/13/spring-mvc-static-resource/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -620,10 +621,10 @@
 
       
         
-          指定 IntelliJ 使用的 server.xml
+          <h4 id="Error-Couldn’t-find-preset-“es2015”-relative-to-directory-“-Users-username”"><a href="#Error-Couldn’t-find-preset-“es2015”-relative-to-directory-“-Users-username”" class="headerlink" title="Error: Couldn’t find preset “es2015” relative to directory “/Users/username”"></a>Error: Couldn’t find preset “es2015” relative to directory “/Users/username”</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install babel-cli babel-preset-es2015</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/09/25/webpack/">
+            <a class="btn" href="/2017/09/25/webpack/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -788,10 +789,15 @@
 
       
         
-          指定 IntelliJ 使用的 server.xml
+          <h3 id="打开-IntelliJ-的配置"><a href="#打开-IntelliJ-的配置" class="headerlink" title="打开 IntelliJ 的配置"></a>打开 IntelliJ 的配置</h3><p>进入 <code>Startup/Connection</code> 标签页</p>
+<p><img src="/images/posts/intellij_config/config-1.png" alt=""></p>
+<h3 id="编辑-Startup-Script"><a href="#编辑-Startup-Script" class="headerlink" title="编辑 Startup Script"></a>编辑 <code>Startup Script</code></h3><p>取消选择 <code>Use Default</code>，点击编辑按钮，进入参数编辑窗口</p>
+<p><img src="/images/posts/intellij_config/config-2.png" alt=""></p>
+<h3 id="添加-Program-Arguments"><a href="#添加-Program-Arguments" class="headerlink" title="添加 Program Arguments"></a>添加 <code>Program Arguments</code></h3><p>在 <code>run</code> 后添加配置文件的地址：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run -config /usr/local/apache-tomcat-8.0.26/conf/server.xml</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/08/17/intellij-config-server-xml/">
+            <a class="btn" href="/2017/08/17/intellij-config-server-xml/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -956,10 +962,40 @@
 
       
         
-          编译 NW.js
+          <p>本文讨论的是 NW.js 13.x 在 Windows 操作系统的编译过程。使用这一版，主要因为其支持 <code>xp</code> 和 <code>npapi</code>。</p>
+<p>NW.js 13.x 的文档在 <a href="http://docs.nwjs.io/en/v0.13.0-beta7/For%20Developers/Building%20NW.js/" target="_blank" rel="noopener">v0.13.0-beta7</a>，在<a href="https://github.com/nwjs/nw.js/tree/nw13/docs" target="_blank" rel="noopener">这里</a>下载</p>
+<p>NW.js 本身是一个浏览器的应用（Packaged App），它的实现思路是在每一个 <code>Chromium</code> 稳定发布版的基础上，打上补丁，以支持 <code>Node.js</code> 等功能。下面是 NW.js 打补丁的几个仓库：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">path</th>
+<th style="text-align:left">repo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">src/content/nw</td>
+<td style="text-align:left"><a href="https://github.com/nwjs/nw.js" target="_blank" rel="noopener">https://github.com/nwjs/nw.js</a></td>
+</tr>
+<tr>
+<td style="text-align:left">src/third_party/node-nw</td>
+<td style="text-align:left"><a href="https://github.com/nwjs/node" target="_blank" rel="noopener">https://github.com/nwjs/node</a></td>
+</tr>
+<tr>
+<td style="text-align:left">src/v8</td>
+<td style="text-align:left"><a href="https://github.com/nwjs/v8" target="_blank" rel="noopener">https://github.com/nwjs/v8</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>安装 <code>depot_tools</code></li>
+<li>安装 <code>DirectX SDK</code></li>
+</ul>
+<h2 id="下载代码"><a href="#下载代码" class="headerlink" title="下载代码"></a>下载代码</h2><h4 id="1-创建配置文件"><a href="#1-创建配置文件" class="headerlink" title="1. 创建配置文件"></a>1. 创建配置文件</h4><p>创建一个目录，然后执行下面语句，生成配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gclient config --name=src https://github.com/nwjs/chromium.src.git@origin/nw13</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/22/build-nwjs/">
+            <a class="btn" href="/2017/06/22/build-nwjs/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1124,10 +1160,15 @@
 
       
         
-          配置 Fiddler 和 WireShark 解密 HTTPS 流量
+          <p>首先，推荐一篇非常好的文章：<a href="https://imququ.com/post/how-to-decrypt-https.html" target="_blank" rel="noopener">三种解密 HTTPS 流量的方法介绍</a>。下面记录一下这次使用和配置的步骤：</p>
+<h2 id="配置-Fiddler"><a href="#配置-Fiddler" class="headerlink" title="配置 Fiddler"></a>配置 Fiddler</h2><h4 id="1-打开-HTTPS-设置"><a href="#1-打开-HTTPS-设置" class="headerlink" title="1. 打开 HTTPS 设置"></a>1. 打开 HTTPS 设置</h4><p>打开菜单： <code>Tools</code> - <code>Telerik Fiddler Options...</code> - <code>Https</code></p>
+<p><img src="/images/posts/decrypt_https/fiddler_https.png" alt=""></p>
+<h4 id="2-导入根证书"><a href="#2-导入根证书" class="headerlink" title="2. 导入根证书"></a>2. 导入根证书</h4><p>在 <code>Https</code> 设置标签页，打开右上角菜单 <code>Actions</code> - <code>Trust Root Certificate</code></p>
+<p><img src="/images/posts/decrypt_https/fiddler_ca.png" alt=""></p>
+<h4 id="3-同意系统警告"><a href="#3-同意系统警告" class="headerlink" title="3. 同意系统警告"></a>3. 同意系统警告</h4><p><img src="/images/posts/decrypt_https/fiddler_ca2.png" alt=""></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/11/decrypt-https-tools/">
+            <a class="btn" href="/2017/06/11/decrypt-https-tools/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1292,10 +1333,141 @@
 
       
         
-          TLS 协议
+          <p>首先，这是 IETF 协会文档 <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener">Request for Comments (RFC) 5246</a></p>
+<h3 id="Alert-Messages"><a href="#Alert-Messages" class="headerlink" title="Alert Messages"></a><a href="https://tools.ietf.org/html/rfc5246#appendix-A.3" target="_blank" rel="noopener">Alert Messages</a></h3><p>在 TLS 协商握手阶段，遇到服务器返回的 Alert 消息时，能通过下表查找出对应的原因。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Alert Code</th>
+<th style="text-align:center">Alert Message</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">close_notify</td>
+<td style="text-align:left">Notifies the recipient that the sender will not send any more messages on this connection.</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">unexpected_message</td>
+<td style="text-align:left">Received an inappropriate message This alert should never be observed in communication between proper implementations. This message is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">20</td>
+<td style="text-align:center">bad_record_mac</td>
+<td style="text-align:left">Received a record with an incorrect MAC. This message is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">21</td>
+<td style="text-align:center">decryption_failed</td>
+<td style="text-align:left">Decryption of a TLSCiphertext record is decrypted in an invalid way: either it was not an even multiple of the block length or its padding values, when checked, were not correct. This message is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">22</td>
+<td style="text-align:center">record_overflow</td>
+<td style="text-align:left">Received a TLSCiphertext record which had a length more than 2^14+2048 bytes, or a record decrypted to a TLSCompressed record with more than 2^14+1024 bytes. This message is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">30</td>
+<td style="text-align:center">decompression_failure</td>
+<td style="text-align:left">Received improper input, such as data that would expand to excessive length, from the decompression function. This message is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">40</td>
+<td style="text-align:center">handshake_failure</td>
+<td style="text-align:left">Indicates that the sender was unable to negotiate an acceptable set of security parameters given the options available. This is a fatal error.</td>
+</tr>
+<tr>
+<td style="text-align:center">42</td>
+<td style="text-align:center">bad_certificate</td>
+<td style="text-align:left">There is a problem with the certificate, for example, a certificate is corrupt, or a certificate contains signatures that cannot be verified.</td>
+</tr>
+<tr>
+<td style="text-align:center">43</td>
+<td style="text-align:center">unsupported_certificate</td>
+<td style="text-align:left">Received an unsupported certificate type.</td>
+</tr>
+<tr>
+<td style="text-align:center">44</td>
+<td style="text-align:center">certificate_revoked</td>
+<td style="text-align:left">Received a certificate that was revoked by its signer.</td>
+</tr>
+<tr>
+<td style="text-align:center">45</td>
+<td style="text-align:center">certificate_expired</td>
+<td style="text-align:left">Received a certificate has expired or is not currently valid.</td>
+</tr>
+<tr>
+<td style="text-align:center">46</td>
+<td style="text-align:center">certificate_unknown</td>
+<td style="text-align:left">An unspecified issue took place while processing the certificate that made it unacceptable.</td>
+</tr>
+<tr>
+<td style="text-align:center">47</td>
+<td style="text-align:center">illegal_parameter</td>
+<td style="text-align:left">Violated security parameters, such as a field in the handshake was out of range or inconsistent with other fields. This is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">48</td>
+<td style="text-align:center">unknown_ca</td>
+<td style="text-align:left">Received a valid certificate chain or partial chain, but the certificate was not accepted because the CA certificate could not be located or could not be matched with a known, trusted CA. This message is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">49</td>
+<td style="text-align:center">access_denied</td>
+<td style="text-align:left">Received a valid certificate, but when access control was applied, the sender did not proceed with negotiation. This message is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">50</td>
+<td style="text-align:center">decode_error</td>
+<td style="text-align:left">A message could not be decoded because some field was out of the specified range or the length of the message was incorrect. This message is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">51</td>
+<td style="text-align:center">decrypt_error</td>
+<td style="text-align:left">Failed handshake cryptographic operation, including being unable to correctly verify a signature, decrypt a key exchange, or validate a finished message.</td>
+</tr>
+<tr>
+<td style="text-align:center">60</td>
+<td style="text-align:center">export_restriction</td>
+<td style="text-align:left">Detected a negotiation that was not in compliance with export restrictions; for example, attempting to transfer a 1024 bit ephemeral RSA key for the RSA_EXPORT handshake method. This message is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">70</td>
+<td style="text-align:center">protocol_version</td>
+<td style="text-align:left">The protocol version the client attempted to negotiate is recognized, but not supported. For example, old protocol versions might be avoided for security reasons. This message is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">71</td>
+<td style="text-align:center">insufficient_security</td>
+<td style="text-align:left">Failed negotiation specifically because the server requires ciphers more secure than those supported by the client. Returned instead of handshake_failure. This message is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">80</td>
+<td style="text-align:center">internal_error</td>
+<td style="text-align:left">An internal error unrelated to the peer or the correctness of the protocol makes it impossible to continue, such as a memory allocation failure. The error is not related to protocol. This message is always fatal.</td>
+</tr>
+<tr>
+<td style="text-align:center">90</td>
+<td style="text-align:center">user_cancelled</td>
+<td style="text-align:left">Cancelled handshake for a reason that is unrelated to a protocol failure. If the user cancels an operation after the handshake is complete, just closing the connection by sending a close_notify is more appropriate. This alert should be followed by a close_notify. This message is generally a warning.</td>
+</tr>
+<tr>
+<td style="text-align:center">100</td>
+<td style="text-align:center">no_renegotiation</td>
+<td style="text-align:left">Sent by the client in response to a hello request or sent by the server in response to a client hello after initial handshaking. Either of these would normally lead to renegotiation; when that is not appropriate, the recipient should respond with this alert; at that point, the original requester can decide whether to proceed with the connection. One case where this would be appropriate would be where a server has spawned a process to satisfy a request; the process might receive security parameters (key length, authentication, and so on) at start-up and it might be difficult to communicate changes to these parameters after that point. This message is always a warning.</td>
+</tr>
+<tr>
+<td style="text-align:center">255</td>
+<td style="text-align:center">unsupported_extension</td>
+</tr>
+</tbody>
+</table>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/10/tls-1.2/">
+            <a class="btn" href="/2017/06/10/tls-1.2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1460,10 +1632,16 @@
 
       
         
-          中间人劫持代理
+          <h2 id="中间人劫持代理"><a href="#中间人劫持代理" class="headerlink" title="中间人劫持代理"></a>中间人劫持代理</h2><p><img src="/images/posts/mitm_proxy/how-mitmproxy-works-explicit-https.png" alt=""></p>
+<p>注：图片来源于 mitmproxy</p>
+<h4 id="本代理基于-TCP，是一个不关心协议的代理？"><a href="#本代理基于-TCP，是一个不关心协议的代理？" class="headerlink" title="本代理基于 TCP，是一个不关心协议的代理？"></a>本代理基于 TCP，是一个不关心协议的代理？</h4><p>是的</p>
+<h4 id="HTTP-代理-VS-Socks-代理"><a href="#HTTP-代理-VS-Socks-代理" class="headerlink" title="HTTP 代理 VS Socks 代理"></a>HTTP 代理 VS Socks 代理</h4><h2 id="问题与挑战"><a href="#问题与挑战" class="headerlink" title="问题与挑战"></a>问题与挑战</h2><h3 id="获取远端主机名（Host）"><a href="#获取远端主机名（Host）" class="headerlink" title="获取远端主机名（Host）"></a>获取远端主机名（Host）</h3><p>当应用设置了代理后，在 TLS 协商前，应用首先会发一条 CONNECT 请求，期待通过代理和远端服务器建立 TLS 隧道（tunnel）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONNECT 10.1.1.1:443 HTTP/1.1</span><br></pre></td></tr></table></figure>
+<p>作为中间人代理，并不帮助建立隧道，而是需要解析 CONNECT 请求，并从中获得远端服务器主机名。同时返回给被代理程序隧道建立成功的回复：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 根据请求指定版本号</span><br><span class="line">HTTP/1.0 200 Connection established\r\n\r\n</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/10/mitm-proxy/">
+            <a class="btn" href="/2017/06/10/mitm-proxy/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1628,10 +1806,17 @@
 
       
         
-          OpenSSL 常用方法收集
+          <p><a href="http://onthink.com/post/openssl-resources.html">下载 OpenSSL</a></p>
+<p>进入 OpenSSL 命令行模式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OpenSSL</span><br></pre></td></tr></table></figure>
+<p>;) windows 系统中会提示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WARNING: can\'t open config file: /usr/local/ssl/openssl.cnf</span><br><span class="line"><span class="meta">OpenSSL&gt;</span></span><br></pre></td></tr></table></figure>
+<p>退出OpenSSL程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">OpenSSL&gt;</span> exit</span><br></pre></td></tr></table></figure>
+<h3 id="生成私钥"><a href="#生成私钥" class="headerlink" title="生成私钥"></a>生成私钥</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">OpenSSL&gt;</span> genrsa -out rsa_private_key.pem   1024</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/08/openssl-commands/">
+            <a class="btn" href="/2017/06/08/openssl-commands/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1796,10 +1981,11 @@
 
       
         
-          C++ 常用方法收集
+          <h2 id="字符操作"><a href="#字符操作" class="headerlink" title="字符操作"></a>字符操作</h2><h3 id="wstring-和-string-互转"><a href="#wstring-和-string-互转" class="headerlink" title="wstring 和 string 互转"></a>wstring 和 string 互转</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="function">wstring <span class="title">s2ws</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">using</span> convert_typeX = <span class="built_in">std</span>::codecvt_utf8&lt;<span class="keyword">wchar_t</span>&gt;;</span><br><span class="line">    <span class="built_in">std</span>::wstring_convert&lt;convert_typeX, <span class="keyword">wchar_t</span>&gt; converterX;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> converterX.from_bytes(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">ws2s</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::wstring&amp; wstr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> convert_typeX = <span class="built_in">std</span>::codecvt_utf8&lt;<span class="keyword">wchar_t</span>&gt;;</span><br><span class="line">    <span class="built_in">std</span>::wstring_convert&lt;convert_typeX, <span class="keyword">wchar_t</span>&gt; converterX;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> converterX.to_bytes(wstr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/4804298/how-to-convert-wstring-into-string" target="_blank" rel="noopener">进一步阅读</a></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/06/cpp-library/">
+            <a class="btn" href="/2017/06/06/cpp-library/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1964,10 +2150,20 @@
 
       
         
-          OpenSSL 学习资源
+          <h3 id="OpenSSL-可执行文件下载"><a href="#OpenSSL-可执行文件下载" class="headerlink" title="OpenSSL 可执行文件下载"></a>OpenSSL 可执行文件下载</h3><ul>
+<li><a href="https://indy.fulgan.com/SSL/" target="_blank" rel="noopener">OpenSSL 下载</a></li>
+</ul>
+<h3 id="最好的学习文章"><a href="#最好的学习文章" class="headerlink" title="最好的学习文章"></a>最好的学习文章</h3><ul>
+<li><p><a href="http://www.cnblogs.com/LittleHann/p/3741907.html" target="_blank" rel="noopener">OPENSSL编程入门学习</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/LittleHann/p/3738141.html" target="_blank" rel="noopener">openSSL命令、PKI、CA、SSL证书原理</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/LittleHann/p/3735602.html" target="_blank" rel="noopener">中间人攻击(MITM)姿势总结</a></p>
+</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/05/openssl-resources/">
+            <a class="btn" href="/2017/06/05/openssl-resources/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

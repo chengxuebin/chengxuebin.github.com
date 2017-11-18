@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="osx,php,xdeubg" />
+  <meta name="keywords" content="php,osx," />
 
 
 
@@ -115,24 +115,24 @@
 
 
 
-<meta name="description" content="记录如何创建配置 xdebug">
-<meta name="keywords" content="osx,php,xdeubg">
+<meta name="description" content="一、xdebug 工作原理引用 xdebug 的文档：Communication Set-up  当远程调试时，xdebug 充当着客户端的角色，而 IDE 像是服务器，它会侦听调试端口，就是默认的9000，等待 xdebug 建立远程调试的连接。如下图所求：   The IP of the server is 10.">
+<meta name="keywords" content="php,osx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="osx配置xdebug">
 <meta property="og:url" content="http://onthink.com/2015/06/04/osx-config-xdebug/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="记录如何创建配置 xdebug">
+<meta property="og:description" content="一、xdebug 工作原理引用 xdebug 的文档：Communication Set-up  当远程调试时，xdebug 充当着客户端的角色，而 IDE 像是服务器，它会侦听调试端口，就是默认的9000，等待 xdebug 建立远程调试的连接。如下图所求：   The IP of the server is 10.0.1.2 with HTTP on port 80 The IDE is on">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://onthink.com/2015/06/04/osx-config-xdebug/!--￼2--%3E/xdebug/dbgp-setup.gif">
-<meta property="og:image" content="http://onthink.com/2015/06/04/osx-config-xdebug/!--￼3--%3E/xdebug/dbgp-setup2.gif">
-<meta property="og:image" content="http://onthink.com/2015/06/04/osx-config-xdebug/!--￼4--%3E/xdebug/phpstorm-debug-settings.png">
-<meta property="og:image" content="http://onthink.com/2015/06/04/osx-config-xdebug/!--￼5--%3E/xdebug/phpstorm-bug-phone.png">
-<meta property="og:image" content="http://onthink.com/2015/06/04/osx-config-xdebug/!--￼6--%3E/xdebug/xdebug-browser-extension.png">
-<meta property="og:updated_time" content="2017-11-16T15:57:36.000Z">
+<meta property="og:image" content="http://onthink.com/images/posts/xdebug/dbgp-setup.gif">
+<meta property="og:image" content="http://onthink.com/images/posts/xdebug/dbgp-setup2.gif">
+<meta property="og:image" content="http://onthink.com/images/posts/xdebug/phpstorm-debug-settings.png">
+<meta property="og:image" content="http://onthink.com/images/posts/xdebug/phpstorm-bug-phone.png">
+<meta property="og:image" content="http://onthink.com/images/posts/xdebug/xdebug-browser-extension.png">
+<meta property="og:updated_time" content="2017-11-18T03:01:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="osx配置xdebug">
-<meta name="twitter:description" content="记录如何创建配置 xdebug">
-<meta name="twitter:image" content="http://onthink.com/2015/06/04/osx-config-xdebug/!--￼2--%3E/xdebug/dbgp-setup.gif">
+<meta name="twitter:description" content="一、xdebug 工作原理引用 xdebug 的文档：Communication Set-up  当远程调试时，xdebug 充当着客户端的角色，而 IDE 像是服务器，它会侦听调试端口，就是默认的9000，等待 xdebug 建立远程调试的连接。如下图所求：   The IP of the server is 10.0.1.2 with HTTP on port 80 The IDE is on">
+<meta name="twitter:image" content="http://onthink.com/images/posts/xdebug/dbgp-setup.gif">
 
 
 
@@ -445,10 +445,6 @@
           
 
           
-              <div class="post-description">
-                  记录如何创建配置 xdebug
-              </div>
-          
 
         </div>
       </header>
@@ -465,7 +461,7 @@
       
         <h2 id="一、xdebug-工作原理"><a href="#一、xdebug-工作原理" class="headerlink" title="一、xdebug 工作原理"></a>一、xdebug 工作原理</h2><p>引用 xdebug 的文档：<a href="http://xdebug.org/docs/remote" target="_blank" rel="noopener">Communication Set-up</a> </p>
 <p>当远程调试时，xdebug 充当着客户端的角色，而 IDE 像是服务器，它会侦听调试端口，就是默认的9000，等待 xdebug 建立远程调试的连接。如下图所求：</p>
-<p><img src="!--￼2--&gt;/xdebug/dbgp-setup.gif" alt=""></p>
+<p><img src="/images/posts/xdebug/dbgp-setup.gif" alt=""></p>
 <ul>
 <li>The IP of the server is 10.0.1.2 with HTTP on port 80</li>
 <li>The IDE is on IP 10.0.1.42, so xdebug.remote_host is set to 10.0.1.42</li>
@@ -475,7 +471,7 @@
 <li>Debugging runs, HTTP Response provided</li>
 </ul>
 <p>当使用匿名IP时，是通过配置 xdebug.remote_connect_back，工作流程像下图所求：</p>
-<p><img src="!--￼3--&gt;/xdebug/dbgp-setup2.gif" alt=""></p>
+<p><img src="/images/posts/xdebug/dbgp-setup2.gif" alt=""></p>
 <ul>
 <li>The IP of the server is 10.0.1.2 with HTTP on port 80</li>
 <li>The IDE is on an unknown IP, so xdebug.remote_connect_back is set to 1</li>
@@ -502,13 +498,13 @@
 <h2 id="四、配置IDE"><a href="#四、配置IDE" class="headerlink" title="四、配置IDE"></a>四、配置IDE</h2><p>这里使用 phpstrom。</p>
 <ol>
 <li><p>配置 phpstorm 的侦听端口：</p>
-<p>  <img src="!--￼4--&gt;/xdebug/phpstorm-debug-settings.png" alt=""></p>
+<p>  <img src="/images/posts/xdebug/phpstorm-debug-settings.png" alt=""></p>
 </li>
 <li><p>启动侦听端口</p>
-<p> <img src="!--￼5--&gt;/xdebug/phpstorm-bug-phone.png" alt=""></p>
+<p> <img src="/images/posts/xdebug/phpstorm-bug-phone.png" alt=""></p>
 </li>
 <li><p>（可选）安装浏览器插件，设置idekey<br>如果你使用不同的IDE调试，每个IDE的key是不一样的，你可以通过安装浏览器插件，让它配置key并插入cookies，比如chrome插件xdebug helper</p>
-<p> <img src="!--￼6--&gt;/xdebug/xdebug-browser-extension.png" alt=""></p>
+<p> <img src="/images/posts/xdebug/xdebug-browser-extension.png" alt=""></p>
 </li>
 </ol>
 <p><em>如何知道IDE配置成功了？</em></p>

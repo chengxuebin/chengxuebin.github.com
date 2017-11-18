@@ -452,10 +452,13 @@
 
       
         
-          windows 系统的好用的命令
+          <h2 id="一、网络"><a href="#一、网络" class="headerlink" title="一、网络"></a>一、网络</h2><h3 id="查看谁在侦听端口"><a href="#查看谁在侦听端口" class="headerlink" title="查看谁在侦听端口"></a>查看谁在侦听端口</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netstat -np &lt;protocol&gt; | find "port #"</span><br><span class="line"></span><br><span class="line">netstat -np TCP | find "80"</span><br></pre></td></tr></table></figure>
+<h3 id="打开-Internet-网络设置"><a href="#打开-Internet-网络设置" class="headerlink" title="打开 Internet 网络设置"></a>打开 Internet 网络设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inetcpl.cpl</span><br></pre></td></tr></table></figure>
+<p>其它的控制命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">appwiz.cpl</span><br><span class="line">bthprops.cpl</span><br><span class="line">desk.cpl</span><br><span class="line">Firewall.cpl</span><br><span class="line">hdwwiz.cpl</span><br><span class="line">igfxCPL.cpl</span><br><span class="line">inetcpl.cpl</span><br><span class="line">intl.cpl</span><br><span class="line">irprops.cpl</span><br><span class="line">joy.cpl</span><br><span class="line">main.cpl</span><br><span class="line">mmsys.cpl</span><br><span class="line">ncpa.cpl</span><br><span class="line">powercfg.cpl</span><br><span class="line">sysdm.cpl</span><br><span class="line">TabletPC.cpl</span><br><span class="line">telephon.cpl</span><br><span class="line">timedate.cpl</span><br><span class="line">wscui.cpl</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/02/windows-commands/">
+            <a class="btn" href="/2017/06/02/windows-commands/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -620,14 +623,14 @@
 
       
         
-          Visual Studio 提高效率方法和工具
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/25/visual-studio-tips/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="为多行注释开头添加空格"><a href="#为多行注释开头添加空格" class="headerlink" title="为多行注释开头添加空格"></a>为多行注释开头添加空格</h3><p>一般情况下可以通过快捷键 <code>CTRL+K+C</code> 来添加注释：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//A</span></span><br><span class="line"><span class="comment">//B</span></span><br><span class="line"><span class="comment">//C</span></span><br></pre></td></tr></table></figure>
+<p>但是，我更习惯在每行内容的开头添加一个空格：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A</span></span><br><span class="line"><span class="comment">// B</span></span><br><span class="line"><span class="comment">// C</span></span><br></pre></td></tr></table></figure>
+<p>这是一个实现的方法：<a href="https://stackoverflow.com/questions/14027598/how-to-comment-multiple-lines-with-space-or-indent" target="_blank" rel="noopener">How to comment multiple lines with space or indent</a></p>
+
+          
         
       
     </div>
@@ -788,14 +791,12 @@
 
       
         
-          记录和总结一些 cef 的用法
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/26/cef-tips/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h4 id="版本的分页"><a href="#版本的分页" class="headerlink" title="版本的分页"></a>版本的分页</h4><p>规则： <a href="https://bitbucket.org/chromiumembedded/cef/src/YYYY?at=YYYY" target="_blank" rel="noopener">https://bitbucket.org/chromiumembedded/cef/src/YYYY?at=YYYY</a><br>YYYY 对应4位的版本号</p>
+<p>比如： <a href="https://bitbucket.org/chromiumembedded/cef/src/2623?at=2623" target="_blank" rel="noopener">https://bitbucket.org/chromiumembedded/cef/src/2623?at=2623</a></p>
+<p><a href="https://bitbucket.org/chromiumembedded/cef/downloads/?tab=branches" target="_blank" rel="noopener">CEF branches</a></p>
+
+          
         
       
     </div>
@@ -956,14 +957,58 @@
 
       
         
-          Chrome 扩展之： Content Script
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/25/extension-content-script/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h2><h2 id="1-1-使用场景"><a href="#1-1-使用场景" class="headerlink" title="1.1 使用场景"></a>1.1 使用场景</h2><p><code>Content Script</code> 是一个很神奇的东西。它可以读取和修改页面内容。比如一些应用场景</p>
+<ul>
+<li>过滤广告：将页面中的广告区块过滤掉，只显示主要内容</li>
+<li>翻译页面中的外语</li>
+<li>分享页面内容到社交平台</li>
+</ul>
+<h3 id="1-2-限制"><a href="#1-2-限制" class="headerlink" title="1.2 限制"></a>1.2 限制</h3><ul>
+<li>Use chrome.* APIs, with the exception of:<ul>
+<li>extension ( getURL , inIncognitoContext , lastError , onRequest , sendRequest )</li>
+<li>i18n</li>
+<li>runtime ( connect , getManifest , getURL , id , onConnect , onMessage , sendMessage )</li>
+<li>storage</li>
+</ul>
+</li>
+<li>不能使用扩展页面中的变量和方法</li>
+<li>不能使用定义在其它扩展的 Content Script 中的变量和方法</li>
+</ul>
+<h2 id="2-使用"><a href="#2-使用" class="headerlink" title="2 使用"></a>2 使用</h2><h3 id="2-1-Manifest"><a href="#2-1-Manifest" class="headerlink" title="2.1 Manifest"></a>2.1 Manifest</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"My extension"</span>,</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">"content_scripts"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"matches"</span>: [<span class="string">"http://www.google.com/*"</span>],</span><br><span class="line">      <span class="string">"css"</span>: [<span class="string">"mystyles.css"</span>],</span><br><span class="line">      <span class="string">"js"</span>: [<span class="string">"jquery.js"</span>, <span class="string">"myscript.js"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">"permissions"</span>: [</span><br><span class="line">    <span class="string">"tabs"</span>, <span class="string">"http://www.google.com/*"</span></span><br><span class="line">  ],</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-注入"><a href="#2-2-注入" class="headerlink" title="2.2 注入"></a>2.2 注入</h3><h4 id="2-2-1-与-browserAction-配合"><a href="#2-2-1-与-browserAction-配合" class="headerlink" title="2.2.1 与 browserAction 配合"></a>2.2.1 与 <code>browserAction</code> 配合</h4><p>注入并执行一段代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chrome.browserAction.onClicked.addListener(<span class="function"><span class="keyword">function</span>(<span class="params">tab</span>) </span>&#123;</span><br><span class="line">  chrome.tabs.executeScript(&#123;</span><br><span class="line">    code: <span class="string">'document.body.style.backgroundColor="red"'</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>执行上面的代码先获取权限：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"permissions"</span>: [</span><br><span class="line">  <span class="string">"activeTab"</span></span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<p>或直接执行一个文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome.tabs.executeScript(<span class="literal">null</span>, &#123;<span class="attr">file</span>: <span class="string">"content_script.js"</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>blocking</code> 会将回调函数设置为同步处理，请求会等待回调完成。使用该参数需要在 <code>permission</code> 中添加 <code>webRequestBlocking</code> 权限。</p>
+<h3 id="2-2-2-获取资源文件-URL"><a href="#2-2-2-获取资源文件-URL" class="headerlink" title="2.2.2 获取资源文件 URL"></a>2.2.2 获取资源文件 URL</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/Code <span class="keyword">for</span> displaying &lt;extensionDir&gt;<span class="regexp">/images/myim</span>age.png:</span><br><span class="line"><span class="keyword">var</span> imgURL = chrome.extension.getURL(<span class="string">"images/myimage.png"</span>);</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"someImage"</span>).src = imgURL;</span><br></pre></td></tr></table></figure>
+<h2 id="3-要点"><a href="#3-要点" class="headerlink" title="3 要点"></a>3 要点</h2><h3 id="3-1-ContentScript-在独立环境运行"><a href="#3-1-ContentScript-在独立环境运行" class="headerlink" title="3.1 ContentScript 在独立环境运行"></a>3.1 ContentScript 在独立环境运行</h3><h3 id="3-2-注入的方式"><a href="#3-2-注入的方式" class="headerlink" title="3.2 注入的方式"></a>3.2 注入的方式</h3><h4 id="3-2-1-整个文件"><a href="#3-2-1-整个文件" class="headerlink" title="3.2.1 整个文件"></a>3.2.1 整个文件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span> add "script.js" to web_accessible_resources in manifest.json</span></span><br><span class="line">s.src = chrome.extension.getURL(<span class="string">'script.js'</span>);</span><br><span class="line">s.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.remove(); <span class="comment">// 执行完后清理注入标签</span></span><br><span class="line">&#125;;</span><br><span class="line">(<span class="built_in">document</span>.head || <span class="built_in">document</span>.documentElement).appendChild(s);</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong> 将 <code>script.js</code> 加入到 <a href="https://developer.chrome.com/extensions/manifest/web_accessible_resources" target="_blank" rel="noopener">“web_accessible_resources”</a></p>
+<h4 id="3-2-2-代码片段"><a href="#3-2-2-代码片段" class="headerlink" title="3.2.2 代码片段"></a>3.2.2 代码片段</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> actualCode = <span class="string">`// Code here.</span></span><br><span class="line"><span class="string">// If you want to use a variable, use $ and curly braces.</span></span><br><span class="line"><span class="string">// For example, to use a fixed random number:</span></span><br><span class="line"><span class="string">var someFixedRandomValue = <span class="subst">$&#123; <span class="built_in">Math</span>.random() &#125;</span>;</span></span><br><span class="line"><span class="string">// NOTE: Do not insert unsafe variables in this way, see below</span></span><br><span class="line"><span class="string">// at "Dynamic values in the injected code"</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">script.textContent = actualCode;</span><br><span class="line">(<span class="built_in">document</span>.head||<span class="built_in">document</span>.documentElement).appendChild(script);</span><br><span class="line">script.remove();</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-3-更多方式"><a href="#3-2-3-更多方式" class="headerlink" title="3.2.3 更多方式"></a>3.2.3 更多方式</h4><p>参见： <a href="http://stackoverflow.com/questions/9515704/insert-code-into-the-page-context-using-a-content-script/9517879#9517879" target="_blank" rel="noopener">Insert code into the page context using a content script</a></p>
+<h3 id="3-3-注入的时机"><a href="#3-3-注入的时机" class="headerlink" title="3.3 注入的时机"></a>3.3 注入的时机</h3><h4 id="3-3-1-document-start"><a href="#3-3-1-document-start" class="headerlink" title="3.3.1 document_start"></a>3.3.1 document_start</h4><ul>
+<li>在 <code>document.readyState</code> 事件前被触发。</li>
+<li><p>document.head 和 document.body 还不可用，只有 documentElement</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="built_in">document</span>.createElement (<span class="string">"script"</span>);</span><br><span class="line">s.src = <span class="string">"http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"</span>;</span><br><span class="line">s.async = <span class="literal">false</span>;</span><br><span class="line"><span class="built_in">document</span>.documentElement.appendChild (s);</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="built_in">document</span>.createElement (<span class="string">"script"</span>);</span><br><span class="line">s.src = chrome.extension.getURL (<span class="string">"MyPwnCode.js"</span>);</span><br><span class="line">s.async = <span class="literal">false</span>;</span><br><span class="line"><span class="built_in">document</span>.documentElement.appendChild (s);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果需要操作其它 DOM，可以等待 <code>DOMContentLoaded</code> 事件</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, fireContentLoadedEvent, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fireContentLoadedEvent</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log (<span class="string">"DOMContentLoaded"</span>);</span><br><span class="line">    <span class="comment">// PUT YOUR CODE HERE.</span></span><br><span class="line">    <span class="comment">//document.body.textContent = "Changed this!";</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="3-3-2-document-end"><a href="#3-3-2-document-end" class="headerlink" title="3.3.2 document_end"></a>3.3.2 document_end</h4><ul>
+<li>DOM 已解析完成</li>
+<li>资源如 image 和 frame 还没有加载（onload）</li>
+</ul>
+<h4 id="3-3-3-document-idle"><a href="#3-3-3-document-idle" class="headerlink" title="3.3.3 document_idle"></a>3.3.3 document_idle</h4><ul>
+<li>晚于 document_end，</li>
+<li>也晚于 window.onload</li>
+<li>DOM 已解析完成</li>
+</ul>
+
+          
         
       
     </div>
@@ -1124,14 +1169,28 @@
 
       
         
-          Chrome 扩展之： 使用 webRequest 替换页面资源
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/19/extension-replace-js/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="请求事件"><a href="#请求事件" class="headerlink" title="请求事件"></a>请求事件</h2><p>首先，一个请求的生命周期是这样的：</p>
+<p><img src="/images/posts/chrome_extension/webrequestapi.png" alt=""></p>
+<p>利用 <a href="https://developer.chrome.com/extensions/webRequest" target="_blank" rel="noopener">webRequest</a> 接口，可以监听图中的事件，插入自己的处理。</p>
+<h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><h3 id="1-webRequest-需要在-background-中使用"><a href="#1-webRequest-需要在-background-中使用" class="headerlink" title="1. webRequest 需要在 background 中使用"></a>1. webRequest 需要在 background 中使用</h3><h3 id="2-调用方式"><a href="#2-调用方式" class="headerlink" title="2. 调用方式"></a>2. 调用方式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callback = <span class="function"><span class="keyword">function</span>(<span class="params">details</span>) </span>&#123;...&#125;;</span><br><span class="line"><span class="keyword">var</span> filter = &#123;...&#125;;</span><br><span class="line"><span class="keyword">var</span> opt_extraInfoSpec = [...];</span><br><span class="line"></span><br><span class="line">chrome.webRequest.onBeforeRequest.addListener(</span><br><span class="line">    callback, filter, opt_extraInfoSpec);</span><br></pre></td></tr></table></figure>
+<h3 id="3-blocking-参数"><a href="#3-blocking-参数" class="headerlink" title="3. blocking 参数"></a>3. <code>blocking</code> 参数</h3><p><code>blocking</code> 会将回调函数设置为同步处理，请求会等待回调完成。使用该参数需要在 <code>permission</code> 中添加 <code>webRequestBlocking</code> 权限。</p>
+<h2 id="举例：-替换网站的-JS-文件"><a href="#举例：-替换网站的-JS-文件" class="headerlink" title="举例： 替换网站的 JS 文件"></a>举例： 替换网站的 JS 文件</h2><h3 id="1-声明权限"><a href="#1-声明权限" class="headerlink" title="1. 声明权限"></a>1. 声明权限</h3><p>编辑 <code>manifest.json</code>，添加 <code>permission</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"permissions": [</span><br><span class="line">  "webRequest",</span><br><span class="line">  "webRequestBlocking",</span><br><span class="line">  "http://*/*",</span><br><span class="line">  <span class="string">"https://*/*"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="2-添加后端-文件"><a href="#2-添加后端-文件" class="headerlink" title="2. 添加后端 文件"></a>2. 添加后端 文件</h3><p>首先在 <code>manifest.json</code> 中添加 background 文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"background": &#123;</span><br><span class="line">  "scripts": ["dist/js/background.js"],</span><br><span class="line">  "persistent": true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-webRequest-脚本"><a href="#3-webRequest-脚本" class="headerlink" title="3. webRequest 脚本"></a>3. webRequest 脚本</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">chrome.webRequest.onBeforeRequest.addListener(</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">details</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( details.url.endsWith(<span class="string">'origin.js'</span>) )&#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">redirectUrl</span>: chrome.extension.getURL (<span class="string">"dist/bake/fake.js"</span>)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;<span class="attr">urls</span>: [<span class="string">"*://*/*.js"</span>]&#125;,</span><br><span class="line">  [<span class="string">"blocking"</span>]</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>解释一下上面的后端代码：</p>
+<ul>
+<li>监听 <strong>符合规定请求</strong> 的 <code>onBeforeRequest</code> 事件</li>
+<li>这2个参数是回调函数，通过参数 <code>details</code> 来判断每一个请求 <code>url</code>，如果以 <code>origin.js</code> 结尾，将用扩展中准备好的 <code>fake.js</code> 替换。换句话说，将原始网站的 JS 替换为假的 JS</li>
+<li>对于用户来讲，通过查看源码，看到的仍然是 <code>&lt;script src=&quot;origin.js&quot;&gt;&lt;/script&gt;</code></li>
+<li>通过 DevTools 的 network 查看，会发现 <code>url</code> 已经变为 <code>fake.js</code></li>
+<li>第3个参数过滤被监听的请求，支持通配符 <code>*</code></li>
+<li>第4个参数为扩展参数，<code>blocking</code> 说明这是 <strong>同步</strong> 处理，请求会等待回调函数完成</li>
+</ul>
+
+          
         
       
     </div>
@@ -1292,14 +1351,49 @@
 
       
         
-          设置 WebBrowser Document Mode
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/27/webbrowser-document-mode/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="编辑注册表"><a href="#编辑注册表" class="headerlink" title="编辑注册表"></a>编辑注册表</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION</span><br></pre></td></tr></table></figure>
+<h3 id="设置值"><a href="#设置值" class="headerlink" title="设置值"></a>设置值</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">10001 (0x2711)</td>
+<td style="text-align:left">Internet Explorer 10。网页以IE 10的标准模式展现，页面!DOCTYPE无效</td>
+</tr>
+<tr>
+<td style="text-align:left">10000 (0x02710)</td>
+<td style="text-align:left">Internet Explorer 10。在IE 10标准模式中按照网页上!DOCTYPE指令来显示网页。Internet Explorer 10 默认值。</td>
+</tr>
+<tr>
+<td style="text-align:left">9999 (0x270F)</td>
+<td style="text-align:left">Windows Internet Explorer 9. 强制IE9显示，忽略!DOCTYPE指令</td>
+</tr>
+<tr>
+<td style="text-align:left">9000 (0x2328)</td>
+<td style="text-align:left">Internet Explorer 9. Internet Explorer 9默认值，在IE9标准模式中按照网页上!DOCTYPE指令来显示网页。</td>
+</tr>
+<tr>
+<td style="text-align:left">8888 (0x22B8)</td>
+<td style="text-align:left">Internet Explorer 8，强制IE8标准模式显示，忽略!DOCTYPE指令</td>
+</tr>
+<tr>
+<td style="text-align:left">8000 (0x1F40)</td>
+<td style="text-align:left">Internet Explorer 8默认设置，在IE8标准模式中按照网页上!DOCTYPE指令展示网页</td>
+</tr>
+<tr>
+<td style="text-align:left">7000 (0x1B58)</td>
+<td style="text-align:left">使用WebBrowser Control控件的应用程序所使用的默认值，在IE7标准模式中按照网页上!DOCTYPE指令来展示网页。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h3><p><img src="/images/posts/ie/set-reg.png" alt=""></p>
+
+          
         
       
     </div>
@@ -1460,14 +1554,26 @@
 
       
         
-          DuiLib 的使用
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/17/duilib-tutorial/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="下载代码"><a href="#下载代码" class="headerlink" title="下载代码"></a>下载代码</h2><p>本文下载的是 <a href="https://github.com/redrains/DuiLib_Redrain" target="_blank" rel="noopener">Redrain 维护的版本</a>，原始的 DuiLib 版本从<a href="https://github.com/duilib/duilib" target="_blank" rel="noopener">这里</a>下载。</p>
+<h2 id="以库方式使用"><a href="#以库方式使用" class="headerlink" title="以库方式使用"></a>以库方式使用</h2><h3 id="打开并升级工程文件"><a href="#打开并升级工程文件" class="headerlink" title="打开并升级工程文件"></a>打开并升级工程文件</h3><p>打开 <code>DuiLib_vs2010.sln</code>，我安装的 IDE 是 <code>VS2015</code>，会提示升级，按提示完成。</p>
+<h3 id="编译全部动态库"><a href="#编译全部动态库" class="headerlink" title="编译全部动态库"></a>编译全部动态库</h3><p>打开菜单 Build &gt; Batch Build…</p>
+<p>选择编译所有配置：</p>
+<p><img src="/images/posts/duilib/build-batch.jpg" alt=""></p>
+<p>保存编译的结果：</p>
+<ul>
+<li>DuiLib.dll</li>
+<li>DuiLib.lib</li>
+<li>DuiLib_d.dll</li>
+<li>DuiLib_d.lib</li>
+</ul>
+<p>以及 DuiLib 库的定义目录： <code>DuiLib</code></p>
+<p>当创建新工程时，把 lib 文件添加到 link 依赖里，把 DuiLib 目录添加到 inluce 路径中，最后把 dll 库放到导出目录中，便配置好了一个 DuiLib 工程。</p>
+<h2 id="以源码方式使用"><a href="#以源码方式使用" class="headerlink" title="以源码方式使用"></a>以源码方式使用</h2><h3 id="1-创建一个空工程"><a href="#1-创建一个空工程" class="headerlink" title="1. 创建一个空工程"></a>1. 创建一个空工程</h3><h3 id="2-将源码中的-DuiLib-目录添加到工程根目录中"><a href="#2-将源码中的-DuiLib-目录添加到工程根目录中" class="headerlink" title="2. 将源码中的 DuiLib 目录添加到工程根目录中"></a>2. 将源码中的 DuiLib 目录添加到工程根目录中</h3><h3 id="3-导入-DuiLib-项目"><a href="#3-导入-DuiLib-项目" class="headerlink" title="3. 导入 DuiLib 项目"></a>3. 导入 DuiLib 项目</h3><p>在工程上右键，选择：Add &gt; Existing Project…，找到 DuiLib 项目文件导入</p>
+<h3 id="4-设置依赖-DuiLib"><a href="#4-设置依赖-DuiLib" class="headerlink" title="4. 设置依赖 DuiLib"></a>4. 设置依赖 DuiLib</h3><p>在主项目上右键，选择：Build Dependencies &gt; Project Dependencies…，设置依赖 DuiLib 项目。</p>
+<p>这样，在编译主项目时会先编译依赖的 DuiLib 项目。</p>
+
+          
         
       
     </div>
@@ -1628,14 +1734,23 @@
 
       
         
-          CEF 的使用
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/17/cef-tutorial/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="下载代码"><a href="#下载代码" class="headerlink" title="下载代码"></a>下载代码</h2><p><a href="http://opensource.spotify.com/cefbuilds/index.html" target="_blank" rel="noopener">http://opensource.spotify.com/cefbuilds/index.html</a></p>
+<h2 id="CEF"><a href="#CEF" class="headerlink" title="CEF"></a>CEF</h2><h3 id="cefsimple-示例"><a href="#cefsimple-示例" class="headerlink" title="cefsimple 示例"></a>cefsimple 示例</h3><ol>
+<li>编译 <code>libcef_dll_wrapper</code> 静态库</li>
+<li>创建新的项目</li>
+<li>设置 include 目录到 cef 头文件目录</li>
+<li>设置链接库  comctl32.lib, shlwapi.lib, rcprt4.lib, libcef_dll_wrapper.lib, libcef.lib, cef_sandbox.lib</li>
+<li>添加 resource.rc</li>
+<li>添加 cefsimple.exe.manifest 和 compatibility.manifest</li>
+<li>绑定编译事件 post build: 将 cef debug 或 release 目录，Resources 目录复制到输出目录</li>
+</ol>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><h4 id="CefSettings"><a href="#CefSettings" class="headerlink" title="CefSettings"></a>CefSettings</h4><p>当嵌入到 windows 消息循环和 DuiLib 消息循环时，要设置 <code>multi_threaded_message_loop</code></p>
+<h4 id="CefBrowser-和-CefFrame"><a href="#CefBrowser-和-CefFrame" class="headerlink" title="CefBrowser 和 CefFrame"></a>CefBrowser 和 CefFrame</h4><p>CefBrowser 可以包含多个 CefFrame</p>
+<h4 id="CefApp"><a href="#CefApp" class="headerlink" title="CefApp"></a>CefApp</h4><p>待补充</p>
+<h4 id="CefClient"><a href="#CefClient" class="headerlink" title="CefClient"></a>CefClient</h4><p>待补充</p>
+
+          
         
       
     </div>
@@ -1796,14 +1911,12 @@
 
       
         
-          Proxychains4 问题
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/10/proxychains-problem/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="Timeout-问题"><a href="#Timeout-问题" class="headerlink" title="Timeout 问题"></a>Timeout 问题</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 curl https://www.twitter.com/</span><br><span class="line">[proxychains] config file found: /usr/local/Cellar/proxychains-ng/4.10/etc/proxychains.conf</span><br><span class="line">[proxychains] preloading /usr/local/Cellar/proxychains-ng/4.10/lib/libproxychains4.dylib</span><br><span class="line">curl: (7) Failed to connect to www.twitter.com port 443: Operation timed out</span><br></pre></td></tr></table></figure>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><h4 id="1-重启系统进入维护模式（Recovery-Mode）"><a href="#1-重启系统进入维护模式（Recovery-Mode）" class="headerlink" title="1. 重启系统进入维护模式（Recovery Mode）"></a>1. 重启系统进入维护模式（Recovery Mode）</h4><p>按住 ‘Command’ 和 ‘R’ 启动系统</p>
+<h4 id="2-打开终端（Terminal）"><a href="#2-打开终端（Terminal）" class="headerlink" title="2. 打开终端（Terminal）"></a>2. 打开终端（Terminal）</h4><h4 id="3-禁用-csrutil"><a href="#3-禁用-csrutil" class="headerlink" title="3. 禁用 csrutil"></a>3. 禁用 csrutil</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csrutil disable</span><br></pre></td></tr></table></figure>
+<h4 id="4-重启系统"><a href="#4-重启系统" class="headerlink" title="4. 重启系统"></a>4. 重启系统</h4>
+          
         
       
     </div>
@@ -1964,14 +2077,13 @@
 
       
         
-          NSIS 用法小结
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/22/nsis-usage/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="编译-Unicode-版本"><a href="#编译-Unicode-版本" class="headerlink" title="编译 Unicode 版本"></a>编译 Unicode 版本</h3><p>在 nsi 文件开头加上宏配置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unicode true</span><br></pre></td></tr></table></figure>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>unicode 版本的 nsi 和 nsh 文件，需要将编码设置成 <strong>utf8 with BOM</strong>。不然编译器会仍然以 ACP 方式读取文件。</p>
+<p><a href="http://nsis.sourceforge.net/Docs/Contents.html" target="_blank" rel="noopener">NSIS Users Manual</a></p>
+
+          
         
       
     </div>

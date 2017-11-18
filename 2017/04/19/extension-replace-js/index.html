@@ -104,7 +104,7 @@
 
 
 
-  <meta name="keywords" content="chrome,extension" />
+  <meta name="keywords" content="chrome,extension," />
 
 
 
@@ -115,20 +115,20 @@
 
 
 
-<meta name="description" content="Chrome 扩展之： 使用 webRequest 替换页面资源">
+<meta name="description" content="请求事件首先，一个请求的生命周期是这样的：  利用 webRequest 接口，可以监听图中的事件，插入自己的处理。 知识点：1. webRequest 需要在 background 中使用2. 调用方式123456var callback = function(details) &amp;#123;...&amp;#">
 <meta name="keywords" content="chrome,extension">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Chrome 扩展之： 使用 webRequest 替换页面资源">
 <meta property="og:url" content="http://onthink.com/2017/04/19/extension-replace-js/index.html">
 <meta property="og:site_name" content="Ironbin">
-<meta property="og:description" content="Chrome 扩展之： 使用 webRequest 替换页面资源">
+<meta property="og:description" content="请求事件首先，一个请求的生命周期是这样的：  利用 webRequest 接口，可以监听图中的事件，插入自己的处理。 知识点：1. webRequest 需要在 background 中使用2. 调用方式123456var callback = function(details) &amp;#123;...&amp;#125;;var filter = &amp;#123;...&amp;#125;;var opt_extraI">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://onthink.com/2017/04/19/images/chrome_extension/webrequestapi.png">
-<meta property="og:updated_time" content="2017-11-16T16:00:43.000Z">
+<meta property="og:image" content="http://onthink.com/images/posts/chrome_extension/webrequestapi.png">
+<meta property="og:updated_time" content="2017-11-18T03:00:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chrome 扩展之： 使用 webRequest 替换页面资源">
-<meta name="twitter:description" content="Chrome 扩展之： 使用 webRequest 替换页面资源">
-<meta name="twitter:image" content="http://onthink.com/2017/04/19/images/chrome_extension/webrequestapi.png">
+<meta name="twitter:description" content="请求事件首先，一个请求的生命周期是这样的：  利用 webRequest 接口，可以监听图中的事件，插入自己的处理。 知识点：1. webRequest 需要在 background 中使用2. 调用方式123456var callback = function(details) &amp;#123;...&amp;#125;;var filter = &amp;#123;...&amp;#125;;var opt_extraI">
+<meta name="twitter:image" content="http://onthink.com/images/posts/chrome_extension/webrequestapi.png">
 
 
 
@@ -441,10 +441,6 @@
           
 
           
-              <div class="post-description">
-                  Chrome 扩展之： 使用 webRequest 替换页面资源
-              </div>
-          
 
         </div>
       </header>
@@ -460,7 +456,7 @@
 
       
         <h2 id="请求事件"><a href="#请求事件" class="headerlink" title="请求事件"></a>请求事件</h2><p>首先，一个请求的生命周期是这样的：</p>
-<p><img src="../images/chrome_extension/webrequestapi.png" alt=""></p>
+<p><img src="/images/posts/chrome_extension/webrequestapi.png" alt=""></p>
 <p>利用 <a href="https://developer.chrome.com/extensions/webRequest" target="_blank" rel="noopener">webRequest</a> 接口，可以监听图中的事件，插入自己的处理。</p>
 <h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><h3 id="1-webRequest-需要在-background-中使用"><a href="#1-webRequest-需要在-background-中使用" class="headerlink" title="1. webRequest 需要在 background 中使用"></a>1. webRequest 需要在 background 中使用</h3><h3 id="2-调用方式"><a href="#2-调用方式" class="headerlink" title="2. 调用方式"></a>2. 调用方式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callback = <span class="function"><span class="keyword">function</span>(<span class="params">details</span>) </span>&#123;...&#125;;</span><br><span class="line"><span class="keyword">var</span> filter = &#123;...&#125;;</span><br><span class="line"><span class="keyword">var</span> opt_extraInfoSpec = [...];</span><br><span class="line"></span><br><span class="line">chrome.webRequest.onBeforeRequest.addListener(</span><br><span class="line">    callback, filter, opt_extraInfoSpec);</span><br></pre></td></tr></table></figure>
 <h3 id="3-blocking-参数"><a href="#3-blocking-参数" class="headerlink" title="3. blocking 参数"></a>3. <code>blocking</code> 参数</h3><p><code>blocking</code> 会将回调函数设置为同步处理，请求会等待回调完成。使用该参数需要在 <code>permission</code> 中添加 <code>webRequestBlocking</code> 权限。</p>
