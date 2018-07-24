@@ -17,6 +17,7 @@ Homestead 是基于 vagrant 的用于开发 php 程序的配置文件，包含�
 * Docker 本身是一种不同于虚拟机的虚拟化技术，它比虚拟机更轻量，常用于虚拟软件，而虚拟机则虚拟完整系统
 * Vagrant 是管理虚拟机的工具，可用来管理 VMware，VirtualBox 等
 
+<!-- more -->
 
 下面以 virtualbox + vagrant + homestrad 为例，记录一下流程：
 
