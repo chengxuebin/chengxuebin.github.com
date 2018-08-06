@@ -140,3 +140,17 @@ ninja -C src\out\Debug nwjs
 
 pause
 ```
+
+## 常见问题
+
+### 1 `KickNextTick` 未找到
+
+```shell
+src\third_party\node\src\node.cc(4637): error2039: 'KickNextTick': is not 
+a member of 'node:Environment'
+```
+
+**解决办法**
+
+1. 查看当前的 node 分支情况：`git log`
+2. 分支上有关于该 bug 的 commit，更新到该 commit：git reset --hard <SHA1>
