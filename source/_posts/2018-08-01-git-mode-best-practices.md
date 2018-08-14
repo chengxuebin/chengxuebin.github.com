@@ -65,7 +65,7 @@ tags: ['git']
 
 #### 分支协作图
 
-![](/images/posts/git_branch_mode/git-model@2x.jpg)
+![](/images/posts/git_branch_mode/gitflow-model.src.001.jpeg)
 
 
 ### 实践与讨论
