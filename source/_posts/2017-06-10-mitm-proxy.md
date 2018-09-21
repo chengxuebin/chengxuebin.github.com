@@ -82,7 +82,7 @@ SSL_set_tlsext_host_name(ssl, hostName)
 
 ### 通过 `netsh winhttp` 命令
 
-[文档](https://technet.microsoft.com/pt-br/library/cc731131(v=ws.10).aspx#BKMK_5)
+<a href="https://technet.microsoft.com/pt-br/library/cc731131(v=ws.10).aspx#BKMK_5">文档</a>
 
 设置代理：
 
@@ -92,11 +92,11 @@ set proxy 127.0.0.1:8080 "<local>"
 
 ### 通过 `WinHTTP` 接口设置
 
-[文档](https://msdn.microsoft.com/en-us/library/windows/desktop/aa384069(v=vs.85).aspx)
+<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa384069(v=vs.85).aspx">文档</a>
 
 ### WinHTTP vs. WinINet
 
-[参考](https://msdn.microsoft.com/en-us/library/windows/desktop/hh227297(v=vs.85).aspx)
+<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/hh227297(v=vs.85).aspx">文档</a>
 
 选择 WinINet 的原因：
 
@@ -106,13 +106,15 @@ set proxy 127.0.0.1:8080 "<local>"
 
 ### INTERNET_PER_CONN_OPTION
 
-[INTERNET_PER_CONN_OPTION](https://msdn.microsoft.com/en-us/library/windows/desktop/aa385145(v=vs.85).aspx)
+<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa385145(v=vs.85).aspx">INTERNET_PER_CONN_OPTION</a>
 
 ### INTERNET_PROXY_INFO
 
 ```cpp
 INTERNET_PROXY_INFO proxy;
 proxy.dwAccessType = INTERNET_OPEN_TYPE_PROXY;
+// 根据协议来设置代理，比如 FTP, HTTPS 等，使用下面的字符串
+// ftp=http://<ProxyServerName>:80; https=https://<ProxyServerName>:80)
 proxy.lpszProxy = (LPCTSTR)"127.0.0.1:8080";  // unicode building, must cast to LPCTSTR
 proxy.lpszProxyBypass = NULL;
 
