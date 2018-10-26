@@ -56,6 +56,6 @@ flyway.locations=filesystem:sql
 ![](https://flywaydb.org/assets/balsamiq/command-migrate.png)
 
 ```shell
-$ flyway -configFile=./flyway.conf migrate
+$ flyway -configFiles=./flyway.conf migrate
 ```
 
