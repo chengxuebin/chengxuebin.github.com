@@ -40,4 +40,4 @@ $ launchctl list | grep 'com.onthink'
 
 ## 参考
 
-1. [Spring Boot干货系列：（一）优雅的入门篇](http://tengj.top/2017/02/26/springboot1/)
+1. [LaunchDaemons vs LaunchAgents](http://www.grivet-tools.com/blog/2014/launchdaemons-vs-launchagents/)
