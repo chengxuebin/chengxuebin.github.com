@@ -23,6 +23,10 @@ SSLKEYLOGFILE  C:\Users\Jonathan\Documents\SSLKEYLOGFILE.txt
 
 [Chromium Development Calendar and Release Info](https://www.chromium.org/developers/calendar)
 
+#### Chromium 分支和标签
+
+[src.git/+refs](https://chromium.googlesource.com/chromium/src.git/+refs)
+
 #### Chrome 功能更新
 
 查看 [这里](https://www.chromestatus.com/features#milestone%3D68)

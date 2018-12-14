@@ -97,7 +97,7 @@ VS2015 编译时会遇到一些错误，通过以下设置解决
 4819, # The file contains a character that cannot berepresented in the current code page (936).
 ```
 
-### gclient sync 错误
+### gclient sync 错误 1
 
 ```shell
 
@@ -113,6 +113,22 @@ Does not point to a valid commit: 4ce7fef091e1d63a3bfc2ed225619893b0eb1782
 gclient sync --with_branch_heads
 ```
 
+### gclient sync 错误 2
+
+```shell
+> Cannot rebase:You have unstaged changes.
+> Please commit or stash them.
+```
+
+**解决办法：**
+
+忽略行结尾的不一致：
+
+```shell
+git config --global core.autocrlf true
+```
+
+
 ### Windows 系统语言错误
 
 ```shell
@@ -124,3 +140,5 @@ gclient sync --with_branch_heads
 依次打开：Region and Language > Administrative > Langeuage for non-Unicode programs 
 
 点击 Change system locale...，切换为 English (United State)
+
+

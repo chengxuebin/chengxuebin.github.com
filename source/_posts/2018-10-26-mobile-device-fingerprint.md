@@ -42,7 +42,7 @@ tags: ["ios", "android"]
 
 * iOS7 后禁止使用。返回同一值：`02:00:00:00:00:00`
 
-### IMEI
+### IMEI - International Mobile Equipment Identity
 
 * 苹果不允许获取 IMEI
 
