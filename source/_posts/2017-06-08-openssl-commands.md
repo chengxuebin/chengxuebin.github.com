@@ -56,3 +56,7 @@ OpenSSL> pkcs8 -topk8 -inform PEM -in rsa_private_key.pem -outform PEM -nocrypt 
 
 其它一些格式转换，参考[这里](http://onthink.com/post/about-cert-type.html)
 
+### 参考资源
+
+1. [Nginx https 双向认证](https://www.cnblogs.com/yelao/p/9486882.html)
+

@@ -102,6 +102,3 @@ console.log("height = " + g.logicalScreen().imageHeight());
 
 官网提供了众多已经定义好的“配方”供大家参考，请看[这里](http://formats.kaitai.io/)
 
-### 参考
-
-1. [selenium proxy manager](https://github.com/SeleniumHQ/selenium/blob/master/cpp/iedriver/ProxyManager.cpp)

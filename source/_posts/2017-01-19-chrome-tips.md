@@ -42,3 +42,8 @@ SSLKEYLOGFILE  C:\Users\Jonathan\Documents\SSLKEYLOGFILE.txt
 
 [chromium src](https://chromium.googlesource.com/chromium/src.git)
 
+
+#### Chrome 历史离线包
+
+[Google Chrome Older Versions Download](https://www.slimjet.com/chrome/google-chrome-old-version.php)
+
