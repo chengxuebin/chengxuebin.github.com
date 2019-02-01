@@ -63,8 +63,8 @@ corruption of your security databases. If the browser is currently running,
 you should exit browser before continuing this operation. Type 
 'q <enter>' to abort, or <enter> to continue: 
 
-DeviceInfo: �2
-DeviceInfo: �2
+DeviceInfo: 2
+DeviceInfo: 2
 Module "opensc" added to database.
 ```
 
