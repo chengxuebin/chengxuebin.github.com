@@ -67,6 +67,8 @@ xdebug.remote_port=9001
 xdebug.idekey = "PHPSTORM"
 ```
 
+更多配置参数请查看：**[XDebug 参数列表](https://xdebug.org/docs/all_settings)**
+
 *如何知道配置成功了？*
 
 通过 `phpinfo()`，如何看到启动的模块中包含 xdebug 信息，且配置如上面所示，则表示成功了。

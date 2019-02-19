@@ -147,5 +147,24 @@ $ docker-compose up -d nginx mysql phpmyadmin
 
 MySQL 服务器绑定的 Host 可以不填写具体 ip 地址，而是简单地用 mysql 表示.
 
+### 6 workspace 和 php-fpm 的区别
 
+环境配置文件 `.env` 里包含相似的两块配置：workspace 和 php-fpm，它们对应两个不同的容器，一个是 FPM，一个是 CLI。不管是安装插件还是修改配置，都要分开修改。
 
+### 7 删除 `<none>` 镜像
+
+```shell
+$ docker rmi $(docker images --filter "dangling=true" -q --no-trunc)   
+```
+
+### 8 清除 Container，Image
+
+```shell
+docker system prune
+
+WARNING! This will remove:
+        - all stopped containers
+        - all networks not used by at least one container
+        - all dangling images
+        - all build cache
+```
