@@ -96,15 +96,21 @@ $ docker-compose up -d nginx
 
 ## 2 配置 PhpStorm
 
-### 2.1 配置 `Preferences > Languages & Frameworks > PHP`
+### 2.1 配置 PHP
+
+打开 `Preferences > Languages & Frameworks > PHP`
 
 ![](/images/posts/xdebug/phpstorm1.png)
 
-### 2.2 配置 `Preferences > Languages & Frameworks > PHP > DBGp Proxy`
+### 2.2 配置 DBGp Proxy
+
+打开 `Preferences > Languages & Frameworks > PHP > DBGp Proxy`
 
 ![](/images/posts/xdebug/phpstorm2.png)
 
-### 2.3 添加服务器 `Preferences > Languages & Frameworks > PHP > Server`
+### 2.3 添加服务器 
+
+打开 `Preferences > Languages & Frameworks > PHP > Server`
 
 ![](/images/posts/xdebug/phpstorm3.png)
 

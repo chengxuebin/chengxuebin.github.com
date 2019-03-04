@@ -74,8 +74,8 @@ RTCPeerConnection 对象是 WebRTC API 的入口，它负责创建、维护一�
 
 一个会议室 n 人，SFU 服务器的宽带是：
 
-* incoming = bitrate * n 
-* outgoing = bitrate * n + hangouts * n * (n-2)
+* incoming = bitrate x n 
+* outgoing = bitrate x n + hangouts x n x (n-2)
 
 说明：bitrate：主画面码率，hangouts：小窗口码率
 
@@ -174,4 +174,6 @@ http://www.easemob.com/pricing/im
 5. [How Many Users Can Fit in a WebRTC Call?](https://bloggeek.me/how-many-users-webrtc-call/)
 5. [WebRTC媒体服务器](https://zhuanlan.zhihu.com/p/33616446)
 6. [WebRTC 开发实践：为什么你需要 SFU 服务器](https://zhuanlan.zhihu.com/p/56428846)
+7. [视频监控录像计算工具](https://www.jiangyu.org/video-recorder-calculation-tool/)
+8. [帧率,分辨率,码流的关系以及硬盘容量计算方法](https://www.jiangyu.org/fps-data-rate-bit-byte-mb-kbps/)
 

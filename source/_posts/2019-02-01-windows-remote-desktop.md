@@ -14,7 +14,7 @@ tags: ["windows"]
 ### 2 检查远程访问是否被允许
 
 1. 通过搜索，打开 `Allow Remote connections to your computer`
-2. 选中 `Allow remote connections to this computer`
+2. 选中 `Allow Remote Assistance connections to this computer`
 3. 选中 `Allow remote connections to this computer`
 
 <!-- more -->

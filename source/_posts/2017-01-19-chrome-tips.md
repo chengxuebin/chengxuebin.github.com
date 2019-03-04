@@ -47,3 +47,7 @@ SSLKEYLOGFILE  C:\Users\Jonathan\Documents\SSLKEYLOGFILE.txt
 
 [Google Chrome Older Versions Download](https://www.slimjet.com/chrome/google-chrome-old-version.php)
 
+#### Chrome 扩展抓取
+
+* [全部扩展列表](https://crx.dam.io/)
+* [抓取源码](https://github.com/mdamien/chrome-extensions-archive)
