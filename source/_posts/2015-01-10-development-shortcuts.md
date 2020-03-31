@@ -52,6 +52,12 @@ tags: ["shortcut","chrome","mac","windows"]
 - `Ctrl` + `R` ： 替换
 
 
+## Sublime
+
+- `Command` + `Control` + `⬆` ： 上移一行
+- `Command` + `Control` + `⬇` ： 下移一行
+- `Control` + `Shift` + `⬆或⬇` ： 多行编辑
+
 ## Mac OS
 
 ### 按键

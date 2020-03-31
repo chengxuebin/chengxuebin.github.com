@@ -40,5 +40,13 @@ CefBrowser 可以包含多个 CefFrame
 
 #### CefClient
 
-待补充
+**是否支持 crx**
+
+```shell
+// 加载测试扩展，如果是 windows 或 linux，可以加上 --use-views 获得更好效果
+cefclient --load-extension=set_page_color --use-views
+
+// 通过路径加载任意扩展
+cefclient --load-extension=c:\path\to\my\extension
+```
 

@@ -51,3 +51,9 @@ SSLKEYLOGFILE  C:\Users\Jonathan\Documents\SSLKEYLOGFILE.txt
 
 * [全部扩展列表](https://crx.dam.io/)
 * [抓取源码](https://github.com/mdamien/chrome-extensions-archive)
+
+#### Chrome 安装路径
+
+* mac：`/Users/{user-name}/Library/Application Support/Google/Chrome`
+* windows： `C:/Users/{user-name}/App Data/Local/Google/Chrome`
+* linux：`/home/{user-name}/.config/google-chrome`
