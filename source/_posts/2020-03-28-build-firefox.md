@@ -53,3 +53,8 @@ tarball 是代码仓库的快照，打包了某个版本的全部代码，因为
 #### 网络层 Necko
 
 [Necko](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Necko) 是一个跨平台的网络库，提供了网络多层的接口。
+
+
+#### 使用 GDB 调试
+
+关于一些使用上可能遇到的问题，请参考[这里](https://developer.mozilla.org/en-US/docs/Mozilla/Debugging/Debugging_Mozilla_with_gdb)
