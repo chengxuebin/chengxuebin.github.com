@@ -511,6 +511,221 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://onthink.com/2015/07/03/javascript-code-conventions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="程学彬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ironbin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/07/03/javascript-code-conventions/" itemprop="url">javascript 编码常规</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-03T00:00:00+08:00">
+                2015-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/07/03/javascript-code-conventions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/07/03/javascript-code-conventions/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/07/03/javascript-code-conventions/" class="leancloud_visitors" data-flag-title="javascript 编码常规">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>标题写成常规，非规范，是由于只要没有语法错误，如何写代码本身就是编码者的一个喜好而已，但是好的习惯有助于提高可读性，减少错误，尤其提高团队合作的效率。</p>
+<p>下面内容搜集了业内顶级开发者的习惯，来源见底部附录。</p>
+<h2 id="JavaScript-文件"><a href="#JavaScript-文件" class="headerlink" title="JavaScript 文件"></a>JavaScript 文件</h2><p>所有 javascript 文件根据依赖关系，按序放置在 <code>&lt;body&gt;</code> 结束标签前。<br>原因：  </p>
+<ul>
+<li>不会因为 javascript 文件的加载和解析延缓页面显示</li>
+<li>防止标签在加载完成前被 js 代码调用。</li>
+</ul>
+<h2 id="缩进-Indentation"><a href="#缩进-Indentation" class="headerlink" title="缩进 Indentation"></a>缩进 Indentation</h2><ul>
+<li>使用空格代替 <code>tab</code></li>
+<li>缩进单位是2个空格</li>
+</ul>
+<h2 id="代码行"><a href="#代码行" class="headerlink" title="代码行"></a>代码行</h2><ul>
+<li>每行不超过80字符</li>
+<li>换行缩进8个空格</li>
+</ul>
+<h2 id="注释-Comment"><a href="#注释-Comment" class="headerlink" title="注释 Comment"></a>注释 Comment</h2><ul>
+<li>尽量多地注释代码的思路、注意点等</li>
+<li>修改代码时同步更新注释</li>
+</ul>
+<h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><ul>
+<li>使用26大写和小写字母<code>(A .. Z, a .. z)</code>，10个数字<code>(0 .. 9)</code>，下划线<code>(_)</code>。不要使用 <code>$ (dollar sign)</code> 或 <code>\ (backslash)</code></li>
+<li>首尾不使用下划线</li>
+<li>变量或方法遵守驼峰（camelCase）规则</li>
+<li>构造函数遵守大写驼峰规则</li>
+<li>全局变量遵守全大写规则</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MESSAGE_TYPE_BROADCAST = <span class="number">0</span>,    <span class="comment">// 全局变量</span></span><br><span class="line">    MESSAGE_TYPE_PERSON = <span class="number">1</span>,</span><br><span class="line">    MESSAGE_TYPE_GROUP = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendMessage</span>(<span class="params">messageType, message</span>)</span>&#123;    <span class="comment">// 方法名</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> httpStatus,</span><br><span class="line">        sendResult;     <span class="comment">// 变量</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// detect message target by message type</span></span><br><span class="line">    ... </span><br><span class="line">    </span><br><span class="line">    httpStatus = httpRequest(message);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// handle result</span></span><br><span class="line">    ...</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">return</span> sendResult;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="变量-Variable"><a href="#变量-Variable" class="headerlink" title="变量 Variable"></a>变量 Variable</h2><ul>
+<li>所有变量在使用前声明，<code>var</code> 应该是 <code>Function</code> 第一行语句</li>
+<li>变量及其注释单独一行</li>
+<li><p>变量名遵守驼峰（camelCase）规则</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentEntry, <span class="comment">// currently selected table entry</span></span><br><span class="line">level,        <span class="comment">// indentation level</span></span><br><span class="line">size;         <span class="comment">// size of table</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="方法-Function"><a href="#方法-Function" class="headerlink" title="方法 Function"></a>方法 Function</h2><ul>
+<li>方法名遵守驼峰（camelCase）规则</li>
+<li><p>立即执行的方法使用小括号封装</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> collection = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> keys = [], values = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> at = keys.indexOf(key);</span><br><span class="line">            <span class="keyword">if</span> (at &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> values[at];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        set: <span class="function"><span class="keyword">function</span> (<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> at = keys.indexOf(key);</span><br><span class="line">            <span class="keyword">if</span> (at &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                at = keys.length;</span><br><span class="line">            &#125;</span><br><span class="line">            keys[at] = key;</span><br><span class="line">            values[at] = value;</span><br><span class="line">        &#125;,</span><br><span class="line">        remove: <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> at = keys.indexOf(key);</span><br><span class="line">            <span class="keyword">if</span> (at &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                keys.splice(at, <span class="number">1</span>);</span><br><span class="line">                values.splice(at, <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="格式示例"><a href="#格式示例" class="headerlink" title="格式示例"></a>格式示例</h2><h3 id="if-语句（Statement）"><a href="#if-语句（Statement）" class="headerlink" title="if 语句（Statement）"></a>if 语句（Statement）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (initialization; condition; update) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (variable <span class="keyword">in</span> object) &#123;</span><br><span class="line">    <span class="keyword">if</span> (filter) &#123;</span><br><span class="line">        statements</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="do-语句"><a href="#do-语句" class="headerlink" title="do 语句"></a>do 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">while</span> (condition);</span><br></pre></td></tr></table></figure>
+<p>Unlike the other compound statements, the do statement always ends with a ; (semicolon).</p>
+<h3 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">switch</span> (expression) &#123;</span><br><span class="line"><span class="keyword">case</span> expression:</span><br><span class="line">    statements</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>每一组必须有结束代码：<code>break, return, or throw</code></p>
+<h3 id="try-语句"><a href="#try-语句" class="headerlink" title="try 语句"></a>try 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">     statements</span><br><span class="line"> &#125; <span class="keyword">catch</span> (variable) &#123;</span><br><span class="line">     statements</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">     statements</span><br><span class="line"> &#125; <span class="keyword">catch</span> (variable) &#123;</span><br><span class="line">     statements</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="continue-语句"><a href="#continue-语句" class="headerlink" title="continue 语句"></a>continue 语句</h3><p><strong>不要使用</strong></p>
+<h3 id="with-语句"><a href="#with-语句" class="headerlink" title="with 语句"></a>with 语句</h3><p><strong>不要使用</strong></p>
+<h3 id="eval-语句"><a href="#eval-语句" class="headerlink" title="eval 语句"></a>eval 语句</h3><p><strong>不要使用</strong></p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><em><a href="http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html" target="_blank" rel="noopener">Javascript编程风格</a></em><br><em><a href="http://javascript.crockford.com/code.html" target="_blank" rel="noopener">Code Conventions for the JavaScript Programming Language</a></em><br><em><a href="http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml" target="_blank" rel="noopener">Google JavaScript Style Guide</a></em></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://onthink.com/2015/07/03/url-code-conventions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -828,221 +1043,6 @@
 <li>目录名对应 <code>Controller</code>，首字母大写</li>
 <li>文件名对应 <code>action</code>，首字母小写</li>
 </ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://onthink.com/2015/07/03/javascript-code-conventions/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="程学彬">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ironbin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/07/03/javascript-code-conventions/" itemprop="url">javascript 编码常规</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-03T00:00:00+08:00">
-                2015-07-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/07/03/javascript-code-conventions/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/07/03/javascript-code-conventions/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/07/03/javascript-code-conventions/" class="leancloud_visitors" data-flag-title="javascript 编码常规">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>标题写成常规，非规范，是由于只要没有语法错误，如何写代码本身就是编码者的一个喜好而已，但是好的习惯有助于提高可读性，减少错误，尤其提高团队合作的效率。</p>
-<p>下面内容搜集了业内顶级开发者的习惯，来源见底部附录。</p>
-<h2 id="JavaScript-文件"><a href="#JavaScript-文件" class="headerlink" title="JavaScript 文件"></a>JavaScript 文件</h2><p>所有 javascript 文件根据依赖关系，按序放置在 <code>&lt;body&gt;</code> 结束标签前。<br>原因：  </p>
-<ul>
-<li>不会因为 javascript 文件的加载和解析延缓页面显示</li>
-<li>防止标签在加载完成前被 js 代码调用。</li>
-</ul>
-<h2 id="缩进-Indentation"><a href="#缩进-Indentation" class="headerlink" title="缩进 Indentation"></a>缩进 Indentation</h2><ul>
-<li>使用空格代替 <code>tab</code></li>
-<li>缩进单位是2个空格</li>
-</ul>
-<h2 id="代码行"><a href="#代码行" class="headerlink" title="代码行"></a>代码行</h2><ul>
-<li>每行不超过80字符</li>
-<li>换行缩进8个空格</li>
-</ul>
-<h2 id="注释-Comment"><a href="#注释-Comment" class="headerlink" title="注释 Comment"></a>注释 Comment</h2><ul>
-<li>尽量多地注释代码的思路、注意点等</li>
-<li>修改代码时同步更新注释</li>
-</ul>
-<h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><ul>
-<li>使用26大写和小写字母<code>(A .. Z, a .. z)</code>，10个数字<code>(0 .. 9)</code>，下划线<code>(_)</code>。不要使用 <code>$ (dollar sign)</code> 或 <code>\ (backslash)</code></li>
-<li>首尾不使用下划线</li>
-<li>变量或方法遵守驼峰（camelCase）规则</li>
-<li>构造函数遵守大写驼峰规则</li>
-<li>全局变量遵守全大写规则</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MESSAGE_TYPE_BROADCAST = <span class="number">0</span>,    <span class="comment">// 全局变量</span></span><br><span class="line">    MESSAGE_TYPE_PERSON = <span class="number">1</span>,</span><br><span class="line">    MESSAGE_TYPE_GROUP = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendMessage</span>(<span class="params">messageType, message</span>)</span>&#123;    <span class="comment">// 方法名</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> httpStatus,</span><br><span class="line">        sendResult;     <span class="comment">// 变量</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// detect message target by message type</span></span><br><span class="line">    ... </span><br><span class="line">    </span><br><span class="line">    httpStatus = httpRequest(message);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// handle result</span></span><br><span class="line">    ...</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">return</span> sendResult;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="变量-Variable"><a href="#变量-Variable" class="headerlink" title="变量 Variable"></a>变量 Variable</h2><ul>
-<li>所有变量在使用前声明，<code>var</code> 应该是 <code>Function</code> 第一行语句</li>
-<li>变量及其注释单独一行</li>
-<li><p>变量名遵守驼峰（camelCase）规则</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentEntry, <span class="comment">// currently selected table entry</span></span><br><span class="line">level,        <span class="comment">// indentation level</span></span><br><span class="line">size;         <span class="comment">// size of table</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="方法-Function"><a href="#方法-Function" class="headerlink" title="方法 Function"></a>方法 Function</h2><ul>
-<li>方法名遵守驼峰（camelCase）规则</li>
-<li><p>立即执行的方法使用小括号封装</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> collection = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> keys = [], values = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> at = keys.indexOf(key);</span><br><span class="line">            <span class="keyword">if</span> (at &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> values[at];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        set: <span class="function"><span class="keyword">function</span> (<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> at = keys.indexOf(key);</span><br><span class="line">            <span class="keyword">if</span> (at &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                at = keys.length;</span><br><span class="line">            &#125;</span><br><span class="line">            keys[at] = key;</span><br><span class="line">            values[at] = value;</span><br><span class="line">        &#125;,</span><br><span class="line">        remove: <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> at = keys.indexOf(key);</span><br><span class="line">            <span class="keyword">if</span> (at &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                keys.splice(at, <span class="number">1</span>);</span><br><span class="line">                values.splice(at, <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="格式示例"><a href="#格式示例" class="headerlink" title="格式示例"></a>格式示例</h2><h3 id="if-语句（Statement）"><a href="#if-语句（Statement）" class="headerlink" title="if 语句（Statement）"></a>if 语句（Statement）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (initialization; condition; update) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (variable <span class="keyword">in</span> object) &#123;</span><br><span class="line">    <span class="keyword">if</span> (filter) &#123;</span><br><span class="line">        statements</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="do-语句"><a href="#do-语句" class="headerlink" title="do 语句"></a>do 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">while</span> (condition);</span><br></pre></td></tr></table></figure>
-<p>Unlike the other compound statements, the do statement always ends with a ; (semicolon).</p>
-<h3 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">switch</span> (expression) &#123;</span><br><span class="line"><span class="keyword">case</span> expression:</span><br><span class="line">    statements</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>每一组必须有结束代码：<code>break, return, or throw</code></p>
-<h3 id="try-语句"><a href="#try-语句" class="headerlink" title="try 语句"></a>try 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">     statements</span><br><span class="line"> &#125; <span class="keyword">catch</span> (variable) &#123;</span><br><span class="line">     statements</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">     statements</span><br><span class="line"> &#125; <span class="keyword">catch</span> (variable) &#123;</span><br><span class="line">     statements</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="continue-语句"><a href="#continue-语句" class="headerlink" title="continue 语句"></a>continue 语句</h3><p><strong>不要使用</strong></p>
-<h3 id="with-语句"><a href="#with-语句" class="headerlink" title="with 语句"></a>with 语句</h3><p><strong>不要使用</strong></p>
-<h3 id="eval-语句"><a href="#eval-语句" class="headerlink" title="eval 语句"></a>eval 语句</h3><p><strong>不要使用</strong></p>
-<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><em><a href="http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html" target="_blank" rel="noopener">Javascript编程风格</a></em><br><em><a href="http://javascript.crockford.com/code.html" target="_blank" rel="noopener">Code Conventions for the JavaScript Programming Language</a></em><br><em><a href="http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml" target="_blank" rel="noopener">Google JavaScript Style Guide</a></em></p>
 
           
         
@@ -2171,7 +2171,7 @@
 </li>
 <li><p>添加新文件到 <code>grd</code> </p>
 <p> 打开 <code>src\chrome\common\extensions_api_resources.grd</code>，添加</p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">grit</span> <span class="attr">latest_public_release</span>=<span class="string">"0"</span> <span class="attr">current_release</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">outputs</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"grit/extensions_api_resources.h"</span> <span class="attr">type</span>=<span class="string">"rc_header"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">emit</span> <span class="attr">emit_type</span>=<span class="string">'prepend'</span>&gt;</span><span class="tag">&lt;/<span class="name">emit</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">output</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"extensions_api_resources.pak"</span> <span class="attr">type</span>=<span class="string">"data_package"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"extensions_api_resources.rc"</span> <span class="attr">type</span>=<span class="string">"rc_all"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">outputs</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">release</span> <span class="attr">seq</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">	  ...</span><br><span class="line">      <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"IDR_EXTENSION_API_JSON_WINTRUST"</span> <span class="attr">file</span>=<span class="string">"extensions\api\wintrust.json"</span> <span class="attr">type</span>=<span class="string">"BINDATA"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">release</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">grit</span>&gt;</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">grit</span> <span class="attr">latest_public_release</span>=<span class="string">"0"</span> <span class="attr">current_release</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">outputs</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"grit/extensions_api_resources.h"</span> <span class="attr">type</span>=<span class="string">"rc_header"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">emit</span> <span class="attr">emit_type</span>=<span class="string">'prepend'</span>&gt;</span><span class="tag">&lt;/<span class="name">emit</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">output</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"extensions_api_resources.pak"</span> <span class="attr">type</span>=<span class="string">"data_package"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"extensions_api_resources.rc"</span> <span class="attr">type</span>=<span class="string">"rc_all"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">outputs</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">release</span> <span class="attr">seq</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">	  ...</span><br><span class="line">      <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"IDR_EXTENSION_API_JSON_WINTRUST"</span> <span class="attr">file</span>=<span class="string">"extensions\api\wintrust.json"</span> <span class="attr">type</span>=<span class="string">"BINDATA"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">release</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">grit</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="二、添加新接口头文件和实现"><a href="#二、添加新接口头文件和实现" class="headerlink" title="二、添加新接口头文件和实现"></a>二、添加新接口头文件和实现</h2><ol>

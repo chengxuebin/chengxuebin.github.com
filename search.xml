@@ -789,31 +789,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[网络工具：ARP]]></title>
-      <url>/2019/02/01/network-arp/</url>
-      <content type="html"><![CDATA[<h3 id="1-查看-arp-映射列表"><a href="#1-查看-arp-映射列表" class="headerlink" title="1 查看 arp 映射列表"></a>1 查看 arp 映射列表</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> arp -a</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-清除-arp-映射"><a href="#2-清除-arp-映射" class="headerlink" title="2 清除 arp 映射"></a>2 清除 arp 映射</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 清除一个映射</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> arp -d 192.168.199.1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 清除全部映射</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> arp -ad</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-]]></content>
-      
-        <categories>
-            
-            <category> network </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> network </tag>
-            
-            <tag> arp </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[解决 Windows 远程桌面连接失败]]></title>
       <url>/2019/02/01/windows-remote-desktop/</url>
       <content type="html"><![CDATA[<h3 id="1-修改防火墙"><a href="#1-修改防火墙" class="headerlink" title="1 修改防火墙"></a>1 修改防火墙</h3><ol>
@@ -844,6 +819,57 @@
         <tags>
             
             <tag> windows </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[网络工具：ARP]]></title>
+      <url>/2019/02/01/network-arp/</url>
+      <content type="html"><![CDATA[<h3 id="1-查看-arp-映射列表"><a href="#1-查看-arp-映射列表" class="headerlink" title="1 查看 arp 映射列表"></a>1 查看 arp 映射列表</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> arp -a</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-清除-arp-映射"><a href="#2-清除-arp-映射" class="headerlink" title="2 清除 arp 映射"></a>2 清除 arp 映射</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 清除一个映射</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> arp -d 192.168.199.1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 清除全部映射</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> arp -ad</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+]]></content>
+      
+        <categories>
+            
+            <category> network </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> network </tag>
+            
+            <tag> arp </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Chomium 调试方法]]></title>
+      <url>/2019/01/31/chromium-debug/</url>
+      <content type="html"><![CDATA[<h2 id="Linux-平台"><a href="#Linux-平台" class="headerlink" title="Linux 平台"></a>Linux 平台</h2><h3 id="基础调试"><a href="#基础调试" class="headerlink" title="基础调试"></a>基础调试</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> gdb -tui -ex=r --args out/Debug/chrome --<span class="built_in">disable</span>-seccomp-sandbox http://google.com</span></span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="https://chromium.googlesource.com/chromium/src/+/HEAD/docs/linux_debugging.md#Basic-browser-process-debugging" target="_blank" rel="noopener">Tips for debugging on Linux</a></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> chromium </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> chromium </tag>
+            
+            <tag> dbg </tag>
             
         </tags>
         
@@ -881,32 +907,6 @@
             <tag> chromium </tag>
             
             <tag> crashpad </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Chomium 调试方法]]></title>
-      <url>/2019/01/31/chromium-debug/</url>
-      <content type="html"><![CDATA[<h2 id="Linux-平台"><a href="#Linux-平台" class="headerlink" title="Linux 平台"></a>Linux 平台</h2><h3 id="基础调试"><a href="#基础调试" class="headerlink" title="基础调试"></a>基础调试</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> gdb -tui -ex=r --args out/Debug/chrome --<span class="built_in">disable</span>-seccomp-sandbox http://google.com</span></span><br></pre></td></tr></table></figure>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
-<li><a href="https://chromium.googlesource.com/chromium/src/+/HEAD/docs/linux_debugging.md#Basic-browser-process-debugging" target="_blank" rel="noopener">Tips for debugging on Linux</a></li>
-</ol>
-]]></content>
-      
-        <categories>
-            
-            <category> chromium </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> chromium </tag>
-            
-            <tag> dbg </tag>
             
         </tags>
         
@@ -2250,29 +2250,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Windows 钩子]]></title>
-      <url>/2017/12/07/windows-hooks/</url>
-      <content type="html"><![CDATA[<p>未完成</p>
-]]></content>
-      
-        <categories>
-            
-            <category> c++ </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> vc++ </tag>
-            
-            <tag> Windows </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[使用 deployer 自动化部署 laravel]]></title>
       <url>/2017/12/07/deploer-for-laravel-usage/</url>
       <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="phar-包方式"><a href="#phar-包方式" class="headerlink" title="phar 包方式"></a>phar 包方式</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> curl -LO https://deployer.org/deployer.phar</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mv deployer.phar /usr/<span class="built_in">local</span>/bin/dep</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> chmod +x /usr/<span class="built_in">local</span>/bin/dep</span></span><br></pre></td></tr></table></figure>
@@ -2312,6 +2289,29 @@
             <tag> laravel </tag>
             
             <tag> deployer </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Windows 钩子]]></title>
+      <url>/2017/12/07/windows-hooks/</url>
+      <content type="html"><![CDATA[<p>未完成</p>
+]]></content>
+      
+        <categories>
+            
+            <category> c++ </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> vc++ </tag>
+            
+            <tag> Windows </tag>
             
         </tags>
         
@@ -2735,76 +2735,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[中间人劫持代理]]></title>
-      <url>/2017/06/10/mitm-proxy/</url>
-      <content type="html"><![CDATA[<h2 id="中间人劫持代理"><a href="#中间人劫持代理" class="headerlink" title="中间人劫持代理"></a>中间人劫持代理</h2><p><img src="/images/posts/mitm_proxy/how-mitmproxy-works-explicit-https.png" alt=""></p>
-<p>注：图片来源于 mitmproxy</p>
-<h4 id="本代理基于-TCP，是一个不关心协议的代理？"><a href="#本代理基于-TCP，是一个不关心协议的代理？" class="headerlink" title="本代理基于 TCP，是一个不关心协议的代理？"></a>本代理基于 TCP，是一个不关心协议的代理？</h4><p>是的</p>
-<h4 id="HTTP-代理-VS-Socks-代理"><a href="#HTTP-代理-VS-Socks-代理" class="headerlink" title="HTTP 代理 VS Socks 代理"></a>HTTP 代理 VS Socks 代理</h4><h2 id="问题与挑战"><a href="#问题与挑战" class="headerlink" title="问题与挑战"></a>问题与挑战</h2><h3 id="获取远端主机名（Host）"><a href="#获取远端主机名（Host）" class="headerlink" title="获取远端主机名（Host）"></a>获取远端主机名（Host）</h3><p>当应用设置了代理后，在 TLS 协商前，应用首先会发一条 CONNECT 请求，期待通过代理和远端服务器建立 TLS 隧道（tunnel）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONNECT 10.1.1.1:443 HTTP/1.1</span><br></pre></td></tr></table></figure>
-<p>作为中间人代理，并不帮助建立隧道，而是需要解析 CONNECT 请求，并从中获得远端服务器主机名。同时返回给被代理程序隧道建立成功的回复：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 根据请求指定版本号</span><br><span class="line">HTTP/1.0 200 Connection established\r\n\r\n</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h3 id="Subject-Alternative-Name"><a href="#Subject-Alternative-Name" class="headerlink" title="Subject Alternative Name"></a>Subject Alternative Name</h3><p>这是服务器证书包含的一个字段，用于标识证书签发的域名。</p>
-<p>通常服务器的域名保存在 <code>Common name</code> 字段，只保存一个域名，而 <code>Subject Alternative Name</code> 可保存多个域名，并支持通配符。也就是，有的时候访问的服务器主机并不和 <code>Common name</code> 匹配，但匹配 <code>SAN</code>，这样的证书也是合法的。</p>
-<h3 id="服务器名称指示（SNI）"><a href="#服务器名称指示（SNI）" class="headerlink" title="服务器名称指示（SNI）"></a>服务器名称指示（SNI）</h3><p>这是识别同一 IP 部署的多个带证书虚拟主机（Virtual Host）的技术。</p>
-<p>基于名称的虚拟主机允许多个域名由同一IP地址上的单个服务器（通常为Web服务器）托管。使用 HTTP 时，其必须包含的协议头 <a href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5%E5%88%97%E8%A1%A8" target="_blank" rel="noopener"><code>Host</code></a> 字段标识了欲访问的域名，据此分辨出虚拟主机。但是，由于 HTTPS 握手发生在服务器看到任何 HTTP 头之前，这时并不知道要访问哪个虚拟主机，也就不能把对应的服务器证书发给客户端，以完成 TLS 协商。</p>
-<p>SNI 通过让客户端发送虚拟域名的名称作为TLS协商的一部分来解决此问题。</p>
-<p>OpenSSL 客户端实现：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// set host name before initiating the SSL connection</span></span><br><span class="line">SSL_set_tlsext_host_name(ssl, hostName)</span><br></pre></td></tr></table></figure>
-<p><a href="https://zh.wikipedia.org/wiki/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%8D%E7%A7%B0%E6%8C%87%E7%A4%BA" target="_blank" rel="noopener">扩展阅读</a></p>
-<h3 id="Certificate-Pinning"><a href="#Certificate-Pinning" class="headerlink" title="Certificate Pinning"></a>Certificate Pinning</h3><p>简单地说，就是某些程序（比如浏览器）只相信某些根证书签发的服务器证书。</p>
-<p>通常证书通过证书链验证合法性，<code>MyCert</code> 由 <code>IntermediateCert</code> 签发，它又由 <code>RootCert</code> 签发，<code>RootCert</code> 已经内置在操作系统的可信任根证书中。 这样，<code>MyCert</code> 是合法的。常见内置的根证书有：Verisign, Digicert, Thawte等。</p>
-<p>但是，Certificate pinning 的作用是，即使通过了上面的验证，如果不是某个指定 RootCert 签发的证书，也认为其不合法。这在一定程序上避免中间人攻击，但没有真的解决。</p>
-<p>下面是一些使用 Certificate pinning 的应用：</p>
-<ul>
-<li>微软的自动更新</li>
-<li>苹果 App Store</li>
-<li>Twitter app</li>
-</ul>
-<p><a href="https://security.stackexchange.com/questions/29988/what-is-certificate-pinning/" target="_blank" rel="noopener">扩展阅读</a></p>
-<h2 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h2><h3 id="通过-netsh-winhttp-命令"><a href="#通过-netsh-winhttp-命令" class="headerlink" title="通过 netsh winhttp 命令"></a>通过 <code>netsh winhttp</code> 命令</h3><p><a href="https://technet.microsoft.com/pt-br/library/cc731131(v=ws.10).aspx#BKMK_5" target="_blank" rel="noopener">文档</a></p>
-<p>设置代理：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set proxy 127.0.0.1:8080 "&lt;local&gt;"</span><br></pre></td></tr></table></figure>
-<h3 id="通过-WinHTTP-接口设置"><a href="#通过-WinHTTP-接口设置" class="headerlink" title="通过 WinHTTP 接口设置"></a>通过 <code>WinHTTP</code> 接口设置</h3><p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa384069(v=vs.85).aspx" target="_blank" rel="noopener">文档</a></p>
-<h3 id="WinHTTP-vs-WinINet"><a href="#WinHTTP-vs-WinINet" class="headerlink" title="WinHTTP vs. WinINet"></a>WinHTTP vs. WinINet</h3><p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/hh227297(v=vs.85).aspx" target="_blank" rel="noopener">文档</a></p>
-<p>选择 WinINet 的原因：</p>
-<ul>
-<li>支持 cookies</li>
-<li>Credential Cache (和SSL证书相关？)</li>
-<li>Credential Prompting (和SSL证书相关？)</li>
-</ul>
-<h3 id="INTERNET-PER-CONN-OPTION"><a href="#INTERNET-PER-CONN-OPTION" class="headerlink" title="INTERNET_PER_CONN_OPTION"></a>INTERNET_PER_CONN_OPTION</h3><p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa385145(v=vs.85).aspx" target="_blank" rel="noopener">INTERNET_PER_CONN_OPTION</a></p>
-<h3 id="INTERNET-PROXY-INFO"><a href="#INTERNET-PROXY-INFO" class="headerlink" title="INTERNET_PROXY_INFO"></a>INTERNET_PROXY_INFO</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">INTERNET_PROXY_INFO proxy;</span><br><span class="line">proxy.dwAccessType = INTERNET_OPEN_TYPE_PROXY;</span><br><span class="line"><span class="comment">// 根据协议来设置代理，比如 FTP, HTTPS 等，使用下面的字符串</span></span><br><span class="line"><span class="comment">// ftp=http://&lt;ProxyServerName&gt;:80; https=https://&lt;ProxyServerName&gt;:80)</span></span><br><span class="line">proxy.lpszProxy = (LPCTSTR)<span class="string">"127.0.0.1:8080"</span>;  <span class="comment">// unicode building, must cast to LPCTSTR</span></span><br><span class="line">proxy.lpszProxyBypass = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="设置自动代理"><a href="#设置自动代理" class="headerlink" title="设置自动代理"></a>设置自动代理</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">wchar_t</span> wzsPath[MAX_PATH];</span><br><span class="line"><span class="keyword">wchar_t</span> wszProxyUrl[INTERNET_MAX_URL_LENGTH];</span><br><span class="line">SHGetFolderPath ( <span class="literal">NULL</span>, CSIDL_APPDATA | CSIDL_FLAG_CREATE, <span class="literal">NULL</span>, <span class="number">0</span>, wszPath );</span><br><span class="line"></span><br><span class="line"><span class="comment">// Construct Pac file path. – %appdata%\MyAppFolder\redirect.pac</span></span><br><span class="line">StringCbPrintf (wszProxyUrl, <span class="keyword">sizeof</span>(wszProxyUrl), </span><br><span class="line">        <span class="string">L"file://%s\\MyAppFolder\\redirect.pac"</span>, wszPath );</span><br><span class="line"></span><br><span class="line">INTERNET_PER_CONN_OPTION_LIST *optionList = <span class="number">0</span>;</span><br><span class="line">optionList-&gt;pOptions[INDEX].Value.pszValue = wszPath;</span><br><span class="line"></span><br><span class="line">InternetSetOption ( <span class="literal">NULL</span>, INTERNET_OPTION_PER_CONNECTION_OPTION,</span><br><span class="line">        optionList, <span class="keyword">sizeof</span>(INTERNET_PER_CONN_OPTION_LIST) );</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">INTERNET_PER_CONN_OPTION_LIST    List;</span><br><span class="line">INTERNET_PER_CONN_OPTION         Option[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span>                    nSize =</span><br><span class="line"><span class="keyword">sizeof</span>(INTERNET_PER_CONN_OPTION_LIST);</span><br><span class="line"></span><br><span class="line">Option[<span class="number">0</span>].dwOption = INTERNET_PER_CONN_AUTOCONFIG_URL;</span><br><span class="line">Option[<span class="number">0</span>].Value.pszValue = <span class="string">"http://myserver/proxy.pacl"</span>;</span><br><span class="line">Option[<span class="number">1</span>].dwOption = INTERNET_PER_CONN_FLAGS;</span><br><span class="line">Option[<span class="number">1</span>].Value.dwValue = PROXY_TYPE_AUTO_PROXY_URL;</span><br><span class="line"></span><br><span class="line">List.dwSize = <span class="keyword">sizeof</span>(INTERNET_PER_CONN_OPTION_LIST);</span><br><span class="line">List.pszConnection = <span class="literal">NULL</span>;</span><br><span class="line">List.dwOptionCount = <span class="number">2</span>;</span><br><span class="line">List.dwOptionError = <span class="number">0</span>;</span><br><span class="line">List.pOptions = Option;</span><br><span class="line"></span><br><span class="line">hMyHandle =  InternetOpen(<span class="string">""</span>, INTERNET_OPEN_TYPE_DIRECT, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!InternetSetOption(hMyHandle, INTERNET_OPTION_PER_CONNECTION_OPTION,</span><br><span class="line">&amp;List, nSize))</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"InternetQueryOption failed! (%d)\n"</span>, GetLastError());</span><br></pre></td></tr></table></figure>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="http://docs.mitmproxy.org/en/stable/howmitmproxy.html" target="_blank" rel="noopener">mitmproxy</a></li>
-<li><a href="http://www.5icpp.com/?p=139" target="_blank" rel="noopener">如何给CHtmlView添加代理——MFC</a></li>
-<li><a href="http://www.lai18.com/content/2206252.html" target="_blank" rel="noopener">为网络程序添加代理设置</a>：带 VC6 示例程序</li>
-<li><a href="http://www.cnblogs.com/duanshuiliu/archive/2013/03/18/2965405.html" target="_blank" rel="noopener">查询代理和设置代理</a></li>
-<li><a href="http://blog.csdn.net/ba_jie/article/details/43564385" target="_blank" rel="noopener">写C++程序绕过IE的限制：“某些设置由系统管理员进行管理”</a></li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> OpenSSL </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> openssl </tag>
-            
-            <tag> proxy </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[TLS 协议]]></title>
       <url>/2017/06/10/tls-1.2/</url>
       <content type="html"><![CDATA[<p>首先，这是 IETF 协会文档 <a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener">Request for Comments (RFC) 5246</a></p>
@@ -2952,6 +2882,76 @@
         <tags>
             
             <tag> openssl </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[中间人劫持代理]]></title>
+      <url>/2017/06/10/mitm-proxy/</url>
+      <content type="html"><![CDATA[<h2 id="中间人劫持代理"><a href="#中间人劫持代理" class="headerlink" title="中间人劫持代理"></a>中间人劫持代理</h2><p><img src="/images/posts/mitm_proxy/how-mitmproxy-works-explicit-https.png" alt=""></p>
+<p>注：图片来源于 mitmproxy</p>
+<h4 id="本代理基于-TCP，是一个不关心协议的代理？"><a href="#本代理基于-TCP，是一个不关心协议的代理？" class="headerlink" title="本代理基于 TCP，是一个不关心协议的代理？"></a>本代理基于 TCP，是一个不关心协议的代理？</h4><p>是的</p>
+<h4 id="HTTP-代理-VS-Socks-代理"><a href="#HTTP-代理-VS-Socks-代理" class="headerlink" title="HTTP 代理 VS Socks 代理"></a>HTTP 代理 VS Socks 代理</h4><h2 id="问题与挑战"><a href="#问题与挑战" class="headerlink" title="问题与挑战"></a>问题与挑战</h2><h3 id="获取远端主机名（Host）"><a href="#获取远端主机名（Host）" class="headerlink" title="获取远端主机名（Host）"></a>获取远端主机名（Host）</h3><p>当应用设置了代理后，在 TLS 协商前，应用首先会发一条 CONNECT 请求，期待通过代理和远端服务器建立 TLS 隧道（tunnel）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONNECT 10.1.1.1:443 HTTP/1.1</span><br></pre></td></tr></table></figure>
+<p>作为中间人代理，并不帮助建立隧道，而是需要解析 CONNECT 请求，并从中获得远端服务器主机名。同时返回给被代理程序隧道建立成功的回复：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 根据请求指定版本号</span><br><span class="line">HTTP/1.0 200 Connection established\r\n\r\n</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="Subject-Alternative-Name"><a href="#Subject-Alternative-Name" class="headerlink" title="Subject Alternative Name"></a>Subject Alternative Name</h3><p>这是服务器证书包含的一个字段，用于标识证书签发的域名。</p>
+<p>通常服务器的域名保存在 <code>Common name</code> 字段，只保存一个域名，而 <code>Subject Alternative Name</code> 可保存多个域名，并支持通配符。也就是，有的时候访问的服务器主机并不和 <code>Common name</code> 匹配，但匹配 <code>SAN</code>，这样的证书也是合法的。</p>
+<h3 id="服务器名称指示（SNI）"><a href="#服务器名称指示（SNI）" class="headerlink" title="服务器名称指示（SNI）"></a>服务器名称指示（SNI）</h3><p>这是识别同一 IP 部署的多个带证书虚拟主机（Virtual Host）的技术。</p>
+<p>基于名称的虚拟主机允许多个域名由同一IP地址上的单个服务器（通常为Web服务器）托管。使用 HTTP 时，其必须包含的协议头 <a href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5%E5%88%97%E8%A1%A8" target="_blank" rel="noopener"><code>Host</code></a> 字段标识了欲访问的域名，据此分辨出虚拟主机。但是，由于 HTTPS 握手发生在服务器看到任何 HTTP 头之前，这时并不知道要访问哪个虚拟主机，也就不能把对应的服务器证书发给客户端，以完成 TLS 协商。</p>
+<p>SNI 通过让客户端发送虚拟域名的名称作为TLS协商的一部分来解决此问题。</p>
+<p>OpenSSL 客户端实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// set host name before initiating the SSL connection</span></span><br><span class="line">SSL_set_tlsext_host_name(ssl, hostName)</span><br></pre></td></tr></table></figure>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%8D%E7%A7%B0%E6%8C%87%E7%A4%BA" target="_blank" rel="noopener">扩展阅读</a></p>
+<h3 id="Certificate-Pinning"><a href="#Certificate-Pinning" class="headerlink" title="Certificate Pinning"></a>Certificate Pinning</h3><p>简单地说，就是某些程序（比如浏览器）只相信某些根证书签发的服务器证书。</p>
+<p>通常证书通过证书链验证合法性，<code>MyCert</code> 由 <code>IntermediateCert</code> 签发，它又由 <code>RootCert</code> 签发，<code>RootCert</code> 已经内置在操作系统的可信任根证书中。 这样，<code>MyCert</code> 是合法的。常见内置的根证书有：Verisign, Digicert, Thawte等。</p>
+<p>但是，Certificate pinning 的作用是，即使通过了上面的验证，如果不是某个指定 RootCert 签发的证书，也认为其不合法。这在一定程序上避免中间人攻击，但没有真的解决。</p>
+<p>下面是一些使用 Certificate pinning 的应用：</p>
+<ul>
+<li>微软的自动更新</li>
+<li>苹果 App Store</li>
+<li>Twitter app</li>
+</ul>
+<p><a href="https://security.stackexchange.com/questions/29988/what-is-certificate-pinning/" target="_blank" rel="noopener">扩展阅读</a></p>
+<h2 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h2><h3 id="通过-netsh-winhttp-命令"><a href="#通过-netsh-winhttp-命令" class="headerlink" title="通过 netsh winhttp 命令"></a>通过 <code>netsh winhttp</code> 命令</h3><p><a href="https://technet.microsoft.com/pt-br/library/cc731131(v=ws.10).aspx#BKMK_5" target="_blank" rel="noopener">文档</a></p>
+<p>设置代理：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set proxy 127.0.0.1:8080 "&lt;local&gt;"</span><br></pre></td></tr></table></figure>
+<h3 id="通过-WinHTTP-接口设置"><a href="#通过-WinHTTP-接口设置" class="headerlink" title="通过 WinHTTP 接口设置"></a>通过 <code>WinHTTP</code> 接口设置</h3><p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa384069(v=vs.85).aspx" target="_blank" rel="noopener">文档</a></p>
+<h3 id="WinHTTP-vs-WinINet"><a href="#WinHTTP-vs-WinINet" class="headerlink" title="WinHTTP vs. WinINet"></a>WinHTTP vs. WinINet</h3><p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/hh227297(v=vs.85).aspx" target="_blank" rel="noopener">文档</a></p>
+<p>选择 WinINet 的原因：</p>
+<ul>
+<li>支持 cookies</li>
+<li>Credential Cache (和SSL证书相关？)</li>
+<li>Credential Prompting (和SSL证书相关？)</li>
+</ul>
+<h3 id="INTERNET-PER-CONN-OPTION"><a href="#INTERNET-PER-CONN-OPTION" class="headerlink" title="INTERNET_PER_CONN_OPTION"></a>INTERNET_PER_CONN_OPTION</h3><p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa385145(v=vs.85).aspx" target="_blank" rel="noopener">INTERNET_PER_CONN_OPTION</a></p>
+<h3 id="INTERNET-PROXY-INFO"><a href="#INTERNET-PROXY-INFO" class="headerlink" title="INTERNET_PROXY_INFO"></a>INTERNET_PROXY_INFO</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">INTERNET_PROXY_INFO proxy;</span><br><span class="line">proxy.dwAccessType = INTERNET_OPEN_TYPE_PROXY;</span><br><span class="line"><span class="comment">// 根据协议来设置代理，比如 FTP, HTTPS 等，使用下面的字符串</span></span><br><span class="line"><span class="comment">// ftp=http://&lt;ProxyServerName&gt;:80; https=https://&lt;ProxyServerName&gt;:80)</span></span><br><span class="line">proxy.lpszProxy = (LPCTSTR)<span class="string">"127.0.0.1:8080"</span>;  <span class="comment">// unicode building, must cast to LPCTSTR</span></span><br><span class="line">proxy.lpszProxyBypass = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="设置自动代理"><a href="#设置自动代理" class="headerlink" title="设置自动代理"></a>设置自动代理</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">wchar_t</span> wzsPath[MAX_PATH];</span><br><span class="line"><span class="keyword">wchar_t</span> wszProxyUrl[INTERNET_MAX_URL_LENGTH];</span><br><span class="line">SHGetFolderPath ( <span class="literal">NULL</span>, CSIDL_APPDATA | CSIDL_FLAG_CREATE, <span class="literal">NULL</span>, <span class="number">0</span>, wszPath );</span><br><span class="line"></span><br><span class="line"><span class="comment">// Construct Pac file path. – %appdata%\MyAppFolder\redirect.pac</span></span><br><span class="line">StringCbPrintf (wszProxyUrl, <span class="keyword">sizeof</span>(wszProxyUrl), </span><br><span class="line">        <span class="string">L"file://%s\\MyAppFolder\\redirect.pac"</span>, wszPath );</span><br><span class="line"></span><br><span class="line">INTERNET_PER_CONN_OPTION_LIST *optionList = <span class="number">0</span>;</span><br><span class="line">optionList-&gt;pOptions[INDEX].Value.pszValue = wszPath;</span><br><span class="line"></span><br><span class="line">InternetSetOption ( <span class="literal">NULL</span>, INTERNET_OPTION_PER_CONNECTION_OPTION,</span><br><span class="line">        optionList, <span class="keyword">sizeof</span>(INTERNET_PER_CONN_OPTION_LIST) );</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">INTERNET_PER_CONN_OPTION_LIST    List;</span><br><span class="line">INTERNET_PER_CONN_OPTION         Option[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span>                    nSize =</span><br><span class="line"><span class="keyword">sizeof</span>(INTERNET_PER_CONN_OPTION_LIST);</span><br><span class="line"></span><br><span class="line">Option[<span class="number">0</span>].dwOption = INTERNET_PER_CONN_AUTOCONFIG_URL;</span><br><span class="line">Option[<span class="number">0</span>].Value.pszValue = <span class="string">"http://myserver/proxy.pacl"</span>;</span><br><span class="line">Option[<span class="number">1</span>].dwOption = INTERNET_PER_CONN_FLAGS;</span><br><span class="line">Option[<span class="number">1</span>].Value.dwValue = PROXY_TYPE_AUTO_PROXY_URL;</span><br><span class="line"></span><br><span class="line">List.dwSize = <span class="keyword">sizeof</span>(INTERNET_PER_CONN_OPTION_LIST);</span><br><span class="line">List.pszConnection = <span class="literal">NULL</span>;</span><br><span class="line">List.dwOptionCount = <span class="number">2</span>;</span><br><span class="line">List.dwOptionError = <span class="number">0</span>;</span><br><span class="line">List.pOptions = Option;</span><br><span class="line"></span><br><span class="line">hMyHandle =  InternetOpen(<span class="string">""</span>, INTERNET_OPEN_TYPE_DIRECT, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!InternetSetOption(hMyHandle, INTERNET_OPTION_PER_CONNECTION_OPTION,</span><br><span class="line">&amp;List, nSize))</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"InternetQueryOption failed! (%d)\n"</span>, GetLastError());</span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://docs.mitmproxy.org/en/stable/howmitmproxy.html" target="_blank" rel="noopener">mitmproxy</a></li>
+<li><a href="http://www.5icpp.com/?p=139" target="_blank" rel="noopener">如何给CHtmlView添加代理——MFC</a></li>
+<li><a href="http://www.lai18.com/content/2206252.html" target="_blank" rel="noopener">为网络程序添加代理设置</a>：带 VC6 示例程序</li>
+<li><a href="http://www.cnblogs.com/duanshuiliu/archive/2013/03/18/2965405.html" target="_blank" rel="noopener">查询代理和设置代理</a></li>
+<li><a href="http://blog.csdn.net/ba_jie/article/details/43564385" target="_blank" rel="noopener">写C++程序绕过IE的限制：“某些设置由系统管理员进行管理”</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> OpenSSL </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> openssl </tag>
+            
+            <tag> proxy </tag>
             
         </tags>
         
@@ -3585,7 +3585,8 @@
       <content type="html"><![CDATA[<h4 id="记录-SSL-的-Session-Key"><a href="#记录-SSL-的-Session-Key" class="headerlink" title="记录 SSL 的 Session Key"></a>记录 SSL 的 Session Key</h4><p>在环境变量中添加一个变量</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SSLKEYLOGFILE  C:\Users\Jonathan\Documents\SSLKEYLOGFILE.txt</span><br></pre></td></tr></table></figure>
 <h4 id="可用的命令行参数"><a href="#可用的命令行参数" class="headerlink" title="可用的命令行参数"></a>可用的命令行参数</h4><p><a href="http://peter.sh/experiments/chromium-command-line-switches/" target="_blank" rel="noopener">参考</a></p>
-<h4 id="Chrome-发布日历"><a href="#Chrome-发布日历" class="headerlink" title="Chrome 发布日历"></a>Chrome 发布日历</h4><p><a href="https://www.chromium.org/developers/calendar" target="_blank" rel="noopener">Chromium Development Calendar and Release Info</a></p>
+<h4 id="Chrome-发布日历"><a href="#Chrome-发布日历" class="headerlink" title="Chrome 发布日历"></a>Chrome 发布日历</h4><p><a href="https://chromiumdash.appspot.com/releases?platform=Windows" target="_blank" rel="noopener">最新日历</a></p>
+<p><a href="https://www.chromium.org/developers/calendar" target="_blank" rel="noopener">Chromium Development Calendar and Release Info</a></p>
 <h4 id="Chromium-分支和标签"><a href="#Chromium-分支和标签" class="headerlink" title="Chromium 分支和标签"></a>Chromium 分支和标签</h4><p><a href="https://chromium.googlesource.com/chromium/src.git/+refs" target="_blank" rel="noopener">src.git/+refs</a></p>
 <h4 id="Chrome-功能更新"><a href="#Chrome-功能更新" class="headerlink" title="Chrome 功能更新"></a>Chrome 功能更新</h4><p>查看 <a href="https://www.chromestatus.com/features#milestone%3D68" target="_blank" rel="noopener">这里</a></p>
 <h4 id="Chrome-CI-持续集成"><a href="#Chrome-CI-持续集成" class="headerlink" title="Chrome CI 持续集成"></a>Chrome CI 持续集成</h4><p>查看 <a href="https://ci.chromium.org/p/chromium/g/main/console" target="_blank" rel="noopener">这里</a></p>
@@ -3645,31 +3646,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[SourceTree 操作被挂起]]></title>
-      <url>/2017/01/17/source-tree-hungs/</url>
-      <content type="html"><![CDATA[<h4 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">The server's host key is not cached in the registry. You</span><br><span class="line">have no guarantee that the server is the computer you</span><br><span class="line">think it is.</span><br><span class="line">The server's rsa2 key fingerprint is:</span><br><span class="line">ssh-rsa 2048 59:ca:22:af:f9:8e:6f:f7:87:b3:ea:da:1b:2b:aa:f2</span><br><span class="line">If you trust this host, enter "y" to add the key to</span><br><span class="line">PuTTY's cache and carry on connecting.</span><br><span class="line">If you want to carry on connecting just once, without</span><br><span class="line">adding the key to the cache, enter "n".</span><br><span class="line">If you do not trust this host, press Return to abandon the</span><br><span class="line">connection.</span><br></pre></td></tr></table></figure>
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>手动连接一次 git 服务器，比如 GitLab，<a href="http://stackoverflow.com/questions/32437659/cannot-pull-git-remote-repository-from-sourcetree" target="_blank" rel="noopener">StackOverflow</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"C:\Program Files (x86)\Atlassian\SourceTree\tools\putty\plink.exe" gitlab.com</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> git </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> git </tag>
-            
-            <tag> SourceTree </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[编译 Chromium 常见问题]]></title>
       <url>/2017/01/17/build-chromium-issues/</url>
       <content type="html"><![CDATA[<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="命令行翻墙设置"><a href="#命令行翻墙设置" class="headerlink" title="命令行翻墙设置"></a>命令行翻墙设置</h3><p><strong>Windows 命令行设置</strong></p>
@@ -3716,6 +3692,31 @@
         <tags>
             
             <tag> chromium </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SourceTree 操作被挂起]]></title>
+      <url>/2017/01/17/source-tree-hungs/</url>
+      <content type="html"><![CDATA[<h4 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">The server's host key is not cached in the registry. You</span><br><span class="line">have no guarantee that the server is the computer you</span><br><span class="line">think it is.</span><br><span class="line">The server's rsa2 key fingerprint is:</span><br><span class="line">ssh-rsa 2048 59:ca:22:af:f9:8e:6f:f7:87:b3:ea:da:1b:2b:aa:f2</span><br><span class="line">If you trust this host, enter "y" to add the key to</span><br><span class="line">PuTTY's cache and carry on connecting.</span><br><span class="line">If you want to carry on connecting just once, without</span><br><span class="line">adding the key to the cache, enter "n".</span><br><span class="line">If you do not trust this host, press Return to abandon the</span><br><span class="line">connection.</span><br></pre></td></tr></table></figure>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>手动连接一次 git 服务器，比如 GitLab，<a href="http://stackoverflow.com/questions/32437659/cannot-pull-git-remote-repository-from-sourcetree" target="_blank" rel="noopener">StackOverflow</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"C:\Program Files (x86)\Atlassian\SourceTree\tools\putty\plink.exe" gitlab.com</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> git </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> git </tag>
+            
+            <tag> SourceTree </tag>
             
         </tags>
         
@@ -3969,9 +3970,9 @@
         
         <tags>
             
-            <tag> mac </tag>
-            
             <tag> server </tag>
+            
+            <tag> mac </tag>
             
             <tag> java </tag>
             
@@ -4021,11 +4022,11 @@ For help, use /usr/bin/supervisord -h
         
         <tags>
             
-            <tag> mac </tag>
-            
             <tag> linux </tag>
             
             <tag> server </tag>
+            
+            <tag> mac </tag>
             
         </tags>
         
@@ -4051,9 +4052,9 @@ For help, use /usr/bin/supervisord -h
         
         <tags>
             
-            <tag> php </tag>
-            
             <tag> server </tag>
+            
+            <tag> php </tag>
             
         </tags>
         
@@ -4174,6 +4175,78 @@ For help, use /usr/bin/supervisord -h
     </entry>
     
     <entry>
+      <title><![CDATA[javascript 编码常规]]></title>
+      <url>/2015/07/03/javascript-code-conventions/</url>
+      <content type="html"><![CDATA[<p>标题写成常规，非规范，是由于只要没有语法错误，如何写代码本身就是编码者的一个喜好而已，但是好的习惯有助于提高可读性，减少错误，尤其提高团队合作的效率。</p>
+<p>下面内容搜集了业内顶级开发者的习惯，来源见底部附录。</p>
+<h2 id="JavaScript-文件"><a href="#JavaScript-文件" class="headerlink" title="JavaScript 文件"></a>JavaScript 文件</h2><p>所有 javascript 文件根据依赖关系，按序放置在 <code>&lt;body&gt;</code> 结束标签前。<br>原因：  </p>
+<ul>
+<li>不会因为 javascript 文件的加载和解析延缓页面显示</li>
+<li>防止标签在加载完成前被 js 代码调用。</li>
+</ul>
+<h2 id="缩进-Indentation"><a href="#缩进-Indentation" class="headerlink" title="缩进 Indentation"></a>缩进 Indentation</h2><ul>
+<li>使用空格代替 <code>tab</code></li>
+<li>缩进单位是2个空格</li>
+</ul>
+<h2 id="代码行"><a href="#代码行" class="headerlink" title="代码行"></a>代码行</h2><ul>
+<li>每行不超过80字符</li>
+<li>换行缩进8个空格</li>
+</ul>
+<h2 id="注释-Comment"><a href="#注释-Comment" class="headerlink" title="注释 Comment"></a>注释 Comment</h2><ul>
+<li>尽量多地注释代码的思路、注意点等</li>
+<li>修改代码时同步更新注释</li>
+</ul>
+<h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><ul>
+<li>使用26大写和小写字母<code>(A .. Z, a .. z)</code>，10个数字<code>(0 .. 9)</code>，下划线<code>(_)</code>。不要使用 <code>$ (dollar sign)</code> 或 <code>\ (backslash)</code></li>
+<li>首尾不使用下划线</li>
+<li>变量或方法遵守驼峰（camelCase）规则</li>
+<li>构造函数遵守大写驼峰规则</li>
+<li>全局变量遵守全大写规则</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MESSAGE_TYPE_BROADCAST = <span class="number">0</span>,    <span class="comment">// 全局变量</span></span><br><span class="line">    MESSAGE_TYPE_PERSON = <span class="number">1</span>,</span><br><span class="line">    MESSAGE_TYPE_GROUP = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendMessage</span>(<span class="params">messageType, message</span>)</span>&#123;    <span class="comment">// 方法名</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> httpStatus,</span><br><span class="line">        sendResult;     <span class="comment">// 变量</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// detect message target by message type</span></span><br><span class="line">    ... </span><br><span class="line">    </span><br><span class="line">    httpStatus = httpRequest(message);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// handle result</span></span><br><span class="line">    ...</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">return</span> sendResult;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="变量-Variable"><a href="#变量-Variable" class="headerlink" title="变量 Variable"></a>变量 Variable</h2><ul>
+<li>所有变量在使用前声明，<code>var</code> 应该是 <code>Function</code> 第一行语句</li>
+<li>变量及其注释单独一行</li>
+<li><p>变量名遵守驼峰（camelCase）规则</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentEntry, <span class="comment">// currently selected table entry</span></span><br><span class="line">level,        <span class="comment">// indentation level</span></span><br><span class="line">size;         <span class="comment">// size of table</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="方法-Function"><a href="#方法-Function" class="headerlink" title="方法 Function"></a>方法 Function</h2><ul>
+<li>方法名遵守驼峰（camelCase）规则</li>
+<li><p>立即执行的方法使用小括号封装</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> collection = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> keys = [], values = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> at = keys.indexOf(key);</span><br><span class="line">            <span class="keyword">if</span> (at &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> values[at];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        set: <span class="function"><span class="keyword">function</span> (<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> at = keys.indexOf(key);</span><br><span class="line">            <span class="keyword">if</span> (at &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                at = keys.length;</span><br><span class="line">            &#125;</span><br><span class="line">            keys[at] = key;</span><br><span class="line">            values[at] = value;</span><br><span class="line">        &#125;,</span><br><span class="line">        remove: <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> at = keys.indexOf(key);</span><br><span class="line">            <span class="keyword">if</span> (at &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                keys.splice(at, <span class="number">1</span>);</span><br><span class="line">                values.splice(at, <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="格式示例"><a href="#格式示例" class="headerlink" title="格式示例"></a>格式示例</h2><h3 id="if-语句（Statement）"><a href="#if-语句（Statement）" class="headerlink" title="if 语句（Statement）"></a>if 语句（Statement）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (initialization; condition; update) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (variable <span class="keyword">in</span> object) &#123;</span><br><span class="line">    <span class="keyword">if</span> (filter) &#123;</span><br><span class="line">        statements</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="do-语句"><a href="#do-语句" class="headerlink" title="do 语句"></a>do 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">while</span> (condition);</span><br></pre></td></tr></table></figure>
+<p>Unlike the other compound statements, the do statement always ends with a ; (semicolon).</p>
+<h3 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">switch</span> (expression) &#123;</span><br><span class="line"><span class="keyword">case</span> expression:</span><br><span class="line">    statements</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>每一组必须有结束代码：<code>break, return, or throw</code></p>
+<h3 id="try-语句"><a href="#try-语句" class="headerlink" title="try 语句"></a>try 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">     statements</span><br><span class="line"> &#125; <span class="keyword">catch</span> (variable) &#123;</span><br><span class="line">     statements</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">     statements</span><br><span class="line"> &#125; <span class="keyword">catch</span> (variable) &#123;</span><br><span class="line">     statements</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="continue-语句"><a href="#continue-语句" class="headerlink" title="continue 语句"></a>continue 语句</h3><p><strong>不要使用</strong></p>
+<h3 id="with-语句"><a href="#with-语句" class="headerlink" title="with 语句"></a>with 语句</h3><p><strong>不要使用</strong></p>
+<h3 id="eval-语句"><a href="#eval-语句" class="headerlink" title="eval 语句"></a>eval 语句</h3><p><strong>不要使用</strong></p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><em><a href="http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html" target="_blank" rel="noopener">Javascript编程风格</a></em><br><em><a href="http://javascript.crockford.com/code.html" target="_blank" rel="noopener">Code Conventions for the JavaScript Programming Language</a></em><br><em><a href="http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml" target="_blank" rel="noopener">Google JavaScript Style Guide</a></em></p>
+]]></content>
+      
+        <categories>
+            
+            <category> javascript </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[url 编码常规]]></title>
       <url>/2015/07/03/url-code-conventions/</url>
       <content type="html"><![CDATA[<h2 id="MVC-框架支持的模式（Pattern）："><a href="#MVC-框架支持的模式（Pattern）：" class="headerlink" title="MVC 框架支持的模式（Pattern）："></a>MVC 框架支持的模式（Pattern）：</h2><ul>
@@ -4247,78 +4320,6 @@ For help, use /usr/bin/supervisord -h
         <tags>
             
             <tag> php </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[javascript 编码常规]]></title>
-      <url>/2015/07/03/javascript-code-conventions/</url>
-      <content type="html"><![CDATA[<p>标题写成常规，非规范，是由于只要没有语法错误，如何写代码本身就是编码者的一个喜好而已，但是好的习惯有助于提高可读性，减少错误，尤其提高团队合作的效率。</p>
-<p>下面内容搜集了业内顶级开发者的习惯，来源见底部附录。</p>
-<h2 id="JavaScript-文件"><a href="#JavaScript-文件" class="headerlink" title="JavaScript 文件"></a>JavaScript 文件</h2><p>所有 javascript 文件根据依赖关系，按序放置在 <code>&lt;body&gt;</code> 结束标签前。<br>原因：  </p>
-<ul>
-<li>不会因为 javascript 文件的加载和解析延缓页面显示</li>
-<li>防止标签在加载完成前被 js 代码调用。</li>
-</ul>
-<h2 id="缩进-Indentation"><a href="#缩进-Indentation" class="headerlink" title="缩进 Indentation"></a>缩进 Indentation</h2><ul>
-<li>使用空格代替 <code>tab</code></li>
-<li>缩进单位是2个空格</li>
-</ul>
-<h2 id="代码行"><a href="#代码行" class="headerlink" title="代码行"></a>代码行</h2><ul>
-<li>每行不超过80字符</li>
-<li>换行缩进8个空格</li>
-</ul>
-<h2 id="注释-Comment"><a href="#注释-Comment" class="headerlink" title="注释 Comment"></a>注释 Comment</h2><ul>
-<li>尽量多地注释代码的思路、注意点等</li>
-<li>修改代码时同步更新注释</li>
-</ul>
-<h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><ul>
-<li>使用26大写和小写字母<code>(A .. Z, a .. z)</code>，10个数字<code>(0 .. 9)</code>，下划线<code>(_)</code>。不要使用 <code>$ (dollar sign)</code> 或 <code>\ (backslash)</code></li>
-<li>首尾不使用下划线</li>
-<li>变量或方法遵守驼峰（camelCase）规则</li>
-<li>构造函数遵守大写驼峰规则</li>
-<li>全局变量遵守全大写规则</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MESSAGE_TYPE_BROADCAST = <span class="number">0</span>,    <span class="comment">// 全局变量</span></span><br><span class="line">    MESSAGE_TYPE_PERSON = <span class="number">1</span>,</span><br><span class="line">    MESSAGE_TYPE_GROUP = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendMessage</span>(<span class="params">messageType, message</span>)</span>&#123;    <span class="comment">// 方法名</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> httpStatus,</span><br><span class="line">        sendResult;     <span class="comment">// 变量</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// detect message target by message type</span></span><br><span class="line">    ... </span><br><span class="line">    </span><br><span class="line">    httpStatus = httpRequest(message);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// handle result</span></span><br><span class="line">    ...</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">return</span> sendResult;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="变量-Variable"><a href="#变量-Variable" class="headerlink" title="变量 Variable"></a>变量 Variable</h2><ul>
-<li>所有变量在使用前声明，<code>var</code> 应该是 <code>Function</code> 第一行语句</li>
-<li>变量及其注释单独一行</li>
-<li><p>变量名遵守驼峰（camelCase）规则</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentEntry, <span class="comment">// currently selected table entry</span></span><br><span class="line">level,        <span class="comment">// indentation level</span></span><br><span class="line">size;         <span class="comment">// size of table</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="方法-Function"><a href="#方法-Function" class="headerlink" title="方法 Function"></a>方法 Function</h2><ul>
-<li>方法名遵守驼峰（camelCase）规则</li>
-<li><p>立即执行的方法使用小括号封装</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> collection = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> keys = [], values = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> at = keys.indexOf(key);</span><br><span class="line">            <span class="keyword">if</span> (at &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> values[at];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        set: <span class="function"><span class="keyword">function</span> (<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> at = keys.indexOf(key);</span><br><span class="line">            <span class="keyword">if</span> (at &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                at = keys.length;</span><br><span class="line">            &#125;</span><br><span class="line">            keys[at] = key;</span><br><span class="line">            values[at] = value;</span><br><span class="line">        &#125;,</span><br><span class="line">        remove: <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> at = keys.indexOf(key);</span><br><span class="line">            <span class="keyword">if</span> (at &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                keys.splice(at, <span class="number">1</span>);</span><br><span class="line">                values.splice(at, <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="格式示例"><a href="#格式示例" class="headerlink" title="格式示例"></a>格式示例</h2><h3 id="if-语句（Statement）"><a href="#if-语句（Statement）" class="headerlink" title="if 语句（Statement）"></a>if 语句（Statement）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (initialization; condition; update) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (variable <span class="keyword">in</span> object) &#123;</span><br><span class="line">    <span class="keyword">if</span> (filter) &#123;</span><br><span class="line">        statements</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="do-语句"><a href="#do-语句" class="headerlink" title="do 语句"></a>do 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; <span class="keyword">while</span> (condition);</span><br></pre></td></tr></table></figure>
-<p>Unlike the other compound statements, the do statement always ends with a ; (semicolon).</p>
-<h3 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">switch</span> (expression) &#123;</span><br><span class="line"><span class="keyword">case</span> expression:</span><br><span class="line">    statements</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>每一组必须有结束代码：<code>break, return, or throw</code></p>
-<h3 id="try-语句"><a href="#try-语句" class="headerlink" title="try 语句"></a>try 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">     statements</span><br><span class="line"> &#125; <span class="keyword">catch</span> (variable) &#123;</span><br><span class="line">     statements</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">     statements</span><br><span class="line"> &#125; <span class="keyword">catch</span> (variable) &#123;</span><br><span class="line">     statements</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="continue-语句"><a href="#continue-语句" class="headerlink" title="continue 语句"></a>continue 语句</h3><p><strong>不要使用</strong></p>
-<h3 id="with-语句"><a href="#with-语句" class="headerlink" title="with 语句"></a>with 语句</h3><p><strong>不要使用</strong></p>
-<h3 id="eval-语句"><a href="#eval-语句" class="headerlink" title="eval 语句"></a>eval 语句</h3><p><strong>不要使用</strong></p>
-<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><em><a href="http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html" target="_blank" rel="noopener">Javascript编程风格</a></em><br><em><a href="http://javascript.crockford.com/code.html" target="_blank" rel="noopener">Code Conventions for the JavaScript Programming Language</a></em><br><em><a href="http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml" target="_blank" rel="noopener">Google JavaScript Style Guide</a></em></p>
-]]></content>
-      
-        <categories>
-            
-            <category> javascript </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> javascript </tag>
             
         </tags>
         
@@ -4585,7 +4586,7 @@ For help, use /usr/bin/supervisord -h
 </li>
 <li><p>添加新文件到 <code>grd</code> </p>
 <p> 打开 <code>src\chrome\common\extensions_api_resources.grd</code>，添加</p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">grit</span> <span class="attr">latest_public_release</span>=<span class="string">"0"</span> <span class="attr">current_release</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">outputs</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"grit/extensions_api_resources.h"</span> <span class="attr">type</span>=<span class="string">"rc_header"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">emit</span> <span class="attr">emit_type</span>=<span class="string">'prepend'</span>&gt;</span><span class="tag">&lt;/<span class="name">emit</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">output</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"extensions_api_resources.pak"</span> <span class="attr">type</span>=<span class="string">"data_package"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"extensions_api_resources.rc"</span> <span class="attr">type</span>=<span class="string">"rc_all"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">outputs</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">release</span> <span class="attr">seq</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">	  ...</span><br><span class="line">      <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"IDR_EXTENSION_API_JSON_WINTRUST"</span> <span class="attr">file</span>=<span class="string">"extensions\api\wintrust.json"</span> <span class="attr">type</span>=<span class="string">"BINDATA"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">release</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">grit</span>&gt;</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">grit</span> <span class="attr">latest_public_release</span>=<span class="string">"0"</span> <span class="attr">current_release</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">outputs</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"grit/extensions_api_resources.h"</span> <span class="attr">type</span>=<span class="string">"rc_header"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">emit</span> <span class="attr">emit_type</span>=<span class="string">'prepend'</span>&gt;</span><span class="tag">&lt;/<span class="name">emit</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">output</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"extensions_api_resources.pak"</span> <span class="attr">type</span>=<span class="string">"data_package"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span> <span class="attr">filename</span>=<span class="string">"extensions_api_resources.rc"</span> <span class="attr">type</span>=<span class="string">"rc_all"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">outputs</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">release</span> <span class="attr">seq</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">	  ...</span><br><span class="line">      <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"IDR_EXTENSION_API_JSON_WINTRUST"</span> <span class="attr">file</span>=<span class="string">"extensions\api\wintrust.json"</span> <span class="attr">type</span>=<span class="string">"BINDATA"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">release</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">grit</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="二、添加新接口头文件和实现"><a href="#二、添加新接口头文件和实现" class="headerlink" title="二、添加新接口头文件和实现"></a>二、添加新接口头文件和实现</h2><ol>
@@ -4967,52 +4968,6 @@ For help, use /usr/bin/supervisord -h
     </entry>
     
     <entry>
-      <title><![CDATA[Linux 常用命令]]></title>
-      <url>/2015/01/25/linux-commands/</url>
-      <content type="html"><![CDATA[<h2 id="1-打开服务器的被禁用（blocked）端口（port）"><a href="#1-打开服务器的被禁用（blocked）端口（port）" class="headerlink" title="1 打开服务器的被禁用（blocked）端口（port）"></a>1 打开服务器的被禁用（blocked）端口（port）</h2><ul>
-<li>启用被 iptables 禁用的 80 端口</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /sbin/iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将上面的配置作为规则保存到 iptables，以便服务器重启后，能再次生效</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /sbin/service iptables save</span><br></pre></td></tr></table></figure>
-<h2 id="2-通过-systemctl-启动服务"><a href="#2-通过-systemctl-启动服务" class="headerlink" title="2 通过 systemctl 启动服务"></a>2 通过 systemctl 启动服务</h2><ul>
-<li>启动、停止、重启</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start nginx.service</span></span><br><span class="line"><span class="comment"># systemctl stop nginx.service</span></span><br><span class="line"><span class="comment"># systemctl restart nginx.service</span></span><br></pre></td></tr></table></figure>
-<p>除了 nginx.service, 常用的服务还有：php-fpm.service, mysqld.service</p>
-<ul>
-<li>设置开机自启</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl enable nginx.service</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-查看进程信息"><a href="#3-查看进程信息" class="headerlink" title="3 查看进程信息"></a>3 查看进程信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -aux | grep 关键字</span></span><br></pre></td></tr></table></figure>
-<h2 id="4-查看进程的安装位置"><a href="#4-查看进程的安装位置" class="headerlink" title="4 查看进程的安装位置"></a>4 查看进程的安装位置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep tomcat</span><br></pre></td></tr></table></figure>
-<h2 id="5-sudo-保留系统环境"><a href="#5-sudo-保留系统环境" class="headerlink" title="5 sudo 保留系统环境"></a>5 sudo 保留系统环境</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -E env</span><br></pre></td></tr></table></figure>
-<h2 id="6-查找最大目录或文件"><a href="#6-查找最大目录或文件" class="headerlink" title="6 查找最大目录或文件"></a>6 查找最大目录或文件</h2><h3 id="1）查找最大目录"><a href="#1）查找最大目录" class="headerlink" title="1）查找最大目录"></a>1）查找最大目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -a | sort -n -r | head -n 5</span><br></pre></td></tr></table></figure>
-<h3 id="2）查找最大文件"><a href="#2）查找最大文件" class="headerlink" title="2）查找最大文件"></a>2）查找最大文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find -type f -exec du -Sh &#123;&#125; + | sort -rh | head -n 5</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.tecmint.com/find-top-large-directories-and-files-sizes-in-linux/" target="_blank" rel="noopener">参考</a></p>
-<h2 id="7-挂载"><a href="#7-挂载" class="headerlink" title="7 挂载"></a>7 挂载</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo mount -t vboxsf 源媒体 目标路径</span></span><br></pre></td></tr></table></figure>
-<h2 id="8-查找文件包含字符"><a href="#8-查找文件包含字符" class="headerlink" title="8 查找文件包含字符"></a>8 查找文件包含字符</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> This will only search through those files <span class="built_in">which</span> have .c or .h extensions:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep --include=\*.&#123;c,h&#125; -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> This will exclude searching all the files ending with .o extension:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep --exclude=*.o -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">For directories it<span class="string">'s possible to exclude a particular directory(ies) through --exclude-dir parameter. For example, this will exclude the dirs dir1/, dir2/ and all of them matching *.dst/:</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep --exclude-dir=&#123;dir1,dir2,*.dst&#125; -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span></span><br></pre></td></tr></table></figure>]]></content>
-      
-        <categories>
-            
-            <category> linux </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> linux </tag>
-            
-            <tag> server </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[常用的正则表达式]]></title>
       <url>/2015/01/25/the-most-used-regular-expression/</url>
       <content type="html"><![CDATA[<h2 id="常用表达式"><a href="#常用表达式" class="headerlink" title="常用表达式"></a>常用表达式</h2><h3 id="1-中文字符"><a href="#1-中文字符" class="headerlink" title="1. 中文字符"></a>1. 中文字符</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/[\u4e00-\u9fa5]/</span><br></pre></td></tr></table></figure>
@@ -5073,6 +5028,52 @@ For help, use /usr/bin/supervisord -h
         <tags>
             
             <tag> regexp </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Linux 常用命令]]></title>
+      <url>/2015/01/25/linux-commands/</url>
+      <content type="html"><![CDATA[<h2 id="1-打开服务器的被禁用（blocked）端口（port）"><a href="#1-打开服务器的被禁用（blocked）端口（port）" class="headerlink" title="1 打开服务器的被禁用（blocked）端口（port）"></a>1 打开服务器的被禁用（blocked）端口（port）</h2><ul>
+<li>启用被 iptables 禁用的 80 端口</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /sbin/iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将上面的配置作为规则保存到 iptables，以便服务器重启后，能再次生效</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /sbin/service iptables save</span><br></pre></td></tr></table></figure>
+<h2 id="2-通过-systemctl-启动服务"><a href="#2-通过-systemctl-启动服务" class="headerlink" title="2 通过 systemctl 启动服务"></a>2 通过 systemctl 启动服务</h2><ul>
+<li>启动、停止、重启</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start nginx.service</span></span><br><span class="line"><span class="comment"># systemctl stop nginx.service</span></span><br><span class="line"><span class="comment"># systemctl restart nginx.service</span></span><br></pre></td></tr></table></figure>
+<p>除了 nginx.service, 常用的服务还有：php-fpm.service, mysqld.service</p>
+<ul>
+<li>设置开机自启</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl enable nginx.service</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-查看进程信息"><a href="#3-查看进程信息" class="headerlink" title="3 查看进程信息"></a>3 查看进程信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -aux | grep 关键字</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-查看进程的安装位置"><a href="#4-查看进程的安装位置" class="headerlink" title="4 查看进程的安装位置"></a>4 查看进程的安装位置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep tomcat</span><br></pre></td></tr></table></figure>
+<h2 id="5-sudo-保留系统环境"><a href="#5-sudo-保留系统环境" class="headerlink" title="5 sudo 保留系统环境"></a>5 sudo 保留系统环境</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -E env</span><br></pre></td></tr></table></figure>
+<h2 id="6-查找最大目录或文件"><a href="#6-查找最大目录或文件" class="headerlink" title="6 查找最大目录或文件"></a>6 查找最大目录或文件</h2><h3 id="1）查找最大目录"><a href="#1）查找最大目录" class="headerlink" title="1）查找最大目录"></a>1）查找最大目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -a | sort -n -r | head -n 5</span><br></pre></td></tr></table></figure>
+<h3 id="2）查找最大文件"><a href="#2）查找最大文件" class="headerlink" title="2）查找最大文件"></a>2）查找最大文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find -type f -exec du -Sh &#123;&#125; + | sort -rh | head -n 5</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.tecmint.com/find-top-large-directories-and-files-sizes-in-linux/" target="_blank" rel="noopener">参考</a></p>
+<h2 id="7-挂载"><a href="#7-挂载" class="headerlink" title="7 挂载"></a>7 挂载</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo mount -t vboxsf 源媒体 目标路径</span></span><br></pre></td></tr></table></figure>
+<h2 id="8-查找文件包含字符"><a href="#8-查找文件包含字符" class="headerlink" title="8 查找文件包含字符"></a>8 查找文件包含字符</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> This will only search through those files <span class="built_in">which</span> have .c or .h extensions:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep --include=\*.&#123;c,h&#125; -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> This will exclude searching all the files ending with .o extension:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep --exclude=*.o -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">For directories it<span class="string">'s possible to exclude a particular directory(ies) through --exclude-dir parameter. For example, this will exclude the dirs dir1/, dir2/ and all of them matching *.dst/:</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep --exclude-dir=&#123;dir1,dir2,*.dst&#125; -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span></span><br></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> server </tag>
             
         </tags>
         
@@ -5347,9 +5348,9 @@ xdebug.remote_log="/path/to/log/dir/remote.log"
         
         <tags>
             
-            <tag> autolayout </tag>
-            
             <tag> git </tag>
+            
+            <tag> autolayout </tag>
             
         </tags>
         
@@ -5670,9 +5671,9 @@ xdebug.remote_log="/path/to/log/dir/remote.log"
         
         <tags>
             
-            <tag> chrome </tag>
-            
             <tag> chromium </tag>
+            
+            <tag> chrome </tag>
             
             <tag> c/c++ </tag>
             

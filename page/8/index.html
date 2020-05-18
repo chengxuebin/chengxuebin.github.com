@@ -1149,7 +1149,8 @@
             <h4 id="记录-SSL-的-Session-Key"><a href="#记录-SSL-的-Session-Key" class="headerlink" title="记录 SSL 的 Session Key"></a>记录 SSL 的 Session Key</h4><p>在环境变量中添加一个变量</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SSLKEYLOGFILE  C:\Users\Jonathan\Documents\SSLKEYLOGFILE.txt</span><br></pre></td></tr></table></figure>
 <h4 id="可用的命令行参数"><a href="#可用的命令行参数" class="headerlink" title="可用的命令行参数"></a>可用的命令行参数</h4><p><a href="http://peter.sh/experiments/chromium-command-line-switches/" target="_blank" rel="noopener">参考</a></p>
-<h4 id="Chrome-发布日历"><a href="#Chrome-发布日历" class="headerlink" title="Chrome 发布日历"></a>Chrome 发布日历</h4><p><a href="https://www.chromium.org/developers/calendar" target="_blank" rel="noopener">Chromium Development Calendar and Release Info</a></p>
+<h4 id="Chrome-发布日历"><a href="#Chrome-发布日历" class="headerlink" title="Chrome 发布日历"></a>Chrome 发布日历</h4><p><a href="https://chromiumdash.appspot.com/releases?platform=Windows" target="_blank" rel="noopener">最新日历</a></p>
+<p><a href="https://www.chromium.org/developers/calendar" target="_blank" rel="noopener">Chromium Development Calendar and Release Info</a></p>
 <h4 id="Chromium-分支和标签"><a href="#Chromium-分支和标签" class="headerlink" title="Chromium 分支和标签"></a>Chromium 分支和标签</h4><p><a href="https://chromium.googlesource.com/chromium/src.git/+refs" target="_blank" rel="noopener">src.git/+refs</a></p>
 <h4 id="Chrome-功能更新"><a href="#Chrome-功能更新" class="headerlink" title="Chrome 功能更新"></a>Chrome 功能更新</h4><p>查看 <a href="https://www.chromestatus.com/features#milestone%3D68" target="_blank" rel="noopener">这里</a></p>
 <h4 id="Chrome-CI-持续集成"><a href="#Chrome-CI-持续集成" class="headerlink" title="Chrome CI 持续集成"></a>Chrome CI 持续集成</h4><p>查看 <a href="https://ci.chromium.org/p/chromium/g/main/console" target="_blank" rel="noopener">这里</a></p>
@@ -1380,172 +1381,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://onthink.com/2017/01/17/source-tree-hungs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="程学彬">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ironbin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/17/source-tree-hungs/" itemprop="url">SourceTree 操作被挂起</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-17T00:00:00+08:00">
-                2017-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/17/source-tree-hungs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/01/17/source-tree-hungs/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/01/17/source-tree-hungs/" class="leancloud_visitors" data-flag-title="SourceTree 操作被挂起">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">The server's host key is not cached in the registry. You</span><br><span class="line">have no guarantee that the server is the computer you</span><br><span class="line">think it is.</span><br><span class="line">The server's rsa2 key fingerprint is:</span><br><span class="line">ssh-rsa 2048 59:ca:22:af:f9:8e:6f:f7:87:b3:ea:da:1b:2b:aa:f2</span><br><span class="line">If you trust this host, enter "y" to add the key to</span><br><span class="line">PuTTY's cache and carry on connecting.</span><br><span class="line">If you want to carry on connecting just once, without</span><br><span class="line">adding the key to the cache, enter "n".</span><br><span class="line">If you do not trust this host, press Return to abandon the</span><br><span class="line">connection.</span><br></pre></td></tr></table></figure>
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>手动连接一次 git 服务器，比如 GitLab，<a href="http://stackoverflow.com/questions/32437659/cannot-pull-git-remote-repository-from-sourcetree" target="_blank" rel="noopener">StackOverflow</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"C:\Program Files (x86)\Atlassian\SourceTree\tools\putty\plink.exe" gitlab.com</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://onthink.com/2017/01/17/build-chromium-issues/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1693,6 +1528,172 @@
 <p><strong>解决办法：</strong></p>
 <p>依次打开：Region and Language &gt; Administrative &gt; Langeuage for non-Unicode programs </p>
 <p>点击 Change system locale…，切换为 English (United State)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://onthink.com/2017/01/17/source-tree-hungs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="程学彬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ironbin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/17/source-tree-hungs/" itemprop="url">SourceTree 操作被挂起</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-17T00:00:00+08:00">
+                2017-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/17/source-tree-hungs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/01/17/source-tree-hungs/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/01/17/source-tree-hungs/" class="leancloud_visitors" data-flag-title="SourceTree 操作被挂起">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">The server's host key is not cached in the registry. You</span><br><span class="line">have no guarantee that the server is the computer you</span><br><span class="line">think it is.</span><br><span class="line">The server's rsa2 key fingerprint is:</span><br><span class="line">ssh-rsa 2048 59:ca:22:af:f9:8e:6f:f7:87:b3:ea:da:1b:2b:aa:f2</span><br><span class="line">If you trust this host, enter "y" to add the key to</span><br><span class="line">PuTTY's cache and carry on connecting.</span><br><span class="line">If you want to carry on connecting just once, without</span><br><span class="line">adding the key to the cache, enter "n".</span><br><span class="line">If you do not trust this host, press Return to abandon the</span><br><span class="line">connection.</span><br></pre></td></tr></table></figure>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>手动连接一次 git 服务器，比如 GitLab，<a href="http://stackoverflow.com/questions/32437659/cannot-pull-git-remote-repository-from-sourcetree" target="_blank" rel="noopener">StackOverflow</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"C:\Program Files (x86)\Atlassian\SourceTree\tools\putty\plink.exe" gitlab.com</span><br></pre></td></tr></table></figure>
 
           
         

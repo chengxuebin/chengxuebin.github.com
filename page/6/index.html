@@ -1400,180 +1400,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://onthink.com/2017/06/10/mitm-proxy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="程学彬">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ironbin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/10/mitm-proxy/" itemprop="url">中间人劫持代理</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-10T00:00:00+08:00">
-                2017-06-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenSSL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenSSL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/10/mitm-proxy/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/10/mitm-proxy/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/06/10/mitm-proxy/" class="leancloud_visitors" data-flag-title="中间人劫持代理">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="中间人劫持代理"><a href="#中间人劫持代理" class="headerlink" title="中间人劫持代理"></a>中间人劫持代理</h2><p><img src="/images/posts/mitm_proxy/how-mitmproxy-works-explicit-https.png" alt=""></p>
-<p>注：图片来源于 mitmproxy</p>
-<h4 id="本代理基于-TCP，是一个不关心协议的代理？"><a href="#本代理基于-TCP，是一个不关心协议的代理？" class="headerlink" title="本代理基于 TCP，是一个不关心协议的代理？"></a>本代理基于 TCP，是一个不关心协议的代理？</h4><p>是的</p>
-<h4 id="HTTP-代理-VS-Socks-代理"><a href="#HTTP-代理-VS-Socks-代理" class="headerlink" title="HTTP 代理 VS Socks 代理"></a>HTTP 代理 VS Socks 代理</h4><h2 id="问题与挑战"><a href="#问题与挑战" class="headerlink" title="问题与挑战"></a>问题与挑战</h2><h3 id="获取远端主机名（Host）"><a href="#获取远端主机名（Host）" class="headerlink" title="获取远端主机名（Host）"></a>获取远端主机名（Host）</h3><p>当应用设置了代理后，在 TLS 协商前，应用首先会发一条 CONNECT 请求，期待通过代理和远端服务器建立 TLS 隧道（tunnel）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONNECT 10.1.1.1:443 HTTP/1.1</span><br></pre></td></tr></table></figure>
-<p>作为中间人代理，并不帮助建立隧道，而是需要解析 CONNECT 请求，并从中获得远端服务器主机名。同时返回给被代理程序隧道建立成功的回复：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 根据请求指定版本号</span><br><span class="line">HTTP/1.0 200 Connection established\r\n\r\n</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/10/mitm-proxy/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://onthink.com/2017/06/10/tls-1.2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1823,6 +1649,180 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/10/tls-1.2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://onthink.com/2017/06/10/mitm-proxy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="程学彬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ironbin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/10/mitm-proxy/" itemprop="url">中间人劫持代理</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-10T00:00:00+08:00">
+                2017-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OpenSSL/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenSSL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/10/mitm-proxy/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/10/mitm-proxy/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/10/mitm-proxy/" class="leancloud_visitors" data-flag-title="中间人劫持代理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="中间人劫持代理"><a href="#中间人劫持代理" class="headerlink" title="中间人劫持代理"></a>中间人劫持代理</h2><p><img src="/images/posts/mitm_proxy/how-mitmproxy-works-explicit-https.png" alt=""></p>
+<p>注：图片来源于 mitmproxy</p>
+<h4 id="本代理基于-TCP，是一个不关心协议的代理？"><a href="#本代理基于-TCP，是一个不关心协议的代理？" class="headerlink" title="本代理基于 TCP，是一个不关心协议的代理？"></a>本代理基于 TCP，是一个不关心协议的代理？</h4><p>是的</p>
+<h4 id="HTTP-代理-VS-Socks-代理"><a href="#HTTP-代理-VS-Socks-代理" class="headerlink" title="HTTP 代理 VS Socks 代理"></a>HTTP 代理 VS Socks 代理</h4><h2 id="问题与挑战"><a href="#问题与挑战" class="headerlink" title="问题与挑战"></a>问题与挑战</h2><h3 id="获取远端主机名（Host）"><a href="#获取远端主机名（Host）" class="headerlink" title="获取远端主机名（Host）"></a>获取远端主机名（Host）</h3><p>当应用设置了代理后，在 TLS 协商前，应用首先会发一条 CONNECT 请求，期待通过代理和远端服务器建立 TLS 隧道（tunnel）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONNECT 10.1.1.1:443 HTTP/1.1</span><br></pre></td></tr></table></figure>
+<p>作为中间人代理，并不帮助建立隧道，而是需要解析 CONNECT 请求，并从中获得远端服务器主机名。同时返回给被代理程序隧道建立成功的回复：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 根据请求指定版本号</span><br><span class="line">HTTP/1.0 200 Connection established\r\n\r\n</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/10/mitm-proxy/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

@@ -1200,193 +1200,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://onthink.com/2015/01/25/linux-commands/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="程学彬">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ironbin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/01/25/linux-commands/" itemprop="url">Linux 常用命令</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-01-25T00:00:00+08:00">
-                2015-01-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/01/25/linux-commands/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/01/25/linux-commands/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/01/25/linux-commands/" class="leancloud_visitors" data-flag-title="Linux 常用命令">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-打开服务器的被禁用（blocked）端口（port）"><a href="#1-打开服务器的被禁用（blocked）端口（port）" class="headerlink" title="1 打开服务器的被禁用（blocked）端口（port）"></a>1 打开服务器的被禁用（blocked）端口（port）</h2><ul>
-<li>启用被 iptables 禁用的 80 端口</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /sbin/iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将上面的配置作为规则保存到 iptables，以便服务器重启后，能再次生效</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /sbin/service iptables save</span><br></pre></td></tr></table></figure>
-<h2 id="2-通过-systemctl-启动服务"><a href="#2-通过-systemctl-启动服务" class="headerlink" title="2 通过 systemctl 启动服务"></a>2 通过 systemctl 启动服务</h2><ul>
-<li>启动、停止、重启</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start nginx.service</span></span><br><span class="line"><span class="comment"># systemctl stop nginx.service</span></span><br><span class="line"><span class="comment"># systemctl restart nginx.service</span></span><br></pre></td></tr></table></figure>
-<p>除了 nginx.service, 常用的服务还有：php-fpm.service, mysqld.service</p>
-<ul>
-<li>设置开机自启</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl enable nginx.service</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-查看进程信息"><a href="#3-查看进程信息" class="headerlink" title="3 查看进程信息"></a>3 查看进程信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -aux | grep 关键字</span></span><br></pre></td></tr></table></figure>
-<h2 id="4-查看进程的安装位置"><a href="#4-查看进程的安装位置" class="headerlink" title="4 查看进程的安装位置"></a>4 查看进程的安装位置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep tomcat</span><br></pre></td></tr></table></figure>
-<h2 id="5-sudo-保留系统环境"><a href="#5-sudo-保留系统环境" class="headerlink" title="5 sudo 保留系统环境"></a>5 sudo 保留系统环境</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -E env</span><br></pre></td></tr></table></figure>
-<h2 id="6-查找最大目录或文件"><a href="#6-查找最大目录或文件" class="headerlink" title="6 查找最大目录或文件"></a>6 查找最大目录或文件</h2><h3 id="1）查找最大目录"><a href="#1）查找最大目录" class="headerlink" title="1）查找最大目录"></a>1）查找最大目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -a | sort -n -r | head -n 5</span><br></pre></td></tr></table></figure>
-<h3 id="2）查找最大文件"><a href="#2）查找最大文件" class="headerlink" title="2）查找最大文件"></a>2）查找最大文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find -type f -exec du -Sh &#123;&#125; + | sort -rh | head -n 5</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.tecmint.com/find-top-large-directories-and-files-sizes-in-linux/" target="_blank" rel="noopener">参考</a></p>
-<h2 id="7-挂载"><a href="#7-挂载" class="headerlink" title="7 挂载"></a>7 挂载</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo mount -t vboxsf 源媒体 目标路径</span></span><br></pre></td></tr></table></figure>
-<h2 id="8-查找文件包含字符"><a href="#8-查找文件包含字符" class="headerlink" title="8 查找文件包含字符"></a>8 查找文件包含字符</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> This will only search through those files <span class="built_in">which</span> have .c or .h extensions:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep --include=\*.&#123;c,h&#125; -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> This will exclude searching all the files ending with .o extension:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep --exclude=*.o -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">For directories it<span class="string">'s possible to exclude a particular directory(ies) through --exclude-dir parameter. For example, this will exclude the dirs dir1/, dir2/ and all of them matching *.dst/:</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep --exclude-dir=&#123;dir1,dir2,*.dst&#125; -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://onthink.com/2015/01/25/the-most-used-regular-expression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1549,6 +1362,193 @@
 <li><a href="http://regexr.com/30npe" target="_blank" rel="noopener">RegExr</a></li>
 </ul>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://onthink.com/2015/01/25/linux-commands/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="程学彬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ironbin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/01/25/linux-commands/" itemprop="url">Linux 常用命令</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-01-25T00:00:00+08:00">
+                2015-01-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/01/25/linux-commands/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/01/25/linux-commands/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/01/25/linux-commands/" class="leancloud_visitors" data-flag-title="Linux 常用命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-打开服务器的被禁用（blocked）端口（port）"><a href="#1-打开服务器的被禁用（blocked）端口（port）" class="headerlink" title="1 打开服务器的被禁用（blocked）端口（port）"></a>1 打开服务器的被禁用（blocked）端口（port）</h2><ul>
+<li>启用被 iptables 禁用的 80 端口</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /sbin/iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将上面的配置作为规则保存到 iptables，以便服务器重启后，能再次生效</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /sbin/service iptables save</span><br></pre></td></tr></table></figure>
+<h2 id="2-通过-systemctl-启动服务"><a href="#2-通过-systemctl-启动服务" class="headerlink" title="2 通过 systemctl 启动服务"></a>2 通过 systemctl 启动服务</h2><ul>
+<li>启动、停止、重启</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start nginx.service</span></span><br><span class="line"><span class="comment"># systemctl stop nginx.service</span></span><br><span class="line"><span class="comment"># systemctl restart nginx.service</span></span><br></pre></td></tr></table></figure>
+<p>除了 nginx.service, 常用的服务还有：php-fpm.service, mysqld.service</p>
+<ul>
+<li>设置开机自启</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl enable nginx.service</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-查看进程信息"><a href="#3-查看进程信息" class="headerlink" title="3 查看进程信息"></a>3 查看进程信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -aux | grep 关键字</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-查看进程的安装位置"><a href="#4-查看进程的安装位置" class="headerlink" title="4 查看进程的安装位置"></a>4 查看进程的安装位置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep tomcat</span><br></pre></td></tr></table></figure>
+<h2 id="5-sudo-保留系统环境"><a href="#5-sudo-保留系统环境" class="headerlink" title="5 sudo 保留系统环境"></a>5 sudo 保留系统环境</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -E env</span><br></pre></td></tr></table></figure>
+<h2 id="6-查找最大目录或文件"><a href="#6-查找最大目录或文件" class="headerlink" title="6 查找最大目录或文件"></a>6 查找最大目录或文件</h2><h3 id="1）查找最大目录"><a href="#1）查找最大目录" class="headerlink" title="1）查找最大目录"></a>1）查找最大目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -a | sort -n -r | head -n 5</span><br></pre></td></tr></table></figure>
+<h3 id="2）查找最大文件"><a href="#2）查找最大文件" class="headerlink" title="2）查找最大文件"></a>2）查找最大文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find -type f -exec du -Sh &#123;&#125; + | sort -rh | head -n 5</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.tecmint.com/find-top-large-directories-and-files-sizes-in-linux/" target="_blank" rel="noopener">参考</a></p>
+<h2 id="7-挂载"><a href="#7-挂载" class="headerlink" title="7 挂载"></a>7 挂载</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo mount -t vboxsf 源媒体 目标路径</span></span><br></pre></td></tr></table></figure>
+<h2 id="8-查找文件包含字符"><a href="#8-查找文件包含字符" class="headerlink" title="8 查找文件包含字符"></a>8 查找文件包含字符</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> This will only search through those files <span class="built_in">which</span> have .c or .h extensions:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep --include=\*.&#123;c,h&#125; -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> This will exclude searching all the files ending with .o extension:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep --exclude=*.o -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">For directories it<span class="string">'s possible to exclude a particular directory(ies) through --exclude-dir parameter. For example, this will exclude the dirs dir1/, dir2/ and all of them matching *.dst/:</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep --exclude-dir=&#123;dir1,dir2,*.dst&#125; -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span></span><br></pre></td></tr></table></figure>
           
         
       
