@@ -21,6 +21,8 @@ SSLKEYLOGFILE  C:\Users\Jonathan\Documents\SSLKEYLOGFILE.txt
 
 #### Chrome 发布日历
 
+[最新日历](https://chromiumdash.appspot.com/releases?platform=Windows)
+
 [Chromium Development Calendar and Release Info](https://www.chromium.org/developers/calendar)
 
 #### Chromium 分支和标签
